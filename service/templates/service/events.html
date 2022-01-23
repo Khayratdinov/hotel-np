@@ -1,0 +1,102 @@
+{% extends 'base.html' %}
+
+
+{% block content %}
+
+
+     <!-- ========== PAGE TITLE ========== -->
+     <div class="page-title gradient-overlay op6" style="background: url(images/breadcrumb.jpg); background-repeat: no-repeat;
+     background-size: cover;">
+           <div class="container">
+             <div class="inner">
+               <h1>Blog</h1>
+               <ol class="breadcrumb">
+                 <li>
+                   <a href="index.html">Home</a>
+                 </li>
+                 <li>Blog</li>
+               </ol>
+             </div>
+           </div>
+         </div>
+         <!-- ========== MAIN ========== -->
+         <main>
+           <div class="container">
+             <!-- POSTS -->
+             <div class="blog-posts">
+               <div class="row">
+
+                
+                {% for event in events %}
+                  
+
+
+                 <!-- ITEM -->
+                 <div class="col-lg-4 col-md-6">
+                   <div class="news-grid-item">
+                     <figure class="gradient-overlay-hover link-icon">
+                       <a href="{% url 'event_detail' event.pk %}">
+                         <img src="{{ event.image.url }}" class="img-fluid" alt="Image">
+                       </a>
+                     </figure>
+                     <div class="news-info">
+                       <h4 class="title">
+                         <a href="{% url 'event_detail' event.pk %}">{{ event.title }}</a>
+                       </h4>
+                       <p>{{ event.description }}</p>
+                     </div>
+                   </div>
+                 </div>
+
+
+                 {% endfor %}
+
+               </div>
+               <!-- ========== PAGINATION ========== -->
+               <nav class="pagination">
+                 <ul>
+                   <li class="prev-pagination">
+                     <a href="#">
+                       &nbsp;<i class="fa fa-angle-left"></i>
+                       Previous &nbsp;</a>
+                   </li>
+                   <li class="active">
+                     <a href="#">1</a>
+                   </li>
+                   <li>
+                     <a href="#">2</a>
+                   </li>
+                   <li>
+                     <a href="#">3</a>
+                   </li>
+                   <li>
+                     <a href="#">4</a>
+                   </li>
+                   <li>
+                     <a href="#">5</a>
+                   </li>
+                   <li>...</li>
+                   <li>
+                     <a href="#">18</a>
+                   </li>
+                   <li>
+                     <a href="#">19</a>
+                   </li>
+                   <li>
+                     <a href="#">20</a>
+                   </li>
+                   <li class="next_pagination">
+                     <a href="#">
+                       &nbsp; Next
+                       <i class="fa fa-angle-right"></i>
+                       &nbsp;
+                     </a>
+                   </li>
+                 </ul>
+               </nav>
+             </div>
+           </div>
+         </main>
+  
+{% endblock content %}
+  

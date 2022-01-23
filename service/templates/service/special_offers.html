@@ -1,0 +1,66 @@
+{% extends 'base.html' %}
+
+
+
+{% block content %}
+
+      <!-- ========== PAGE TITLE ========== -->
+      <div class="page-title gradient-overlay op6" style="background: url(images/breadcrumb.jpg); background-repeat: no-repeat;
+    background-size: cover;">
+        <div class="container">
+          <div class="inner">
+            <h1>OFFERS</h1>
+            <ol class="breadcrumb">
+              <li>
+                <a href="index.html">Home</a>
+              </li>
+              <li>Offers</li>
+            </ol>
+          </div>
+        </div>
+      </div>
+      <!-- ========== MAIN ========== -->
+      <main class="offers-page">
+        <div class="container">
+          <div class="row">
+
+            
+            {% for special_offer in special_offers %}
+              
+            
+              
+            <!-- ITEM -->
+            <div class="col-md-6">
+              <div class="offer-item">
+                <figure class="gradient-overlay-hover link">
+                  <a href="{% url 'offer_detail' special_offer.pk %}">
+                    <img src="{{ special_offer.image.url }}" class="img-fluid" alt="Image">
+                  </a>
+                </figure>
+                
+                {% if special_offer.hot_offer == True %}
+                  <div class="ribbon">
+                    <span>HOT OFFER</span>
+                  </div>
+                {% endif %}
+ 
+                <div class="offer-price">
+                  {{ special_offer.price }}
+                </div>
+                <h3 class="offer-title">
+                  <a href="{% url 'offer_detail' special_offer.pk %}">{{ special_offer.title }}</a>
+                </h3>
+              </div>
+            </div>
+
+          {% endfor %}
+            
+          </div>
+          <div class="load-more">
+            LOAD MORE OFFERS
+          </div>
+        </div>
+      </main>
+  
+{% endblock content %}
+  

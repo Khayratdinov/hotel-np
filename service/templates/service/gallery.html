@@ -1,0 +1,62 @@
+{% extends 'base.html' %}
+
+
+
+
+{% block content %}
+
+
+      <!-- ========== PAGE TITLE ========== -->
+      <div class="page-title gradient-overlay op6" style="background: url(images/breadcrumb.jpg); background-repeat: no-repeat;
+  background-size: cover;">
+        <div class="container">
+          <div class="inner">
+            <h1>GALLERY</h1>
+            <ol class="breadcrumb">
+              <li>
+                <a href="index.html">Home</a>
+              </li>
+              <li>Gallery</li>
+            </ol>
+          </div>
+        </div>
+      </div>
+      <!-- ========== MAIN ========== -->
+      <main class="gallery-page">
+        <!-- FILTERS -->
+        <div class="container">
+          <div class="gallery-filters">
+            <a href="#" data-filter="*" class="filter active">ALL</a>
+              {% for category_gallery in categories_gallery %}
+                <a href="#" data-filter="{{ category_gallery.cat_filter }}" class="filter">{{ category_gallery.title }}</a>
+              {% endfor %}
+              
+          </div>
+        </div>
+        <!-- GALLERY -->
+        <div class="container">
+          <div class="grid image-gallery row">
+            
+            {% for gallery  in gallerys %}
+              
+           
+            <!-- ITEM -->
+            <div class="gallery-item {{ gallery.cat_filter }} col-md-3">
+              <figure class="gradient-overlay image-icon">
+                <a href="{{ gallery.image.url }}">
+                  <img src="{{ gallery.image.url }}" class="img-fluid" alt="Image">
+                </a>
+                <figcaption>{{ gallery.title }}</figcaption>
+              </figure>
+            </div>
+
+            {% endfor %}
+              
+
+          </div>
+        </div>
+      </main>
+      <!-- ========== FOOTER ========== -->
+    
+{% endblock content %}
+    

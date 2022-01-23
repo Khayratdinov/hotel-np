@@ -1,0 +1,107 @@
+{% extends 'base.html' %}
+
+
+
+
+{% block content %}
+
+
+      <!-- ========== REVOLUTION SLIDER ========== -->
+      <div id="rev-slider-spa" class="rev_slider gradient-slider" data-version="5.4.5">
+        <ul>
+          <!-- SLIDE -->
+          <li data-transition="fade">
+            <!-- MAIN IMAGE -->
+            <img src="{{ service.image.url }}" alt="Image" data-bgposition="center center" data-bgfit="cover" data-bgrepeat="no-repeat" data-bgparallax="5" class="rev-slidebg" data-no-retina="data-no-retina">
+            <!-- LAYER NR. 1 -->
+            <div
+              class="tp-caption"
+              data-x="['center','center','center','center']"
+              data-hoffset=""
+              data-y="['middle','middle','middle','middle']"
+              data-voffset=""
+              data-responsive_offset="on"
+              data-fontsize="['40','32','28','22']"
+              data-lineheight="['40','32','28','22']"
+              data-whitespace="nowrap"
+              data-frames='[{"delay":0,"speed":1500,"frame":"0","from":"y:[100%];z:0;rX:0deg;rY:0;rZ:0;sX:1;sY:1;skX:0;skY:0;opacity:0;","mask":"x:0px;y:[100%];s:inherit;e:inherit;","to":"o:1;","ease":"Power2.easeInOut"},{"delay":"wait","speed":300,"frame":"999","to":"auto:auto;","ease":"Power3.easeInOut"}]'
+              style="color: #fff; font-weight: 700; font-family: 'Raleway', sans-serif;">{{ service.title }}
+            </div>
+          </li>
+        </ul>
+      </div>
+      <!-- ========== MAIN ========== -->
+      <main>
+        <div class="container">
+          <div class="entry">
+
+
+            <p>
+             {{ service.text | safe }}
+            </p>
+
+            <div class="row image-gallery">
+
+              
+              {% for image in image_service %}
+                
+              
+                
+              <!-- ITEM -->
+              <div class="col-md-3">
+                <figure class="gradient-overlay-hover image-icon">
+                  <a href="{{ image.image.url }}">
+                    <img src="{{ image.image.url }}" class="img-fluid" alt="Image">
+                  </a>
+                </figure>
+              </div>
+
+              {% endfor %}
+
+            </div>
+
+            <section class="staff">
+              <div class="container">
+                <div class="section-title">
+                  <h4>{{ service.title }} THE STAFF</h4>
+                </div>
+                <div class="staff-owl owl-carousel">
+      
+                  
+                  
+                  
+                    
+                  
+                    
+                    {% for item in staff %}
+                      
+                      {% if item.category.cat_filter == "{{ service.title }}" %}
+                      
+                        <!-- ITEM -->
+                        <div class="staff-item">
+                          <figure>
+                            <img src="{{ item.image.url }}" class="img-fluid" alt="Image">
+                            <div class="position">{{ item.profession }}</div>
+                          </figure>
+                          <div class="details">
+                            <h5>{{ item.name }} {{ item.surename }}</h5>
+                            <p>{{ item.description }}</p>
+                          </div>
+                        </div>
+                      {% endif %}
+        
+                    {% endfor %}
+
+                  
+      
+                </div>
+              </div>
+            </section>
+           
+            
+          </div>
+        </div>
+      </main>
+  
+{% endblock content %}
+  

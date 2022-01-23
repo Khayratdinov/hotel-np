@@ -1,0 +1,97 @@
+{% load static %}
+{% load header_tag %}
+
+<header class="horizontal-header sticky-header" data-menutoggle="991">
+    <div class="container">
+      <!-- BRAND -->
+      <div class="brand">
+        <div class="logo">
+          <a href="index.html">
+            <img src="{% static '/' %}images/logo.svg" alt="Hotel Himara">
+          </a>
+        </div>
+      </div>
+      <!-- MOBILE MENU BUTTON -->
+      <div id="toggle-menu-button" class="toggle-menu-button">
+        <span class="line"></span>
+        <span class="line"></span>
+        <span class="line"></span>
+      </div>
+      <!-- MAIN MENU -->
+      <nav id="main-menu" class="main-menu">
+        <ul class="menu">
+          <li class="menu-item">
+            <a href="{% url 'home' %}">HOME</a>
+          </li>
+          <li class="menu-item">
+            <a href="{% url 'rooms' %}">ROOMS</a>
+          </li>
+          <li class="menu-item dropdown">
+            <a href="{% url 'blog' %}">BLOG</a>
+
+          </li>
+          
+          <li class="menu-item dropdown">
+            <a href="#">SERVICES</a>
+            <ul class="submenu">
+
+              {% get_services as services %}
+
+              
+              {% for service in services %}
+                <li class="menu-item">
+                  <a href="{% url 'service_detail' service.pk %}">{{ service.title }}</a>
+                </li>
+              {% endfor %}
+                
+
+              
+
+            </ul>
+          </li>
+
+          <li class="menu-item dropdown">
+            <a href="#">PAGES</a>
+            <ul class="submenu">
+              <li class="menu-item dropdown">
+                <a href="{% url 'gallery' %}">Gallery</a>
+              </li>
+
+              <li class="menu-item dropdown">
+                <a href="{% url 'aboutus' %}">About Us</a>
+              </li>
+
+              <li class="menu-item dropdown">
+                <a href="{% url 'events' %}">Events</a>
+              </li>
+
+              <li class="menu-item dropdown">
+                <a href="{% url 'special_offers' %}">Speacial Offers</a>
+              </li>
+
+              <li class="menu-item dropdown">
+                <a href="{% url 'places' %}">Places</a>
+              </li>
+
+              <li class="menu-item dropdown">
+                <a href="{% url 'our_staff' %}">Our Staff</a>
+              </li>
+
+            </ul>
+          </li>
+
+          <li class="menu-item">
+            <a href="{% url 'contactus' %}">CONTACT US</a>
+          </li>
+
+         
+         
+          <li class="menu-item menu-btn">
+            <a href="booking-form.html" class="btn">
+              <i class="fa fa-calendar"></i>
+              BOOK ONLINE</a>
+          </li>
+        </ul>
+      </nav>
+    </div>
+  </header>

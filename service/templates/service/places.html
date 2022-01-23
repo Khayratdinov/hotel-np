@@ -1,0 +1,56 @@
+{% extends 'base.html' %}
+
+
+
+
+{% block content %}
+
+      <!-- ========== PAGE TITLE ========== -->
+      <div class="page-title gradient-overlay op6" style="background: url(images/breadcrumb.jpg); background-repeat: no-repeat;
+    background-size: cover;">
+        <div class="container">
+          <div class="inner">
+            <h1>PLACES</h1>
+            <ol class="breadcrumb">
+              <li>
+                <a href="index.html">Home</a>
+              </li>
+              <li>Places</li>
+            </ol>
+          </div>
+        </div>
+      </div>
+      <!-- ========== MAIN ========== -->
+      <main class="places">
+        <div class="container">
+          <div class="masonry-grid">
+            <div class="row">
+              
+              {% for place in places %}
+
+              <!-- ITEM -->
+              <div class="col-md-4 masonry-grid-item">
+                <div class="places-item">
+                  <figure class="gradient-overlay link-icon">
+                    <a href="{% url 'place-detail' place.pk %}">
+                      <img src="{{ place.image.url }}" class="img-fluid" alt="Image">
+                    </a>
+                    <figcaption>
+                      {{ place.title }}
+                    </figcaption>
+                  </figure>
+                </div>
+              </div>
+
+              {% endfor %}
+
+            </div>
+          </div>
+          <div class="load-more">
+            LOAD MORE PLACES
+          </div>
+        </div>
+      </main>
+  
+{% endblock content %}
+  

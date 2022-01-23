@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+
+
+
+{% block content %}
+
+    <!-- ========== MAIN ========== -->
+    <main>
+      <div class="container">
+        <div class="place-details entry">
+          <div class="place-details-image">
+          <figure>
+            <img src="{{ place.image.url }}" class="img-fluid">
+          </figure>
+          <h1 class="title">{{ place.title }}</h1>
+        </div>
+          <p>
+            {{ place.text }}
+          </p>
+
+
+          <h4 class="text-uppercase mt40 mb20">Apollonia Images & Video</h4>
+          <div class="image-gallery">
+            <div class="row">
+
+              
+              {% for image in place_images %}
+                
+             
+                
+              <!-- ITEM -->
+              <div class="col-md-3">
+                <figure class="gradient-overlay-hover image-icon">
+                  <a href="{{ image.image.url }}">
+                    <img src="{{ image.image.url }}" class="img-fluid">
+                  </a>
+                </figure>
+              </div>
+
+              {% endfor %}
+          </div>
+        </div>
+    </main>
+  
+{% endblock content %}
+  

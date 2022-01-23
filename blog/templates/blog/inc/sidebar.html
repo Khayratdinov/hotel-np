@@ -1,0 +1,91 @@
+{% load sidebar %}
+
+<div class="col-lg-3 col-12">
+    <div class="sidebar">
+      <aside class="widget noborder">
+        <div class="search">
+          <form class="widget-search">
+            <input type="search" placeholder="Search">
+            <button class="btn-search" id="searchsubmit" type="submit">
+              <i class="fa fa-search"></i>
+            </button>
+          </form>
+        </div>
+      </aside>
+
+      
+      <!-- WIDGET -->
+      <aside class="widget">
+        <h4 class="widget-title">CATEGORIES</h4>
+        <ul class="categories">
+
+          {% get_categories as categories %}
+          
+          {% for category in categories %}
+
+            <li>
+              <a href="#">{{ category.title }}<span class="posts-num"></span></a>
+            </li>
+
+          {% endfor %}
+            
+        
+        </ul>
+      </aside>
+      <!-- WIDGET -->
+      <aside class="widget">
+        <h4 class="widget-title">Latest Posts</h4>
+        <div class="latest-posts">
+
+          {% get_blog as blog_piked %}
+          
+          {% for blog in blog_piked %}
+            
+         
+            
+          <!-- ITEM -->
+          <div class="latest-post-item">
+            <div class="row">
+              <div class="col-5">
+                <figure class="gradient-overlay-hover link-icon sm">
+                  <a href="{% url 'blog_detail' blog.pk %}">
+                    <img src="{{ blog.image.url }}" class="img-fluid" alt="Image">
+                  </a>
+                </figure>
+              </div>
+              <div class="col-7">
+                <div class="post-details">
+                  <h6 class="post-title">
+                    <a href="{% url 'blog_detail' blog.pk %}">{{ blog.title }}</a>
+                  </h6>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {% endfor %}
+
+        </div>
+      </aside>
+      <!-- WIDGET -->
+      <aside class="widget">
+        <h4 class="widget-title">Tags</h4>
+        <div class="tagcloud">
+          
+          {% get_tags as tags %}
+          
+          {% for tag in tags %}
+            
+         
+            
+          <a href="#">
+            <span class="tag">{{ tag.title }}</span>
+          </a>
+
+          {% endfor %}
+        </div>
+      </aside>
+
+
+    </div>
+  </div>
