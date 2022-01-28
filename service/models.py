@@ -15,7 +15,7 @@ class Service(models.Model):
     icon = models.CharField(max_length = 150, blank=True)
     slug = AutoSlugField(populate_from='title', unique=True, null=True, default=None)
 
-    def __str_(self):
+    def __str__(self):
         return self.title
 
 
@@ -24,7 +24,109 @@ class Image_service(models.Model):
     image = models.ImageField(upload_to='images/service/', blank=True)
 
     def __str__(self):
-        return str(self.service)
+        return str(self.service.title)
+
+
+class Business(models.Model):
+    title = models.CharField(max_length=255)
+    image = models.ImageField(blank=True, upload_to='images/service/')
+    description = models.TextField(blank=True)
+    text = RichTextUploadingField(blank=True)
+    icon = models.CharField(max_length = 150, blank=True)
+    slug = AutoSlugField(populate_from='title', unique=True, null=True, default=None)
+    create_at = models.DateTimeField(auto_now_add=True)
+    update_at = models.DateTimeField(auto_now=True)
+
+    def __str__(self):
+        return self.title
+
+
+class Image_business(models.Model):
+    business = models.ForeignKey(Business, on_delete=models.CASCADE, related_name='Image_business')
+    image = models.ImageField(upload_to='images/service/', blank=True)
+
+    def __str__(self):
+        return str(self.business.title)
+
+
+class Restaurant(models.Model):
+    title = models.CharField(max_length=255)
+    image = models.ImageField(blank=True, upload_to='images/service/')
+    description = models.TextField(blank=True)
+    text = RichTextUploadingField(blank=True)
+    icon = models.CharField(max_length = 150, blank=True)
+    slug = AutoSlugField(populate_from='title', unique=True, null=True, default=None)
+    create_at = models.DateTimeField(auto_now_add=True)
+    update_at = models.DateTimeField(auto_now=True)
+
+    def __str__(self):
+        return self.title
+
+
+class Image_restaurant(models.Model):
+    restaurant = models.ForeignKey(Restaurant, on_delete=models.CASCADE, related_name='Image_restaurant')
+    image = models.ImageField(upload_to='images/service/', blank=True)
+
+    def __str__(self):
+        return str(self.restaurant.title)
+
+
+class Restaurant_menu(models.Model):
+    title = models.CharField(max_length=150)
+    image = models.ImageField(blank=True, upload_to='images/restaurant-menu/')
+    price = models.IntegerField(default=0)
+    description = models.TextField(blank=True)
+    status = models.BooleanField(default=False)
+    create_at = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return self.title
+
+
+class Spa(models.Model):
+    title = models.CharField(max_length=255)
+    image = models.ImageField(blank=True, upload_to='images/service/')
+    description = models.TextField(blank=True)
+    text = RichTextUploadingField(blank=True)
+    icon = models.CharField(max_length = 150, blank=True)
+    slug = AutoSlugField(populate_from='title', unique=True, null=True, default=None)
+    create_at = models.DateTimeField(auto_now_add=True)
+    update_at = models.DateTimeField(auto_now=True)
+
+    def __str__(self):
+        return self.title
+
+
+class Image_spa(models.Model):
+    spa = models.ForeignKey(Spa, on_delete=models.CASCADE, related_name='Image_spa')
+    image = models.ImageField(upload_to='images/service/', blank=True)
+
+    def __str__(self):
+        return str(self.spa.title)
+
+
+class Fitness(models.Model):
+    title = models.CharField(max_length=255)
+    image = models.ImageField(blank=True, upload_to='images/service/')
+    description = models.TextField(blank=True)
+    text = RichTextUploadingField(blank=True)
+    icon = models.CharField(max_length = 150, blank=True)
+    slug = AutoSlugField(populate_from='title', unique=True, null=True, default=None)
+    create_at = models.DateTimeField(auto_now_add=True)
+    update_at = models.DateTimeField(auto_now=True)
+
+    def __str__(self):
+        return self.title
+
+
+class Image_fitness(models.Model):
+    fitness = models.ForeignKey(Fitness, on_delete=models.CASCADE, related_name='Image_fitness')
+    image = models.ImageField(upload_to='images/service/', blank=True)
+
+    def __str__(self):
+        return str(self.fitness.title)
+
+
 
 
 class Special_offer(models.Model):
@@ -147,26 +249,21 @@ class Category_staff(models.Model):
         return self.title
 
 
-class Restaurant_menu(models.Model):
-    title = models.CharField(max_length=150)
-    image = models.ImageField(blank=True, upload_to='images/restaurant-menu/')
-    price = models.IntegerField(default=0)
-    description = models.TextField(blank=True)
-    status = models.BooleanField(default=False)
-    create_at = models.DateTimeField(auto_now_add=True)
 
-    def __str__(self):
-        return self.title
 
 
 class Events(models.Model):
+    STATUS = (
+        ('True', 'Mavjud'),
+        ('False','Mavjud emas'),
+    )
     title = models.CharField(max_length=250)
     image = models.ImageField(upload_to='images/events/')
     description = models.CharField(max_length=250)
     text = RichTextUploadingField(blank=True, null=True)
     date = models.DateTimeField('date joined', default=timezone.now)
     slug = AutoSlugField(populate_from='title', unique=True, null=True, default=None)
-    status = models.BooleanField(default=False)
+    status = models.BooleanField(default=False, choices=STATUS)
 
     def __str__(self):
         return self.title
@@ -176,7 +273,7 @@ class Image_events(models.Model):
     image = models.ImageField(upload_to='images/events/', blank=True)
 
     def __str__(self):
-        return str(self.events)
+        return str(self.events.title)
 
 class Offer_events_ticket(models.Model):
     STATUS = (

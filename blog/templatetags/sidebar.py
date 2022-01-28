@@ -1,5 +1,5 @@
 from django import template
-from blog.models import Category, Tag, Blog
+from blog.models import Category_Blog, Tag_Blog, Blog
 
 
 
@@ -8,11 +8,11 @@ register = template.Library()
 
 @register.simple_tag(name='get_categories')
 def get_categories():
-    return Category.objects.all()
+    return Category_Blog.objects.all()
 
 @register.simple_tag(name='get_tags')
 def get_tags():
-    return Tag.objects.all()
+    return Tag_Blog.objects.all()
 
 
 @register.simple_tag(name='get_blog')

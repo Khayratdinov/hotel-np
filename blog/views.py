@@ -2,7 +2,7 @@ from django.shortcuts import render
 from django.contrib import messages
 from django.http import HttpResponseRedirect
 from blog.forms import Comment_detail_Form
-from blog.models import Blog, Category, Tag, Comment_blog
+from blog.models import Blog, Category_Blog, Tag_Blog, Comment_blog
 from home.models import Informations
 from django.core.paginator import (Paginator, PageNotAnInteger, EmptyPage)
 
@@ -47,9 +47,6 @@ def comment_blog(request, id):
         form = Comment_detail_Form(request.POST)
         if form.is_valid():
             data = Comment_blog()
-            data.name = form.cleaned_data['name']
-            data.surname = form.cleaned_data['surname']
-            data.phone = form.cleaned_data['phone']
             data.comment = form.cleaned_data['comment']
             data.ip = request.META.get('REMOTE_ADDR')
             data.blog_id = id

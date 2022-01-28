@@ -12,6 +12,7 @@ from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from room.models import Room, RoomServices, Room_Image
 from home.models import Slider
 from creatoradmin.forms import *
+from service.models import Service, Image_service
 
 
 def login_form(request):
@@ -66,6 +67,54 @@ class HomeAminView(LoginRequiredMixin, TemplateView):
 
 
 #======================= - ROOM CATEGORY ======================================================
+
+def sliders(request):
+    sliders = Slider.objects.all()
+
+    context = {
+        'sliders':sliders
+    }
+    return render(request, 'slider/sliders.html', context)
+
+
+def slider_create(request):
+    if request.method == 'POST':
+        form = CreateSlider(request.POST, request.FILES)
+        if form.is_valid():
+            slider = Slider()
+            slider.title = form.cleaned_data.get('title')
+            slider.description = form.cleaned_data.get('description')
+            if request.FILES:
+                slider.image = request.FILES['image']
+            slider.save()
+            return redirect('sliders')
+    form = CreateSlider()
+    context = {
+        'form': form,
+    }
+    return render(request, 'slider/slider_create.html', context)
+
+
+def slider_edit(request, id):
+    slider = Slider.objects.get(pk=id)
+    if request.method == 'POST':
+        form = EditSlider(request.POST, request.FILES, instance=slider)
+        if request.FILES:
+            slider.image = request.FILES['image']
+        if form.is_valid():
+            form.save()
+            return redirect('sliders')
+    else:
+        form = EditSlider(instance=slider)
+        context = {'form': form,}
+
+        return render(request, 'slider/slider_edit.html', context)
+
+
+def slider_delate(request, id):
+    slider = Slider.objects.get(pk=id)
+    slider.delete()
+    return redirect('sliders')
 
 
 
@@ -149,58 +198,251 @@ def room_delate(request, id):
     return redirect('rooms')
 
 
-#======================= - SLIDER BO'LIMI ======================================================
 
+#
+# ──────────────────────────────────────────────────────────────────  ──────────
+#   :::::: C A T E G O R Y   R O O M : :  :   :    :     :        :          :
+# ────────────────────────────────────────────────────────────────────────────
+#
 
-
-
-def sliders(request):
-    sliders = Slider.objects.all()
+def categories(request):
+    categories = Category.objects.all()
 
     context = {
-        'sliders':sliders
+        'categories':categories
     }
-    return render(request, 'slider/sliders.html', context)
+    return render(request, 'category_room/categories.html', context)
 
 
-def slider_create(request):
+def category_create(request):
     if request.method == 'POST':
-        form = CreateSlider(request.POST, request.FILES)
+        form = CreateCategoryRoom(request.POST, request.FILES)
         if form.is_valid():
-            slider = Slider()
-            slider.title = form.cleaned_data.get('title')
-            slider.description = form.cleaned_data.get('description')
+            category = Category()
+            category.title = form.cleaned_data.get('title')
+            category.description = form.cleaned_data.get('description')
             if request.FILES:
-                slider.image = request.FILES['image']
-            slider.save()
-            return redirect('sliders')
-    form = CreateSlider()
+                category.image = request.FILES['image']
+            category.status = form.cleaned_data.get('status')
+            category.save()
+            return redirect('categories')
+    form = CreateCategoryRoom()
     context = {
         'form': form,
     }
-    return render(request, 'slider/slider_create.html', context)
+    return render(request, 'category_room/category_create.html', context)
 
 
-def slider_edit(request, id):
-    slider = Slider.objects.get(pk=id)
+def category_edit(request, id):
+    category = Category.objects.get(pk=id)
     if request.method == 'POST':
-        form = EditSlider(request.POST, request.FILES, instance=slider)
+        form = EditCategoryRoom(request.POST, request.FILES, instance=category)
         if request.FILES:
-            slider.image = request.FILES['image']
+            category.image = request.FILES['image']
         if form.is_valid():
             form.save()
-            return redirect('sliders')
+            return redirect('categories')
     else:
-        form = EditSlider(instance=slider)
+        form = EditCategoryRoom(instance=category)
         context = {'form': form,}
 
-        return render(request, 'slider/slider_edit.html', context)
+        return render(request, 'category_room/category_edit.html', context)
 
 
-def slider_delate(request, id):
-    slider = Slider.objects.get(pk=id)
-    slider.delete()
-    return redirect('sliders')
+def category_delate(request, id):
+    category = Category.objects.get(pk=id)
+    category.delete()
+    return redirect('categories')
 
 
+
+#
+# ────────────────────────────────────────────────────────────────── I ──────────
+#   :::::: C A T E G O R Y   B L O G : :  :   :    :     :        :          :
+# ────────────────────────────────────────────────────────────────────────────
+#
+def categories_blog(request):
+    categories_blog = Category_Blog.objects.all()
+
+    context = {
+        'categories_blog':categories_blog
+    }
+    return render(request, 'category_blog/categories_blog.html', context)
+
+
+def category_blog_create(request):
+    if request.method == 'POST':
+        form = CreateCategoryBlog(request.POST)
+        if form.is_valid():
+            category_blog = Category_Blog()
+            category_blog.title = form.cleaned_data.get('title')
+            category_blog.save()
+            return redirect('categories_blog')
+    form = CreateCategoryBlog()
+    context = {
+        'form': form,
+    }
+    return render(request, 'category_blog/category_blog_create.html', context)
+
+
+def category_blog_edit(request, id):
+    category_blog = Category_Blog.objects.get(pk=id)
+    if request.method == 'POST':
+        form = EditCategoryBlog(request.POST, instance=category_blog)
+        if form.is_valid():
+            form.save()
+            return redirect('categories_blog')
+    else:
+        form = EditCategoryBlog(instance=category_blog)
+        context = {'form': form,}
+
+        return render(request, 'category_blog/category_blog_edit.html', context)
+
+
+def category_blog_delate(request, id):
+    category_blog = Category_Blog.objects.get(pk=id)
+    category_blog.delete()
+    return redirect('categories_blog')
+
+
+
+#
+# ────────────────────────────────────────────────  ──────────
+#   :::::: B L O G : :  :   :    :     :        :          :
+# ──────────────────────────────────────────────────────────
+#
+
+
+def blogs(request):
+    blogs = Blog.objects.all().order_by('id')
+
+    context = {
+        'blogs': blogs,
+
+    }
+
+    return render(request, 'blog/blogs.html', context)
+
+
+def blog_create(request):
+    if request.method == 'POST':
+        form = CreateBlog(request.POST, request.FILES)
+        if form.is_valid():
+            blog = Blog()
+            blog.title = form.cleaned_data.get('title')
+            blog.description = form.cleaned_data.get('description')
+            blog.text = form.cleaned_data.get('text')
+            blog.category = form.cleaned_data.get('category')
+            if request.FILES:
+                blog.image = request.FILES['image']
+            blog.status = form.cleaned_data.get('status')
+            blog.save()
+            return redirect('blogs')
+    form = CreateBlog()
+    context = {
+        'form': form,
+    }
+    return render(request, 'blog/blog_create.html', context)
+
+
+def blog_edit(request, id):
+    blog = Blog.objects.get(pk=id)
+    if request.method == 'POST':
+        form = EditBlog(request.POST, request.FILES, instance=blog)
+        if request.FILES:
+            blog.image = request.FILES['image']
+        if form.is_valid():
+            form.save()
+            return redirect('blogs')
+    else:
+        form = EditBlog(instance=blog)
+        context = {'form': form }
+
+        return render(request, 'blog/blog_edit.html', context)
+
+
+def blog_delate(request, id):
+    blog = Blog.objects.get(pk=id)
+    blog.delete()
+    return redirect('blogs')
+
+
+
+#
+# ────────────────────────────────────────────────────────  ──────────
+#   :::::: S E R V I C E S : :  :   :    :     :        :          :
+# ──────────────────────────────────────────────────────────────────
+#
+
+
+def services(request):
+    services = Service.objects.all().order_by('id')
+
+    context = {
+        'services': services,
+
+    }
+
+    return render(request, 'service/services.html', context)
+
+
+def service_create(request):
+    services = Service()
+    RoomInlineFormSet = inlineformset_factory(Service, Image_service, form=CreateService, fields=('image',), extra=5, can_delete=False, min_num=1, validate_min=True)
+
+    if request.method == 'POST':
+        form = CreateService(request.POST, request.FILES, instance=services, prefix='service')
+        formset = RoomInlineFormSet(request.POST, request.FILES, instance=services, prefix='images')
+        if all([form.is_valid(), formset.is_valid()],):
+            form = form.save(commit=False)
+            form.save()
+            formset.save()
+            return redirect('services_admin')
+
+    else:
+        form = CreateService(instance=services, prefix='service')
+        formset = RoomInlineFormSet(instance=services, prefix='images')
+        
+    context = {
+        'form': form,
+        'formset':formset,
+    }
+    return render(request, 'service/service_create.html', context)
+
+
+def service_edit(request, id):
+    service = Service.objects.get(pk=id)
+    RoomInlineFormSet = inlineformset_factory(Service, Image_service, form=EditService, fields=('image',), extra=5, can_delete=False, min_num=1, validate_min=True)
+
+    if request.method == 'POST':
+        form = EditService(request.POST, request.FILES, instance=service, prefix='service')
+        formset = RoomInlineFormSet(request.POST, request.FILES, instance=service, prefix='images')
+        if all([form.is_valid(), formset.is_valid()],):
+            form = form.save(commit=False)
+            form.save()
+            formset.save()
+            return redirect('services_admin')
+
+    else:
+        form = EditService(instance=service, prefix='service')
+        formset = RoomInlineFormSet(instance=service, prefix='images')
+        
+    context = {
+        'form': form,
+        'formset':formset,
+    }
+    return render(request, 'service/service_edit.html', context)
+
+
+def service_delate(request, id):
+    service = Service.objects.get(pk=id)
+    service.delete()
+    return redirect('services_admin')
+
+
+#
+# ────────────────────────────────────────────────────────  ──────────
+#   :::::: A B O U T   U S : :  :   :    :     :        :          :
+# ──────────────────────────────────────────────────────────────────
+#
 

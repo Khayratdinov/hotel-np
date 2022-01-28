@@ -18,6 +18,6 @@ urlpatterns = [
     path('event_detail/<int:id>/', views.event_detail, name='event_detail'),
 
     path('services/', views.services, name='services'),
-    path('service-detail/<int:id>/', views.service_detail, name='service_detail'),
+    path('service_detail/<int:id>/', views.service_detail, name='service_detail'),
 
 ]

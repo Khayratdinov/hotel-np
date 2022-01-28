@@ -1,0 +1,95 @@
+{% extends 'admin.html' %}
+{% load static %}
+
+
+{% block content %}
+
+
+
+
+            
+                       
+<div class="row">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-body">
+                <div class="row justify-content-between">
+                    <div class="col-md-4">
+                        <div class="mt-3 mt-md-0">
+                            <a href="{% url 'category_create' %}"  class="btn btn-success waves-effect waves-light"><i class="mdi mdi-plus-circle me-1"></i> Create Category</a>
+                        </div>
+                    </div><!-- end col-->
+                    
+                </div> <!-- end row -->
+            </div>
+        </div> <!-- end card -->
+    </div><!-- end col-->
+    </div>
+                       
+            
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="card">
+                                    <div class="card-body">
+            
+                                        <h5 class="mt-0">Inline edit with Button</h5>
+                                        <p class="sub-header">Inline edit like a spreadsheet, toolbar column with edit button only and without focus on first input.</p>
+                                        <div class="table-responsive">
+                                            <table class="table table-centered mb-0" id="btn-editable">
+                                                <thead>
+                                                    <tr>
+                                                        <th>#</th>
+                                                        <th>Image</th>
+                                                        <th>Title</th>
+                                                        <th>Description</th>
+                                                        <th>Status</th>
+                                                    <th class="tabledit-toolbar-column"></th></tr>
+                                                </thead>
+            
+                                                
+                                            
+                                                <tbody>
+                                                    {% for category in categories %}
+                                                    <tr id="{{ room.pk }}">
+                                                        <td><span class="tabledit-span tabledit-identifier">{{ category.pk }}</span><input class="tabledit-input tabledit-identifier" type="hidden" name="id" value="1" disabled=""></td>
+                                                        <td class="tabledit-view-mode"><span class="tabledit-span"><div class="inbox-item-img"><img src="{{ category.image.url }}" class="rounded inbox-item-img" alt=""></div></span><input class="tabledit-input form-control form-control-sm" type="text" name="col1" value="Tiger Nixon" style="display: none;" disabled=""></td>
+                                                        <td class="tabledit-view-mode"><span class="tabledit-span">{{ category.title }}</span><input class="tabledit-input form-control form-control-sm" type="text" name="col2" value="System Architect" style="display: none;" disabled=""></td>
+                                                        <td class="tabledit-view-mode"><span class="tabledit-span">{{ category.description }}</span><input class="tabledit-input form-control form-control-sm" type="text" name="col4" value="61" style="display: none;" disabled=""></td>
+                                                        <td>
+                                                            
+                                                            {% if category.status == 'True' %}
+                                                                <i class="fe-check-circle"></i>
+                                                            {% else %}
+                                                                <i class="fe-slash"></i>
+                                                            {% endif %}
+                                                                
+
+                                                        </td>
+                                                    <td style="white-space: nowrap; width: 1%;"><div class="tabledit-toolbar btn-toolbar" style="text-align: left;">
+                                                        <div class="btn-group btn-group-sm" style="float: none;"><a href="#" class="btn btn-info" style="float: none;"><span class="fe-eye"></span></a></div></div>
+                                                    </td>
+                                    
+                                                    <td style="white-space: nowrap; width: 1%;"><div class="tabledit-toolbar btn-toolbar" style="text-align: left;">
+                                                        <div class="btn-group btn-group-sm" style="float: none;"><a href="{% url 'category_edit' category.pk %}" class="btn btn-warning" style="float: none;"><span class="fe-edit-2"></span></a></div></div>
+                                                    </td>
+
+                                                    <td style="white-space: nowrap; width: 1%;"><div class="tabledit-toolbar btn-toolbar" style="text-align: left;">
+                                                        <div class="btn-group btn-group-sm" style="float: none;"><a href="{% url 'category_delate' category.pk %}" class="btn btn-danger" style="float: none;"><span class="fe-trash-2"></span></a></div></div>
+                                                    </td>
+                                                    
+                                                   
+                                                    </tr>
+                                                    {% endfor %}
+                                                </tbody>
+                                            </table>
+                                        </div> <!-- end .table-responsive-->
+                                    </div> <!-- end card-body -->
+                                </div> <!-- end card -->
+                            </div> <!-- end col -->
+                        </div>
+
+    
+
+    
+{% endblock content %}
+    

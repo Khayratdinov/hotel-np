@@ -12,7 +12,7 @@ class SearchForm(forms.Form):
 class OrderForm(forms.ModelForm):
     class Meta:
         model = Order
-        fields = ( 'name', 'phone', 'citizenship', 'category', 'select', 'pay', 'email','guest', 'arrival', 'departure','room',)
+        fields = ( 'name', 'phone', 'citizenship', 'category',  'pay', 'email','guest', 'arrival', 'departure','room',)
 
 class HomeOrderForm(forms.ModelForm):
     class Meta:

@@ -22,14 +22,6 @@ class RoomsAdmin(admin.ModelAdmin):
 
 
 
-class CommentAdmin(admin.ModelAdmin):
-    list_display = ['name','phone','comment','status',]
-    list_filter = ['status',]
-    readonly_fields = ('name','phone','comment','ip','room','rate',)
-
-class OrderAdmin(admin.ModelAdmin):
-    list_display = ['name','surname','phone','citizenship','pay','email','guest','arrival','departure','room','category','ip',]
-    list_filter = ['status',]
 
 
 
@@ -37,6 +29,6 @@ class OrderAdmin(admin.ModelAdmin):
 
 admin.site.register(Category,CategoryAdmin)
 admin.site.register(Room,RoomsAdmin)
-admin.site.register(Comment,CommentAdmin)
+admin.site.register(Comment)
 admin.site.register(Room_Image,)
-admin.site.register(Order,OrderAdmin)
+admin.site.register(Order)

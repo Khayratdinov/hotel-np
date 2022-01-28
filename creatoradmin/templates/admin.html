@@ -360,25 +360,59 @@
                 </li>
 
                 <li>
+                    <a href="{% url 'categories' %}">
+                        <i class="mdi mdi-page-next"></i>
+                         <span> Room Category </span>
+                    </a>    
+                </li>
+
+                <li>
                     <a href="{% url 'sliders' %}">
                         <i class="mdi mdi-page-next"></i>
                          <span> Home Slider </span>
                     </a>    
                 </li>
 
+
                 <li>
-                    <a href="#contacts" data-bs-toggle="collapse">
+                    <a href="{% url 'services_admin' %}">
+                        <i class="mdi mdi-page-next"></i>
+                         <span> Service </span>
+                    </a>    
+                </li>
+
+                <li>
+                    <a href="#blog" data-bs-toggle="collapse">
                         <i class="mdi mdi-account"></i>
-                        <span> Contacts </span>
+                        <span> Blog </span>
                         <span class="menu-arrow"></span>
                     </a>
-                    <div class="collapse" id="contacts">
+                    <div class="collapse" id="blog">
                         <ul class="nav-second-level">
                             <li>
-                                <a href="contacts-list.html">Members List</a>
+                                <a href="{% url 'blogs_admin' %}">Blogs</a>
                             </li>
                             <li>
-                                <a href="contacts-profile.html">Profile</a>
+                                <a href="{% url 'categories_blog' %}">Category Blog</a>
+                            </li>
+                        </ul>
+                    </div>
+                </li>
+
+
+                <li>
+                    <a href="#aboutus" data-bs-toggle="collapse">
+                        <i class="mdi mdi-account"></i>
+                        <span> About Us </span>
+                        <span class="menu-arrow"></span>
+                    </a>
+                    <div class="collapse" id="aboutus">
+                        <ul class="nav-second-level">
+                            <li>
+                                <a href="#">About Us Create</a>
+                            </li>
+                            <li>
+                                <a href="#">About Us Edit</a>
                             </li>
                         </ul>
                     </div>

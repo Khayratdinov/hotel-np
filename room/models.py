@@ -8,6 +8,7 @@ from django.urls import reverse
 from django.db.models import Avg, Count
 from django.utils.safestring import mark_safe
 from autoslug import AutoSlugField
+from creatoradmin.models import CustomUser
 
 # Create your models here.
 
@@ -58,14 +59,19 @@ class Room(models.Model):
 
 
 class RoomServices(models.Model):
+    STATUS = (
+        ('True', 'Mavjud'),
+        ('False','Mavjud emas'),
+    )
     room = models.ForeignKey(Room, on_delete=models.CASCADE)
     title = models.CharField(max_length=30, blank=True)
     description = models.CharField(max_length = 255, blank=True)
     icon = models.CharField(max_length=300, blank=True)
+    status = models.CharField(max_length=50, choices=STATUS)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 
-    def str(self):
+    def __str__(self):
         return str(self.title)
 
 class Room_Image(models.Model):
@@ -93,7 +99,6 @@ class Order(models.Model):
     room = models.CharField(max_length=100)
     category = models.CharField(max_length=100, blank=True)
     status = models.CharField(max_length=50, choices=STATUS)
-    select = models.CharField(max_length=100)
     comment = models.TextField(blank=True, max_length=300)
     ip = models.CharField(max_length=100, blank=True)
     created_at = models.DateTimeField(auto_now_add=True)
@@ -110,8 +115,7 @@ class Comment(models.Model):
         ('False', 'Mavjud emas'),
     )    
     room = models.ForeignKey(Room, on_delete=models.CASCADE)
-    name = models.CharField(max_length=50)
-    phone = models.CharField(max_length=50)
+    user = models.OneToOneField(CustomUser,on_delete=models.CASCADE)
     comment = models.TextField(max_length=300, blank=True)
     rate = models.IntegerField(default=1)
     ip = models.CharField(max_length=100, blank=True)
@@ -125,7 +129,7 @@ class Comment(models.Model):
 class CommentForm(ModelForm):
     class Meta:
         model = Comment
-        fields = ['name', 'phone', 'comment', 'rate']
+        fields = [ 'rate' ,'comment',]
 
     def avaregereview(self):
         reviews = Comment.objects.filter(room=self,status='True').aggregate(avarage=Avg('rate'))

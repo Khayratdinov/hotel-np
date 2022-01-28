@@ -89,8 +89,8 @@ def services(request):
 
 def service_detail(request, id):
     staff = Our_Staff.objects.all()
-    service = Service.objects.get(pk=id)
-    image_service = Image_service.objects.filter(pk=id)
+    service = Service.objects.get(id=id)
+    image_service = Image_service.objects.filter(service_id=id)
     context = {
         'service':service,
         'staff': staff,

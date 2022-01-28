@@ -43,60 +43,30 @@
             <div class="row image-gallery">
 
               
-              {% for image in image_service %}
+              
+              {% for images in image_service %}
                 
               
                 
-              <!-- ITEM -->
-              <div class="col-md-3">
-                <figure class="gradient-overlay-hover image-icon">
-                  <a href="{{ image.image.url }}">
-                    <img src="{{ image.image.url }}" class="img-fluid" alt="Image">
-                  </a>
-                </figure>
-              </div>
+                
+                  <div class="col-md-3">
+                    <figure class="gradient-overlay-hover image-icon">
+                      <a href="{{ images.image.url }}">
+                        <img src="{{ images.image.url }}" class="img-fluid" alt="Image">
+                      </a>
+                    </figure>
+                  </div>
 
-              {% endfor %}
+
+                {% endfor %}
+
+             
+
+
 
             </div>
 
-            <section class="staff">
-              <div class="container">
-                <div class="section-title">
-                  <h4>{{ service.title }} THE STAFF</h4>
-                </div>
-                <div class="staff-owl owl-carousel">
-      
-                  
-                  
-                  
-                    
-                  
-                    
-                    {% for item in staff %}
-                      
-                      {% if item.category.cat_filter == "{{ service.title }}" %}
-                      
-                        <!-- ITEM -->
-                        <div class="staff-item">
-                          <figure>
-                            <img src="{{ item.image.url }}" class="img-fluid" alt="Image">
-                            <div class="position">{{ item.profession }}</div>
-                          </figure>
-                          <div class="details">
-                            <h5>{{ item.name }} {{ item.surename }}</h5>
-                            <p>{{ item.description }}</p>
-                          </div>
-                        </div>
-                      {% endif %}
-        
-                    {% endfor %}
-
-                  
-      
-                </div>
-              </div>
-            </section>
+          
            
             
           </div>

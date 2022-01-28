@@ -3,7 +3,7 @@ from django.contrib.auth.forms import UserCreationForm, UserChangeForm
 from django.forms import ModelForm, TextInput, EmailInput, PasswordInput, FileInput
 
 
-from blog.models import Blog, Category, Tag
+from blog.models import Blog, Category_Blog, Tag_Blog
 from home.models import FAQ, Informations, License, ContactMessage, AboutUs, Slider
 from service.models import (
                             Service, Image_service, Special_offer, Image_offer,
@@ -13,12 +13,14 @@ from service.models import (
                             )
 
 from .models import CustomUser
-from room.models import Room, RoomServices, Room_Image
+from room.models import Room, RoomServices, Room_Image, Category
 
 
 
-#=================================== USER BO'LIMI =============================================
 
+#
+# ───────────────────────────────────────────────────────────────────── USER ─────
+#
 
 class RegisterForm(UserCreationForm):
     class Meta(UserCreationForm):
@@ -68,8 +70,9 @@ class UserUpdateForm(UserChangeForm):
         model = CustomUser
         fields = ('username', 'email', 'full_name', 'phone',)
 
-
-
+#
+# ───────────────────────────────────────────────────────────────────── ROOM ─────
+#
 
 class AddRoomForm(forms.ModelForm):
     class Meta:
@@ -119,14 +122,14 @@ class AddRoomForm(forms.ModelForm):
         }
 
 
-
-
-
-
 class EditRoomForm(forms.ModelForm):
     class Meta:
         model = Room
         fields = ( 'title',  'price',   'description',  'category', 'image', 'status')
+
+#
+# ───────────────────────────────────────────────────────────── ROOM SERVICE ─────
+#
 
 class AddRoomServiceForm(forms.ModelForm):
     class Meta:
@@ -154,6 +157,7 @@ class AddRoomServiceForm(forms.ModelForm):
             }),
         }
 
+
 class EditRoomServiceForm(forms.ModelForm):
     class Meta:
         model = RoomServices
@@ -178,6 +182,10 @@ class EditRoomServiceForm(forms.ModelForm):
                 'placeholder' : 'fab fa-apple'
             }),
         }
+
+#
+# ────────────────────────────────────────────────────────────── ROOM SLIDER ─────
+#
 
 class AddRoomSliderForm(forms.ModelForm):
     class Meta:
@@ -214,9 +222,9 @@ class EditRoomSliderForm(forms.ModelForm):
             }),
         }
 
-
-
-#=================================== SLIDER BO'LIMI =============================================
+#
+# ────────────────────────────────────────────────────────────── HOME SLIDER ─────
+#
 
 class CreateSlider(forms.ModelForm):
     class Meta:
@@ -271,7 +279,339 @@ class EditSlider(forms.ModelForm):
         }
 
 
+#
+# ──────────────────────────────────────────────────────────── ROOM CATEGORY ─────
+#
+
+class CreateCategoryRoom(forms.ModelForm):
+    class Meta:
+        model = Category
+        fields = ['title','description','image', 'status']
+
+        widgets = {
+            "title" : TextInput(attrs={
+                'class' : 'form-control mb-2',
+                'id' : 'title',
+                'placeholder' : 'title'
+            }),
+
+            "description" : TextInput(attrs={
+                'class' : 'form-control mb-2',
+                'id' : 'description',
+                'placeholder' : 'description'
+            }),
+
+            "image" : FileInput(attrs={
+                'class' : 'form-control mb-2',
+                'id' : 'image',
+                'placeholder' : 'image'
+            }),
+
+            'status': forms.Select(attrs={
+                'class': "form-control mb-2"}
+            ),
+        }
 
 
+class EditCategoryRoom(forms.ModelForm):
+    class Meta:
+        model = Category
+        fields = ['title','description','image', 'status']
+
+        widgets = {
+            "title" : TextInput(attrs={
+                'class' : 'form-control mb-2',
+                'id' : 'title',
+                'placeholder' : 'title'
+            }),
+
+            "description" : TextInput(attrs={
+                'class' : 'form-control mb-2',
+                'id' : 'description',
+                'placeholder' : 'description'
+            }),
+
+            "image" : FileInput(attrs={
+                'class' : 'form-control mb-2',
+                'id' : 'image',
+                'placeholder' : 'image'
+            }),
+
+            'status': forms.Select(attrs={
+                'class': "form-control mb-2"}
+            ),
+        }
 
 
+#
+# ───────────────────────────────────────────────────────────────────── BLOG ─────
+#
+
+class CreateBlog(forms.ModelForm):
+    class Meta:
+        model = Blog
+        fields = ['title','description','text', 'category','image', 'status',]
+
+        widgets = {
+            "title" : TextInput(attrs={
+                'class' : 'form-control mb-2',
+                'id' : 'title',
+                'placeholder' : 'title'
+            }),
+
+            "description" : TextInput(attrs={
+                'class' : 'form-control mb-2',
+                'id' : 'description',
+                'placeholder' : 'description'
+            }),
+
+            "text" : TextInput(attrs={
+                'class' : 'form-control mb-2',
+                'id' : 'text',
+                'placeholder' : 'text'
+            }),
+
+
+            'category': forms.Select(attrs={
+                'class': "form-control mb-2"}
+            ),
+
+            "image" : FileInput(attrs={
+                'class' : 'form-control mb-2',
+                'id' : 'image',
+                'placeholder' : 'image'
+            }),
+
+            'status': forms.Select(attrs={
+                'class': "form-control mb-2"}
+            ),
+        }
+
+
+class EditBlog(forms.ModelForm):
+    class Meta:
+        model = Blog
+        fields = ['title','description','text', 'category','image', 'status',]
+
+        widgets = {
+            "title" : TextInput(attrs={
+                'class' : 'form-control mb-2',
+                'id' : 'title',
+                'placeholder' : 'title'
+            }),
+
+            "description" : TextInput(attrs={
+                'class' : 'form-control mb-2',
+                'id' : 'description',
+                'placeholder' : 'description'
+            }),
+
+            "text" : TextInput(attrs={
+                'class' : 'form-control mb-2',
+                'id' : 'text',
+                'placeholder' : 'text'
+            }),
+
+
+            'category': forms.Select(attrs={
+                'class': "form-control mb-2"}
+            ),
+
+            "image" : FileInput(attrs={
+                'class' : 'form-control mb-2',
+                'id' : 'image',
+                'placeholder' : 'image'
+            }),
+
+            'status': forms.Select(attrs={
+                'class': "form-control mb-2"}
+            ),
+        }
+
+
+#
+# ──────────────────────────────────────────────────────────── CATEGORY BLOG ─────
+#
+
+class CreateCategoryBlog(forms.ModelForm):
+    class Meta:
+        model = Category_Blog
+        fields = ('title',)
+
+        widgets = {
+            "title" : TextInput(attrs={
+                'class' : 'form-control mb-2',
+                'id' : 'title',
+                'placeholder' : 'title'
+            }),
+        }
+
+
+class EditCategoryBlog(forms.ModelForm):
+    class Meta:
+        model = Category_Blog
+        fields = ('title',)
+
+        widgets = {
+            "title" : TextInput(attrs={
+                'class' : 'form-control mb-2',
+                'id' : 'title',
+                'placeholder' : 'title'
+            }),
+        }
+
+
+#
+# ───────────────────────────────────────────────────────────────── SERVICES ─────
+#
+
+class CreateService(forms.ModelForm):
+    class Meta:
+        model = Service
+        fields = ['title','description',  'text', 'image', 'icon']
+
+        widgets = {
+            "title" : TextInput(attrs={
+                'class' : 'form-control mb-2',
+                'id' : 'title',
+                'placeholder' : 'title'
+            }),
+
+            "description" : TextInput(attrs={
+                'class' : 'form-control mb-2',
+                'id' : 'description',
+                'placeholder' : 'description'
+            }),
+
+            "text" : TextInput(attrs={
+                'class' : 'form-control mb-2',
+                'id' : 'text',
+                'placeholder' : 'text'
+            }),
+
+            "image" : FileInput(attrs={
+                'class' : 'form-control mb-2',
+                'id' : 'image',
+                'placeholder' : 'image'
+            }),
+
+            "icon" : TextInput(attrs={
+                'class' : 'form-control mb-2',
+                'id' : 'icon',
+                'placeholder' : 'icon'
+            }),
+        }
+
+
+class EditService(forms.ModelForm):
+    class Meta:
+        model = Service
+        fields = ['title','description',  'text', 'image', 'icon']
+
+        widgets = {
+            "title" : TextInput(attrs={
+                'class' : 'form-control mb-2',
+                'id' : 'title',
+                'placeholder' : 'title'
+            }),
+
+            "description" : TextInput(attrs={
+                'class' : 'form-control mb-2',
+                'id' : 'description',
+                'placeholder' : 'description'
+            }),
+
+            "text" : TextInput(attrs={
+                'class' : 'form-control mb-2',
+                'id' : 'text',
+                'placeholder' : 'text'
+            }),
+
+            "image" : FileInput(attrs={
+                'class' : 'form-control mb-2',
+                'id' : 'image',
+                'placeholder' : 'image'
+            }),
+
+            "icon" : TextInput(attrs={
+                'class' : 'form-control mb-2',
+                'id' : 'icon',
+                'placeholder' : 'icon'
+            }),
+        }
+
+
+#
+# ───────────────────────────────────────────────────────────────── ABOUT US ─────
+#
+
+class CreateAboutUs(forms.ModelForm):
+    class Meta:
+        model = Service
+        fields = ['title','description',  'text', 'image',]
+
+        widgets = {
+            "title" : TextInput(attrs={
+                'class' : 'form-control mb-2',
+                'id' : 'title',
+                'placeholder' : 'title'
+            }),
+
+            "description" : TextInput(attrs={
+                'class' : 'form-control mb-2',
+                'id' : 'description',
+                'placeholder' : 'description'
+            }),
+
+            "text" : TextInput(attrs={
+                'class' : 'form-control mb-2',
+                'id' : 'text',
+                'placeholder' : 'text'
+            }),
+
+            "image" : FileInput(attrs={
+                'class' : 'form-control mb-2',
+                'id' : 'image',
+                'placeholder' : 'image'
+            }),
+
+            "icon" : TextInput(attrs={
+                'class' : 'form-control mb-2',
+                'id' : 'icon',
+                'placeholder' : 'icon'
+            }),
+        }
+
+
+class EditAboutUs(forms.ModelForm):
+    class Meta:
+        model = Service
+        fields = ['title','description',  'text', 'image',]
+
+        widgets = {
+            "title" : TextInput(attrs={
+                'class' : 'form-control mb-2',
+                'id' : 'title',
+                'placeholder' : 'title'
+            }),
+
+            "description" : TextInput(attrs={
+                'class' : 'form-control mb-2',
+                'id' : 'description',
+                'placeholder' : 'description'
+            }),
+
+            "text" : TextInput(attrs={
+                'class' : 'form-control mb-2',
+                'id' : 'text',
+                'placeholder' : 'text'
+            }),
+
+            "image" : FileInput(attrs={
+                'class' : 'form-control mb-2',
+                'id' : 'image',
+                'placeholder' : 'image'
+            }),
+
+        
+        }
