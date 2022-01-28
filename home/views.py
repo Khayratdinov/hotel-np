@@ -4,9 +4,9 @@ from django.contrib import messages
 from django.utils import translation
 from django.http import HttpResponseRedirect
 
-from home.forms import OrderForm, ContactForm
+from home.forms import HomeOrderForm, ContactForm
 
-from room.models import Room
+from room.models import Room, RoomServices, Order
 from blog.models import Blog
 from home.models import Informations, License, LicImages, ContactMessage, FAQ, AboutUs, Slider
 from service.models import (Service, Special_offer, Offer_order, Gallery,
@@ -22,11 +22,28 @@ def home(request):
     slider = Slider.objects.all().order_by('id')
     aboutus = AboutUs.objects.all()
     room_picked = Room.objects.all().order_by('?')[:3]
+    room_services = RoomServices.objects.all()
     services = Service.objects.all()
     gallery = Gallery.objects.all().order_by('?')[:10]
     restaurant_menu = Restaurant_menu.objects.all().order_by('?')[:2]
     special_offer = Special_offer.objects.all().order_by('?')[:3]
     blogs = Blog.objects.all().order_by('?')[:3]
+    room_forms = Room.objects.values_list('title', flat=True).distinct()
+    if request.method == 'POST':
+        form = HomeOrderForm(request.POST)
+        if form.is_valid():
+            data = Order()
+            data.name = form.cleaned_data['name']
+            data.phone = form.cleaned_data['phone']
+            data.guest = form.cleaned_data['guest']
+            data.arrival = form.cleaned_data['arrival']
+            data.departure = form.cleaned_data['departure']
+            data.room = form.cleaned_data['room']
+            data.ip = request.META.get('REMOTE_ADDR')
+            data.save()
+            messages.success(request, "Siz xonani bro'n qildiz aperato'r siz bilan bog'lanadi")
+            return redirect('home')
+    form = HomeOrderForm
     context = {
         'info': info,
         'slider':slider,
@@ -38,6 +55,10 @@ def home(request):
         'special_offer' : special_offer,
         'blogs' : blogs,
         'our_staff': our_staff,
+        'room_services':room_services,
+        'form':form,
+        'room_forms':room_forms
+
 
         
     }

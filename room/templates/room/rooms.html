@@ -48,13 +48,20 @@
                     <i class="fa fa-star" aria-hidden="true"></i>
                     <a href="room.html#room-reviews">5.00 Based on 3 Ratings</a>
                   </span>
-                  <p>{{ room.description }}</p>
+                  <p>{{ room.description }}
+
+                    
+                  </p>
                   <div class="room-services">
-                    <i class="fa fa-coffee" data-toggle="popover" data-placement="top" data-trigger="hover" data-content="Breakfast Included" data-original-title="Breakfast"></i>
-                    <i class="fa fa-wifi" data-toggle="popover" data-placement="top" data-trigger="hover" data-content="Free WiFi" data-original-title="WiFi"></i>
-                    <i class="fa fa-television" data-toggle="popover" data-placement="top" data-trigger="hover" data-content="Plasma TV with cable channels" data-original-title="TV"></i>
-                    <span>Beds: 1 King</span>
-                    <span>Max Guests: 2</span>
+
+                    {% for service in room_services %}
+
+                          {% if service.room_id == room.pk %}  
+                           <i class="{{ service.icon }}" aria-hidden="true" data-toggle="popover" data-placement="right" data-trigger="hover" data-content="{{ service.description }}" data-original-title="{{ service.title }}"></i>
+                          {% endif %}
+                            
+                       
+                    {% endfor %}
                   </div>
                 </div>
               </div>

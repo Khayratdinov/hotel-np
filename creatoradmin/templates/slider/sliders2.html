@@ -1,0 +1,70 @@
+{% extends 'admin.html' %}
+{% load static %}
+
+
+{% block content %}
+
+
+
+
+<h2><a href="{% url 'slider_create' %}" class="btn btn-success">Create Slider</a></h2>
+            
+                       
+            
+                       
+            
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="card">
+                                    <div class="card-body">
+            
+                                        <h5 class="mt-0">Inline edit with Button</h5>
+                                        <p class="sub-header">Inline edit like a spreadsheet, toolbar column with edit button only and without focus on first input.</p>
+                                        <div class="table-responsive">
+                                            <table class="table table-centered mb-0" id="btn-editable">
+                                                <thead>
+                                                    <tr>
+                                                        <th>#</th>
+                                                        <th>Image</th>
+                                                        <th>Title</th>
+                                                        <th>description</th>
+                                                    <th class="tabledit-toolbar-column"></th></tr>
+                                                </thead>
+            
+                                                
+                                            
+                                                <tbody>
+                                                    {% for slider in sliders %}
+                                                    <tr id="{{ room.pk }}">
+                                                        <td><span class="tabledit-span tabledit-identifier">{{ slider.pk }}</span><input class="tabledit-input tabledit-identifier" type="hidden" name="id" value="1" disabled=""></td>
+                                                        <td class="tabledit-view-mode"><span class="tabledit-span"><div class="inbox-item-img"><img src="{{ slider.image.url }}" class="rounded inbox-item-img" alt=""></div></span><input class="tabledit-input form-control form-control-sm" type="text" name="col1" value="Tiger Nixon" style="display: none;" disabled=""></td>
+                                                        <td class="tabledit-view-mode"><span class="tabledit-span">{{ slider.title }}</span><input class="tabledit-input form-control form-control-sm" type="text" name="col2" value="System Architect" style="display: none;" disabled=""></td>
+                                                        <td class="tabledit-view-mode"><span class="tabledit-span">{{ slider.description }}</span><input class="tabledit-input form-control form-control-sm" type="text" name="col3" value="Edinburgh" style="display: none;" disabled=""></td>
+                                                    <td style="white-space: nowrap; width: 1%;"><div class="tabledit-toolbar btn-toolbar" style="text-align: left;">
+                                                        <div class="btn-group btn-group-sm" style="float: none;"><a href="{% url 'home' %}" class="btn btn-info" style="float: none;"><span class="fe-eye"></span></a></div></div>
+                                                    </td>
+                                    
+                                                    <td style="white-space: nowrap; width: 1%;"><div class="tabledit-toolbar btn-toolbar" style="text-align: left;">
+                                                        <div class="btn-group btn-group-sm" style="float: none;"><a href="{% url 'slider_edit' slider.pk %}" class="btn btn-warning" style="float: none;"><span class="fe-edit-2"></span></a></div></div>
+                                                    </td>
+
+                                                    <td style="white-space: nowrap; width: 1%;"><div class="tabledit-toolbar btn-toolbar" style="text-align: left;">
+                                                        <div class="btn-group btn-group-sm" style="float: none;"><a href="{% url 'slider_delate' slider.pk %}" class="btn btn-danger" style="float: none;"><span class="fe-trash-2"></span></a></div></div>
+                                                    </td>
+                                                    
+                                                   
+                                                    </tr>
+                                                    {% endfor %}
+                                                </tbody>
+                                            </table>
+                                        </div> <!-- end .table-responsive-->
+                                    </div> <!-- end card-body -->
+                                </div> <!-- end card -->
+                            </div> <!-- end col -->
+                        </div>
+
+    
+
+    
+{% endblock content %}
+    

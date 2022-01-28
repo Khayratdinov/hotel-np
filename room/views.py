@@ -1,7 +1,7 @@
 from django.contrib import messages
 from django.shortcuts import render, redirect
 from django.http import HttpResponseRedirect
-from room.models import CommentForm, Comment, Room, RoomServices, Image, Order
+from room.models import CommentForm, Comment, Room, RoomServices, Room_Image, Order
 from blog.models import Blog
 from home.forms import OrderForm, ContactForm
 
@@ -27,16 +27,18 @@ def addcomment(request,id):
 
 def rooms(request):
     rooms = Room.objects.all()
+    room_services = RoomServices.objects.all()
 
     context = {
-        'rooms': rooms
+        'rooms': rooms,
+        'room_services': room_services
     }
 
     return render(request, 'room/rooms.html', context)
 
 def room_detail(request, id):
     room_page = Room.objects.get(pk=id)
-    images = Image.objects.filter(room_id=id)
+    images = Room_Image.objects.filter(room_id=id)
     room_services = RoomServices.objects.filter(room_id=id)
     blogs = Blog.objects.all().order_by('?')[:4]
     room_picked = Room.objects.all().order_by('?')[:3]

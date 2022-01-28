@@ -1,6 +1,7 @@
 from django.db import models
 from ckeditor_uploader.fields import RichTextUploadingField
 from django.utils.safestring import mark_safe
+from autoslug import AutoSlugField
 
 
 class Informations(models.Model):
@@ -23,6 +24,7 @@ class Informations(models.Model):
     youtube = models.CharField(max_length=255, blank=True)
     twitter = models.CharField(max_length=255, blank=True)
     linkedin = models.CharField(max_length=255, blank=True)
+    video = models.CharField(max_length=255, blank=True)
     description = models.TextField(blank=True)
     status = models.CharField(max_length=15, choices=STATUS, default='True')
     create_at = models.DateTimeField(auto_now_add=True)
@@ -36,6 +38,7 @@ class License(models.Model):
     description = models.CharField(max_length=150)
     detail = RichTextUploadingField()
     image = models.ImageField(upload_to='images/')
+    slug = AutoSlugField(populate_from='title', unique=True, null=True, default=None)
     create_at = models.DateTimeField(auto_now_add=True)
     update_at = models.DateTimeField(auto_now=True)
 
@@ -97,16 +100,24 @@ class AboutUs(models.Model):
     title = models.CharField(max_length = 150)
     image = models.ImageField(upload_to='images/')
     description = RichTextUploadingField()
-    recommended_logo = models.ImageField(upload_to='images/')
+    text = RichTextUploadingField()
+    recommended_logo = models.ImageField(upload_to='images/', blank=True)
+    name = models.CharField(max_length=50)
+    number = models.IntegerField()
+    icon = models.CharField(max_length=100, blank=True)
 
-    # For About Hotel
-    logo = models.ImageField(upload_to='images/')
-    hotel_star = models.CharField(max_length=500)
-    hotel_name = models.CharField(max_length=30)
-    short_description = models.CharField(max_length=250)
 
     def __str__(self):
         return self.title
+
+
+class Image_aboutus(models.Model):
+    aboutus = models.ForeignKey(AboutUs, on_delete=models.CASCADE, related_name='Images_aboutus')
+    image = models.ImageField(upload_to='images/aboutus/', blank=True)
+
+    def __str__(self):
+        return str(self.aboutus)
+
 
 class Slider(models.Model):
     title = models.CharField(max_length=150)
@@ -115,3 +126,17 @@ class Slider(models.Model):
 
     def __str__(self):
         return self.title
+
+
+
+class Testimonial(models.Model):
+    name = models.CharField(max_length=150)
+    location = models.CharField(max_length=150)
+    photo = models.ImageField(upload_to='images/')
+    rating = models.CharField(max_length=550)
+    slug = AutoSlugField(populate_from='name', unique=True, null=True, default=None)
+    description = models.CharField(max_length=300, blank=True)
+
+
+    def __str__(self):
+        return self.name

@@ -22,7 +22,7 @@ class Special_offerAdmin(admin.ModelAdmin):
     inlines = [ImageOfferInline]
 
 class Offer_orderAdmin(admin.ModelAdmin):
-    list_display = ['name', 'surname', 'phone', 'date', 'select', 'status']
+    list_display = ['offer', 'name', 'surname', 'phone', 'date',  'status']
 
 class CategoryGalleryAdmin(admin.ModelAdmin):
     list_display = ['title']

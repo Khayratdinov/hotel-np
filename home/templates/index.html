@@ -130,15 +130,15 @@
                         <input class="form-control" name="booking-name" type="text" data-trigger="hover" placeholder="Write Your Name">
                       </div>
                     </div>
-                    <!-- EMAIL -->
+                    <!-- Phone -->
                     <div class="col-md-2">
                       <div class="form-group">
-                        <label>Email
-                          <a href="#" title="Your Email" data-toggle="popover" data-placement="top" data-trigger="hover" data-content="Please type your email adress">
+                        <label>Phone
+                          <a href="#" title="Your Phone" data-toggle="popover" data-placement="top" data-trigger="hover" data-content="Please type your Phone">
                             <i class="fa fa-info-circle"></i>
                           </a>
                         </label>
-                        <input class="form-control" name="booking-email" type="email" placeholder="Write your Email">
+                        <input class="form-control" name="booking-phone" type="number" placeholder="Write your Phone">
                       </div>
                     </div>
                     <!-- ROOM TYPE -->
@@ -150,9 +150,11 @@
                           </a>
                         </label>
                         <select class="form-control" name="booking-roomtype" title="Select Room Type" data-header="Room Type">
-                          <option value="Single">Single Room</option>
-                          <option value="Double">Double Room</option>
-                          <option value="Deluxe">Deluxe Room</option>
+                         
+
+                          {% for room in room_forms %}
+                            <option value="{{ room }}">{{ room }}</option>
+                          {% endfor %}
                         </select>
                       </div>
                     </div>
@@ -188,18 +190,6 @@
                               <div class="guests-button">
                                 <div class="minus"></div>
                                 <input type="text" name="booking-adults" class="booking-guests" value="0">
-                                <div class="plus"></div>
-                              </div>
-                            </div>
-                            <div class="guests-buttons">
-                              <label>Cildren
-                                <a href="#" title="" data-toggle="popover" data-placement="top" data-trigger="hover" data-content="Under 18 years" data-original-title="Children">
-                                  <i class="fa fa-info-circle"></i>
-                                </a>
-                              </label>
-                              <div class="guests-button">
-                                <div class="minus"></div>
-                                <input type="text" name="booking-children" class="booking-guests" value="0">
                                 <div class="plus"></div>
                               </div>
                             </div>
@@ -306,10 +296,25 @@
                       <img src="{{ room_pic.image.url }}" class="img-fluid" alt="Image">
                     </a>
                     <div class="room-services">
+                      
+                      
+                    
+                        {% for service in room_services %}
+                          {% if service.room_id == room_pic.pk %}  
+                           <i class="{{ service.icon }}" aria-hidden="true" data-toggle="popover" data-placement="right" data-trigger="hover" data-content="{{ service.description }}" data-original-title="{{ service.title }}"></i>
+                          {% endif %}
+                            
+                       
+                        {% endfor %}
+                      
                         
-                      <i class="fa fa-coffee" aria-hidden="true" data-toggle="popover" data-placement="right" data-trigger="hover" data-content="Breakfast Included" data-original-title="Breakfast"></i>
-                      <i class="fa fa-wifi" aria-hidden="true" data-toggle="popover" data-placement="right" data-trigger="hover" data-content="Free WiFi" data-original-title="WiFi"></i>
-                      <i class="fa fa-television" data-toggle="popover" data-placement="right" data-trigger="hover" data-content="Plasma TV with cable channels" data-original-title="TV"></i>
+                      
+                        
+                      
+                        
+                        
+                      
+                     
                     </div>
                     <div class="room-price">{{ room_pic.price }} / night</div>
                   </figure>
