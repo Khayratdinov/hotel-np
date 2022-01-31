@@ -27,7 +27,9 @@
 <div class="row">
 
     
-    {% for room in rooms %}
+    {% for item in rooms %}
+
+    
         
     
         
@@ -35,34 +37,44 @@
         <div class="card">
             <div class="text-center card-body">
                 <div>
-                    <img src="{{ room.image.url }}" class="rounded  img-thumbnail mb-2" alt="profile-image">
+                    <img src="{{ item.image.url }}" class="rounded  img-thumbnail mb-2" alt="profile-image">
 
                     <!-- <p class="text-muted font-13 mb-3">
                         Hi I'm Johnathn Deo,has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type.
                     </p> -->
 
                     <div class="text-start">
-                        <p class="text-muted font-13"><strong>title :</strong> <span class="ms-2">{{ room.title }}</span></p>
+                        <p class="text-muted font-13"><strong>title :</strong> <span class="ms-2">{{ item.title }}</span></p>
 
-                        <p class="text-muted font-13"><strong>Category :</strong><span class="ms-2">{{ room.category.title }}</span></p>
+                        <p class="text-muted font-13"><strong>Category :</strong><span class="ms-2">{{ item.category.title }}</span></p>
 
-                        <p class="text-muted font-13"><strong>Price :</strong> <span class="ms-2">$ {{ room.price }}</span></p>
+                        <p class="text-muted font-13"><strong>Price :</strong> <span class="ms-2">$ {{ item.price }}</span></p>
 
-                        <p class="text-muted font-13"><strong>Status :</strong> <span class="ms-2">{{ room.status }}</span></p>
+                        <p class="text-muted font-13"><strong>Status :</strong> <span class="ms-2">
+                            {% if item.status == 'True' %}
+                                <i class="fe-check-circle"></i>
+                            {% else %}
+                                <i class="fe-slash"></i>
+                            {% endif %}
+                        </span></p>
                     </div>
 
                     
                     <div class="footer-action-btn">
-                        <div class="btn-group btn-group-sm" style="float: none;"><a href="{% url 'room_detail' room.pk %}" class="btn btn-info" style="float: none;"><span class="fe-eye"></span></a></div>
-                        <div class="btn-group btn-group-sm" style="float: none;"><a href="{% url 'room_edit' room.pk %}" class="btn btn-warning" style="float: none;"><span class="fe-edit-2"></span></a></div>
-                        <div class="btn-group btn-group-sm" style="float: none;"><a href="{% url 'room_delate' room.pk %}" class="btn btn-danger" style="float: none;"><span class="fe-trash-2"></span></a></div>
+                        <div class="btn-group btn-group-sm" style="float: none;"><a href="{% url 'room_detail' item.pk %}" class="btn btn-info" style="float: none;"><span class="fe-eye"></span></a></div>
+                        <div class="btn-group btn-group-sm" style="float: none;"><a href="{% url 'room_edit' item.pk %}" class="btn btn-warning" style="float: none;"><span class="fe-edit-2"></span></a></div>
+                        <div class="btn-group btn-group-sm"  style="float: none;"><a href="{% url 'room_delate' item.pk %}" class="btn btn-danger"   style="float: none;"><span class="fe-trash-2"></span></a></div>
                     </div>
+
+                    
                 </div>
             </div>
         </div>
         
 
     </div> <!-- end col -->
+
+
     {% endfor %}
 
 </div>

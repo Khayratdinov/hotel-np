@@ -1,10 +1,8 @@
 from django.http import request
-from django.shortcuts import render
-from service.models import (
-                            Gallery, Category_gallery, Place, Image_place,
-                            Service, Image_service, Special_offer, Image_offer,
-                            Offer_order, Our_Staff, Events, Image_events, Category_staff
-                            )
+from django.shortcuts import render, redirect
+from service.models import *
+from home.forms import SpecialOfferForm
+from django.contrib import messages
 # Create your views here.
 
 
@@ -25,14 +23,30 @@ def special_offers(request):
     }
     return render(request, 'service/special_offers.html', context)
 
-def offer_detail(request, id):
+def special_offer_detail(request, id):
     special_offer = Special_offer.objects.get(pk=id)
     image_offer = Image_offer.objects.filter(special_offer_id=id)
+
+    if request.method == 'POST':
+        form = SpecialOfferForm(request.POST, instance=special_offer)
+        if form.is_valid():
+            data = Offer_order()
+            data.offer = special_offer.title
+            data.name = form.cleaned_data['name']
+            data.phone = form.cleaned_data['phone']
+            data.date = form.cleaned_data['date']
+            data.text = form.cleaned_data['text']
+            data.ip = request.META.get('REMOTE_ADDR')
+            data.save()
+            messages.success(request, "sorovingiz qabul qilindi")
+            return redirect('home')
+    form = SpecialOfferForm(instance=special_offer)
 
 
     context = {
         'special_offer': special_offer,
         'image_offer' : image_offer,
+        'form': form,
     }
     return render(request, 'service/offer-detail.html', context)
 
@@ -88,6 +102,7 @@ def services(request):
     return render(request, 'service/spa.html', context)
 
 def service_detail(request, id):
+
     staff = Our_Staff.objects.all()
     service = Service.objects.get(id=id)
     image_service = Image_service.objects.filter(service_id=id)
@@ -97,3 +112,46 @@ def service_detail(request, id):
         'image_service': image_service,
     }
     return render(request, 'service/service-detail.html', context)
+
+
+def business_detail(request, id):
+    business = Business.objects.get(id=id)
+    image_business = Image_business.objects.filter(business_id=id)
+    context = {
+        'business':business,
+        'image_business': image_business,
+    }
+    return render(request, 'service/business_detail.html', context)
+
+
+
+def restaurant_detail(request, id):
+    restaurant = Restaurant.objects.get(id=id)
+    image_restaurant = Image_restaurant.objects.filter(restaurant_id=id)
+    context = {
+        'restaurant':restaurant,
+        'image_restaurant': image_restaurant,
+    }
+    return render(request, 'service/restaurant_detail.html', context)
+
+
+
+def spa_detail(request, id):
+    spa = Spa.objects.get(id=id)
+    image_spa = Image_spa.objects.filter(spa_id=id)
+    context = {
+        'spa':spa,
+        'image_spa': image_spa,
+    }
+    return render(request, 'service/spa_detail.html', context)
+
+
+def fitness_detail(request, id):
+    fitness = Fitness.objects.get(id=id)
+    image_fitness = Image_fitness.objects.filter(fitness_id=id)
+    context = {
+        'fitness':fitness,
+        'image_fitness': image_fitness,
+    }
+    return render(request, 'service/fitness_detail.html', context)
+

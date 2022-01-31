@@ -174,6 +174,7 @@ class Offer_order(models.Model):
     def __str__(self):
         return self.name
 
+
 class Gallery(models.Model):
     STATUS = (
         ('*', '*'),
@@ -212,6 +213,7 @@ class Category_gallery(models.Model):
 
     def __str__(self):
         return self.title
+
 
 class Our_Staff(models.Model):
     name = models.CharField(max_length=250)

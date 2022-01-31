@@ -1,0 +1,83 @@
+
+
+
+
+{% extends 'admin.html' %}
+{% load static %}
+
+
+
+
+{% block content %}
+
+
+<div class="row">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-body">
+                <div class="row justify-content-between">
+                    <div class="col-md-4">
+                        <div class="mt-3 mt-md-0">
+                            <a href="{% url 'gallery_create' %}"  class="btn btn-success waves-effect waves-light"><i class="mdi mdi-plus-circle me-1"></i> Add Gallery image</a>
+                        </div>
+                    </div><!-- end col-->
+                    
+                </div> <!-- end row -->
+            </div>
+        </div> <!-- end card -->
+    </div><!-- end col-->
+</div>
+<!-- end row -->        
+<div class="row">
+
+    
+    {% for item in gallery %}
+
+    
+        
+    
+        
+    <div class="col-xl-4">
+        <div class="card">
+            <div class="text-start card-body">
+                <div>
+
+                    <div class="card">
+                        <img class="card-img-top img-fluid" src="{{ item.image.url }}" alt="Card image cap">
+                        <div class="card-body">
+                            <h3 class="card-title">Title:   {{ item.title }}</h3>
+                            <h5 class="card-title">Category Filter:   {{ item.cat_filter }}</h4>
+                            <h5 class="card-title">Category:    {{ item.category.title }}</h5>
+                           
+
+
+                        </div>
+
+                        <div class="footer-action-btn">
+                            <div class="btn-group btn-group-sm" style="float: none;"><a href="{% url 'gallery_edit' item.pk %}" class="btn btn-warning" style="float: none;"><span class="fe-edit-2"></span></a></div>
+                            <div class="btn-group btn-group-sm"  style="float: none;"><a href="{% url 'gallery_delate' item.pk %}" class="btn btn-danger"   style="float: none;"><span class="fe-trash-2"></span></a></div>
+                        </div>
+                    </div>
+                    
+
+
+                    
+                    
+
+                    
+                </div>
+            </div>
+        </div>
+        
+
+    </div> <!-- end col -->
+
+
+    {% endfor %}
+
+</div>
+<!-- end row -->
+
+    
+{% endblock content %}
+    

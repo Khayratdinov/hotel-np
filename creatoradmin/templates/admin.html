@@ -373,6 +373,28 @@
                     </a>    
                 </li>
 
+                <li>
+                    <a href="{% url 'business_admin' %}">
+                        <i class="mdi mdi-page-next"></i>
+                         <span> Business </span>
+                    </a>    
+                </li>
+
+                <li>
+                    <a href="{% url 'spa_admin' %}">
+                        <i class="mdi mdi-page-next"></i>
+                         <span> SPA </span>
+                    </a>    
+                </li>
+
+                <li>
+                    <a href="{% url 'fitness_admin' %}">
+                        <i class="mdi mdi-page-next"></i>
+                         <span> Fitness </span>
+                    </a>    
+                </li>
+
+
 
                 <li>
                     <a href="{% url 'services_admin' %}">
@@ -380,6 +402,31 @@
                          <span> Service </span>
                     </a>    
                 </li>
+
+                <li>
+                    <a href="{% url 'special_offer_admin' %}">
+                        <i class="mdi mdi-page-next"></i>
+                         <span> Special offers </span>
+                    </a>    
+                </li>
+
+
+                <li>
+                    <a href="{% url 'offer_order_admin' %}">
+                        <i class="mdi mdi-page-next"></i>
+                         <span> Special offers Order </span>
+                    </a>    
+                </li>
+
+                <li>
+                    <a href="{% url 'place_admin' %}">
+                        <i class="mdi mdi-page-next"></i>
+                         <span> Place </span>
+                    </a>    
+                </li>
+
+
+                
 
                 <li>
                     <a href="#blog" data-bs-toggle="collapse">
@@ -399,6 +446,79 @@
                     </div>
                 </li>
 
+                <li>
+                    <a href="#events" data-bs-toggle="collapse">
+                        <i class="mdi mdi-account"></i>
+                        <span> Events </span>
+                        <span class="menu-arrow"></span>
+                    </a>
+                    <div class="collapse" id="events">
+                        <ul class="nav-second-level">
+                            <li>
+                                <a href="{% url 'events_admin' %}">Events</a>
+                            </li>
+                            <li>
+                                <a href="{% url 'categories_blog' %}">Category Blog</a>
+                            </li>
+                        </ul>
+                    </div>
+                </li>
+
+                <li>
+                    <a href="#ourstaff" data-bs-toggle="collapse">
+                        <i class="mdi mdi-account"></i>
+                        <span> Our Staff </span>
+                        <span class="menu-arrow"></span>
+                    </a>
+                    <div class="collapse" id="ourstaff">
+                        <ul class="nav-second-level">
+                            <li>
+                                <a href="{% url 'our_staff_admin' %}">Our Staff</a>
+                            </li>
+                            <li>
+                                <a href="{% url 'category_staff_admin' %}">Category Staff</a>
+                            </li>
+                        </ul>
+                    </div>
+                </li>
+
+
+                <li>
+                    <a href="#gallery" data-bs-toggle="collapse">
+                        <i class="mdi mdi-account"></i>
+                        <span> Gallery </span>
+                        <span class="menu-arrow"></span>
+                    </a>
+                    <div class="collapse" id="gallery">
+                        <ul class="nav-second-level">
+                            <li>
+                                <a href="{% url 'gallery_admin' %}">Gallery</a>
+                            </li>
+                            <li>
+                                <a href="{% url 'category_gallery_admin' %}">Category gallery</a>
+                            </li>
+                        </ul>
+                    </div>
+                </li>
+
+                <li>
+                    <a href="#restaurant" data-bs-toggle="collapse">
+                        <i class="mdi mdi-account"></i>
+                        <span> Restaurant </span>
+                        <span class="menu-arrow"></span>
+                    </a>
+                    <div class="collapse" id="restaurant">
+                        <ul class="nav-second-level">
+                            <li>
+                                <a href="{% url 'restaurant_admin' %}">Restaurant</a>
+                            </li>
+
+                            <li>
+                                <a href="{% url 'restaurant_menu_admin' %}">Restaurant Menu</a>
+                            </li>
+                        </ul>
+                    </div>
+                </li>
 
                 <li>
                     <a href="#aboutus" data-bs-toggle="collapse">
@@ -409,14 +529,21 @@
                     <div class="collapse" id="aboutus">
                         <ul class="nav-second-level">
                             <li>
-                                <a href="#">About Us Create</a>
+                                <a href="{% url 'aboutus_admin' %}">About Us</a>
                             </li>
+
                             <li>
-                                <a href="#">About Us Edit</a>
+                                <a href="{% url 'aboutus_image_admin' %}">About Us Images</a>
+                            </li>
+
+                            <li>
+                                <a href="{% url 'aboutus_feature_admin' %}">About Us Features</a>
                             </li>
                         </ul>
                     </div>
                 </li>
+
+                
 
 
             </ul>
@@ -442,7 +569,16 @@
             
                     <!-- Start Content-->
                     <div class="container-fluid">
-            
+                        {% if messages %}
+                            
+                            {% for message in messages %}
+                                <div class="alert alert-{{message.tags}} alert-dismissible fade show"  role='alert'>
+                                    {{ message }}
+                                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                                </div>
+                            {% endfor %}
+                            
+                         {% endif %}
                         
                         {% block content %}
                             

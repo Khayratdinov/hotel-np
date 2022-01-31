@@ -12,6 +12,7 @@
 <!-- App favicon -->
 <link rel="shortcut icon" href="{% static 'assets/images/favicon.ico' %}">
 
+
         <!-- App css -->
 <link href="{% static 'assets/css/config/default/bootstrap.min.css' %}" rel="stylesheet" type="text/css" id="bs-default-stylesheet" />
 <link href="{% static 'assets/css/config/default/app.min.css' %}" rel="stylesheet" type="text/css" id="app-default-stylesheet" />
@@ -28,12 +29,15 @@
     <!-- body start -->
 <body class="loading" data-layout='{"mode": "light", "width": "fluid", "menuPosition": "fixed", "sidebar": { "color": "light", "size": "default", "showuser": true}, "topbar": {"color": "light"}, "showRightSidebarOnPageLoad": true}'>
 
+
+   
+    
+
  
  {% block admincontent %}
      
  {% endblock admincontent %}
      
-
 <!-- Vendor js -->
 <script src="{% static 'assets/js/vendor.min.js' %}"></script>
 
@@ -48,7 +52,16 @@
 <script src="{% static 'assets/js/pages/dashboard.init.js' %}"></script>
 
 <!-- App js-->
-<script src="{% static 'assets/js/app.min.js' %}"></script>
+<script src="{% static 'assets/js/app.min.js' %}"></script> 
+
+
+
+
+
+
+
+
+
         
 </body>
 </html>

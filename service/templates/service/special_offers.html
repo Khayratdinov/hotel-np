@@ -33,7 +33,7 @@
             <div class="col-md-6">
               <div class="offer-item">
                 <figure class="gradient-overlay-hover link">
-                  <a href="{% url 'offer_detail' special_offer.pk %}">
+                  <a href="{% url 'special_offer_detail' special_offer.pk %}">
                     <img src="{{ special_offer.image.url }}" class="img-fluid" alt="Image">
                   </a>
                 </figure>
@@ -48,7 +48,7 @@
                   {{ special_offer.price }}
                 </div>
                 <h3 class="offer-title">
-                  <a href="{% url 'offer_detail' special_offer.pk %}">{{ special_offer.title }}</a>
+                  <a href="{% url 'special_offer_detail' special_offer.pk %}">{{ special_offer.title }}</a>
                 </h3>
               </div>
             </div>
