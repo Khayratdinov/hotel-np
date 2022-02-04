@@ -1,26 +1,19 @@
 from django.shortcuts import render, redirect
-from django.core.paginator import (Paginator, PageNotAnInteger, EmptyPage)
 from django.contrib import messages
-from django.utils import translation
-from django.http import HttpResponseRedirect
 
-from home.forms import HomeOrderForm, ContactForm
 
-from room.models import Room, RoomServices, Order
-from blog.models import Blog
-from home.models import Informations, License, LicImages, ContactMessage, FAQ, AboutUs, Slider
-from service.models import (Service, Special_offer, Offer_order, Gallery,
-                            Our_Staff, Restaurant_menu,
-                            Events, Place,
-                            )
-
+from home.forms import *
+from home.models import *
+from room.models import *
+from blog.models import *
+from service.models import *
 
 
 def home(request):
-    info = Informations.objects.all()
+    info = Informations.objects.all().order_by('?')[:1]
     our_staff = Our_Staff.objects.all().order_by('?')[:8]
     slider = Slider.objects.all().order_by('id')
-    aboutus = AboutUs.objects.all()
+    aboutus = AboutUs.objects.all().order_by('?')[:1]
     room_picked = Room.objects.all().order_by('?')[:3]
     room_services = RoomServices.objects.all()
     services = Service.objects.all()
@@ -29,6 +22,7 @@ def home(request):
     special_offer = Special_offer.objects.all().order_by('?')[:3]
     blogs = Blog.objects.all().order_by('?')[:3]
     room_forms = Room.objects.values_list('title', flat=True).distinct()
+    testimonials = Testimonial.objects.all()
     if request.method == 'POST':
         form = HomeOrderForm(request.POST)
         if form.is_valid():
@@ -36,55 +30,62 @@ def home(request):
             data.name = form.cleaned_data['name']
             data.phone = form.cleaned_data['phone']
             data.guest = form.cleaned_data['guest']
+            data.children = form.cleaned_data['guest']
             data.arrival = form.cleaned_data['arrival']
-            data.departure = form.cleaned_data['departure']
             data.room = form.cleaned_data['room']
             data.ip = request.META.get('REMOTE_ADDR')
             data.save()
-            messages.success(request, "Siz xonani bro'n qildiz aperato'r siz bilan bog'lanadi")
+            messages.success(
+                request, "Siz xonani bro'n qildiz aperato'r siz bilan bog'lanadi")
             return redirect('home')
     form = HomeOrderForm
     context = {
         'info': info,
-        'slider':slider,
-        'aboutus' : aboutus,
+        'slider': slider,
+        'aboutus': aboutus,
         'room_picked': room_picked,
-        'services' : services,
-        'gallery' : gallery,
-        'restaurant_menu' : restaurant_menu,
-        'special_offer' : special_offer,
-        'blogs' : blogs,
+        'services': services,
+        'gallery': gallery,
+        'restaurant_menu': restaurant_menu,
+        'special_offer': special_offer,
+        'blogs': blogs,
         'our_staff': our_staff,
-        'room_services':room_services,
-        'form':form,
-        'room_forms':room_forms
+        'room_services': room_services,
+        'form': form,
+        'room_forms': room_forms,
+        'testimonials': testimonials
 
 
-        
+
     }
     return render(request, 'index.html', context)
 
 
-
-
-
 def aboutus(request):
-    aboutus = AboutUs.objects.all().order_by('id')
+    aboutus = AboutUs.objects.all().order_by('?')[:1]
     licenses = License.objects.all()
-    lic_images  = LicImages.objects.all()
+    lic_images = LicImages.objects.all()
+    recommended_company = Recommended_company.objects.all()
+    aboutus_features = AboutUs_features.objects.all()
+    image_aboutus = Image_aboutus.objects.all()
+    license = License.objects.all()
 
     context = {
         'aboutus': aboutus,
         'licenses': licenses,
         'lic_images': lic_images,
+        'recommended_company': recommended_company,
+        'aboutus_features': aboutus_features,
+        'image_aboutus': image_aboutus,
+        'license': license
 
     }
     return render(request, 'about-us.html', context)
 
 
 def contactus(request):
-    if request.method =='POST':
-        form = ContactForm(request.POST)
+    if request.method == 'POST':
+        form = ContactMessageForm(request.POST)
         if form.is_valid():
             data = ContactMessage()
             data.name = form.cleaned_data['name']
@@ -96,10 +97,6 @@ def contactus(request):
             data.save()
             messages.success(request, "Sizning xabaringiz yuborildi! Rahmat")
             return redirect('home')
-    form = ContactForm
-    context = {'form': form,}
-    return render(request,'contact.html', context)
-
-
-
-
+    form = ContactMessageForm
+    context = {'form': form, }
+    return render(request, 'contact.html', context)

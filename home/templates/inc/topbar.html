@@ -1,19 +1,30 @@
 {% load static %}
+{% load topheader_tag %}
+
+{% get_informations as informations %}
+
+
+
+{% for info in informations %}
+  
+
+  
+
 <div class="topbar">
     <div class="container">
       <div class="welcome-mssg">
-        Welcome to Hotel Himara.
+        {{ info.title }}
       </div>
       <div class="top-right-menu">
         <ul class="top-menu">
           <li class="d-none d-md-inline">
-            <a href="tel:+18881234567">
-              <i class="fa fa-phone"></i>+1 888 123 4567
+            <a href="tel:{{ info.phone }}">
+              <i class="fa fa-phone"></i>{{ info.phone }}
             </a>
           </li>
           <li class="d-none d-md-inline">
-            <a href="mailto:contact@hotelhimara.com">
-              <i class="fa fa-envelope-o "></i>contact@hotelhimara.com</a>
+            <a href="mailto:{{ info.email }}">
+              <i class="fa fa-envelope-o "></i>{{ info.email }}</a>
           </li>
           <li class="language-menu">
             <a href="#" class="active-language"><img src="{% static '/' %}images/icons/flags/gb.png" alt="Image">English</a>
@@ -35,7 +46,49 @@
               </li>
             </ul>
           </li>
+
+          {% if user.is_authenticated %}
+
+          <li class="language-menu">
+            
+            <a href="#" class="active-language"><i class="fa fa-user-o "></i> {{ user.username | title }}</a>
+            <ul class="languages">
+
+              <li class="">
+                <a href="{% url 'profile' %}"><i class=" fe-log-in"></i>Profile</a>
+              </li>
+
+              <li class="">
+                <a href="{% url 'logout_form' %}"><i class="fa fa-dropbox"></i>Chiqip ketish</a>
+              </li>
+              {% if user.user_type == 2 or user.user_type == 3 %}
+                <li class="">
+                  <a href="{% url 'admin_home' %}"><i class="fa fa-cog "></i>Admin Panelga</a>
+                </li>
+              {% endif %}
+              
+            </ul>
+          </li>
+
+          {% else %}
+          <li class="d-none d-md-inline">
+            <a href="{% url 'login_form' %}">
+              Login </a>  /
+            
+            <a href="{% url 'register' %}">
+              Sign Up</a>
+          </li>
+
+          {% endif %}
+
+
+          
+  
+          
         </ul>
       </div>
     </div>
   </div>
+
+
+{% endfor %}

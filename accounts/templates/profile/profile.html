@@ -1,0 +1,131 @@
+{% extends 'base.html' %}
+
+
+
+{% block content %}
+
+      <!-- ========== PAGE TITLE ========== -->
+      <div class="page-title gradient-overlay op6" style="background: url(images/breadcrumb.jpg); background-repeat: no-repeat;
+    background-size: cover;">
+        <div class="container">
+          <div class="inner">
+            <h1>CONTACT</h1>
+            <ol class="breadcrumb">
+              <li>
+                <a href="index.html">Home</a>
+              </li>
+              <li>Contact</li>
+            </ol>
+          </div>
+        </div>
+      </div>
+      <!-- ========== MAIN ========== -->
+      <main class="contact-page">
+        <div class="container">
+          <div class="row">
+            
+            <div class="col-md-4 offset-md-3">
+              <div class="sidebar">
+                <div class="google-map">
+                  <div class="toggle-streetview" id="openStreetView">
+                    <i class="fa fa-street-view" aria-hidden="true"></i>
+                  </div>
+                  <div id="map-canvas" class="profile-images" ><img style="width: 340px;height: 340px;"  src="{% if user.avatar %} {{ user.avatar.url }} {% else %} https://www.pinclipart.com/picdir/big/165-1653686_female-user-icon-png-download-user-colorful-icon.png {% endif %}" alt=""></div>
+                </div>
+
+                
+                <div class="contact-details mt75">
+
+                  <div class="contact-v2 gray">
+                    <ul class="contact-details">
+                      <li>
+                      <i class="fa fa-map-marker" aria-hidden="true"></i>
+                        User:  {{ user.username }} </li>
+                      <li>
+                      <i class="fa fa-phone" aria-hidden="true"></i>
+                        Phone:   {% if user.phone %} {{ user.phone }} {% else %} Nomer kiritilmagan  {% endif %}
+                      </li>
+                      <li>
+                        <i class="fa fa-phone" aria-hidden="true"></i>
+                        Email:   {% if user.email %} {{ user.email }} {% else %} Email kiritilmagan  {% endif %}
+                      </li>
+                      <li>
+                        <i class="fa fa-phone" aria-hidden="true"></i>
+                        Birthday:   {% if user.birthday %} {{ user.birthday }} {% else %} Birthday kiritilmagan  {% endif %}
+                      </li>
+                      <li>
+                        <i class="fa fa-phone" aria-hidden="true"></i>
+                        Address:   {% if user.address %} {{ user.address }} {% else %} address kiritilmagan  {% endif %}
+                      </li>
+                      <li>
+                        <i class="fa fa-phone" aria-hidden="true"></i>
+                        City:   {% if user.city %} {{ user.city }} {% else %} City kiritilmagan  {% endif %}
+                      </li>
+                      <li>
+                        <i class="fa fa-phone" aria-hidden="true"></i>
+                        Country:   {% if user.country %} {{ user.country }} {% else %} Country kiritilmagan  {% endif %}
+                      </li>
+                      <li>
+                        <i class="fa fa-phone" aria-hidden="true"></i>
+                        Zip:   {% if user.zip %} {{ user.zip }} {% else %} Zip kiritilmagan  {% endif %}
+                      </li>
+
+                      <li>
+                        <i class="fa fa-phone" aria-hidden="true"></i>
+                        Bio:    {% if user.bio %} {{ user.bio }} {% else %} Bio kiritilmagan  {% endif %}
+                      </li>
+
+                      <li>
+                        <i class="fa fa-phone" aria-hidden="true"></i>
+                        Date:   {{ user.date_joined }} 
+                      </li>
+
+                    </ul>
+
+                    <a href="{% url 'profile_edit' user.id %}" class="btn btn-info mt-4">Edit Profile</a>
+                  </div>
+                  
+                  <div class="social-media mt50">
+                    <a class="facebook" data-original-title="Facebook" data-toggle="tooltip" href="#">
+                      <i class="fa fa-facebook"></i>
+                    </a>
+                    <a class="twitter" data-original-title="Twitter" data-toggle="tooltip" href="#">
+                      <i class="fa fa-twitter"></i>
+                    </a>
+                    <a class="googleplus" data-original-title="Google Plus" data-toggle="tooltip" href="#">
+                      <i class="fa fa-google-plus"></i>
+                    </a>
+                    <a class="pinterest" data-original-title="Pinterest" data-toggle="tooltip" href="#">
+                      <i class="fa fa-pinterest"></i>
+                    </a>
+                    <a class="linkedin" data-original-title="Linkedin" data-toggle="tooltip" href="#">
+                      <i class="fa fa-linkedin"></i>
+                    </a>
+                    <a class="youtube" data-original-title="Youtube" data-toggle="tooltip" href="#">
+                      <i class="fa fa-youtube"></i>
+                    </a>
+                    <a class="tripadvisor" data-original-title="Tripadvisor" data-toggle="tooltip" href="#">
+                      <i class="fa fa-tripadvisor"></i>
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            
+
+            
+            <!-- <div class="col-md-8">
+              <div class="section-title">
+                <h4>CONTACT US</h4>
+                <p class="section-subtitle">Let’s Talk</p>
+              </div>
+              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Possimus sit, fugiat at in assumenda corrupti autem iste eveniet eaque vitae beatae tenetur, voluptatem eius. Numquam.</p>
+            </div> -->
+            
+          </div>
+        </div>
+      </main>
+  
+{% endblock content %}
+  

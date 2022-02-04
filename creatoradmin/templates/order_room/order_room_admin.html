@@ -1,0 +1,76 @@
+{% extends 'admin.html' %}
+{% load static %}
+
+
+{% block content %}
+
+
+
+
+            
+                       
+            
+                       
+            
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="card">
+                                    <div class="card-body">
+            
+                                        <h5 class="mt-0">Inline edit with Button</h5>
+                                        <p class="sub-header">Inline edit like a spreadsheet, toolbar column with edit button only and without focus on first input.</p>
+                                        <div class="table-responsive">
+                                            <table class="table table-centered mb-0" id="btn-editable">
+                                                <thead>
+                                                    <tr>
+                                                        <th>Name</th>
+                                                        <th>Phone</th>
+                                                        <th>Room</th>
+                                                        <th>Date</th>
+                                                        <th>Guest</th>
+                                                        <th>Status</th>
+                                                        
+                                                    <th class="tabledit-toolbar-column"></th></tr>
+                                                </thead>
+            
+                                                
+                                            
+                                                <tbody>
+                                                    {% for item in order_room %}
+                                                    <tr id="">
+                                                        <td><span class="tabledit-span tabledit-identifier">{{ item.name }}</span><input class="tabledit-input tabledit-identifier" type="hidden" name="id" value="1" disabled=""></td>
+                                                       
+                                                        <td class="tabledit-view-mode"><span class="tabledit-span">{{ item.phone }}</span><input class="tabledit-input form-control form-control-sm" type="text" name="col2" value="System Architect" style="display: none;" disabled=""></td>
+                                                        <td class="tabledit-view-mode"><span class="tabledit-span">{{ item.room }}</span><input class="tabledit-input form-control form-control-sm" type="text" name="col3" value="Edinburgh" style="display: none;" disabled=""></td>
+                                                        <td class="tabledit-view-mode"><span class="tabledit-span">{{ item.arrival }}</span><input class="tabledit-input form-control form-control-sm" type="text" name="col4" value="61" style="display: none;" disabled=""></td>
+                                                        <td class="tabledit-view-mode"><span class="tabledit-span">{{ item.guest }}</span><input class="tabledit-input form-control form-control-sm" type="text" name="col4" value="61" style="display: none;" disabled=""></td>
+                                                        <td class="tabledit-view-mode"><span class="tabledit-span"><span class="badge bg-info">{{ item.status }}</span></span><input class="tabledit-input form-control form-control-sm" type="text" name="col4" value="61" style="display: none;" disabled=""></td>
+                                                       
+                                                    <td style="white-space: nowrap; width: 1%;"><div class="tabledit-toolbar btn-toolbar" style="text-align: left;">
+                                                        <div class="btn-group btn-group-sm" style="float: none;"><a href="{% url 'order_room_detail' item.pk %}" class="btn btn-info" style="float: none;"><span class="fe-eye"></span></a></div></div>
+                                                    </td>
+
+                                                    <td style="white-space: nowrap; width: 1%;"><div class="tabledit-toolbar btn-toolbar" style="text-align: left;">
+                                                        <div class="btn-group btn-group-sm" style="float: none;"><a href="{% url 'order_room_edit' item.pk %}" class="btn btn-warning" style="float: none;"><span class="fe-edit-2"></span></a></div></div>
+                                                    </td>
+                                    
+                                                    <td style="white-space: nowrap; width: 1%;"><div class="tabledit-toolbar btn-toolbar" style="text-align: left;">
+                                                        <div class="btn-group btn-group-sm" style="float: none;"><a href="{% url 'order_room_delate' item.pk %}" class="btn btn-danger" style="float: none;"><span class="fe-trash-2"></span></a></div></div>
+                                                    </td>
+                                                    
+                                                   
+                                                    </tr>
+                                                    {% endfor %}
+                                                </tbody>
+                                            </table>
+                                        </div> <!-- end .table-responsive-->
+                                    </div> <!-- end card-body -->
+                                </div> <!-- end card -->
+                            </div> <!-- end col -->
+                        </div>
+
+    
+
+    
+{% endblock content %}
+    

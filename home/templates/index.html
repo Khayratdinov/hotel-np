@@ -6,615 +6,647 @@
 {% load static %}
 
 
-        
-        <!-- ========== REVOLUTION SLIDER ========== -->
-        <div class="slider">
-          <div id="rev-slider-1" class="rev_slider gradient-slider" style="display:none" data-version="5.4.5">
-            <ul>
 
-              
-              {% for sl in slider %}
-              <li data-transition="crossfade">
-                <!-- MAIN IMAGE -->
-                <img src="{{ sl.image.url }}" alt="Image" title="Image" data-bgposition="center center" data-bgfit="cover" data-bgrepeat="no-repeat" data-bgparallax="10" class="rev-slidebg" data-no-retina="">
-                <!-- LAYER NR. 1 -->
-                <h1
-                  class="tp-caption tp-resizeme"
-                  data-x="center"
-                  data-hoffset=""
-                  data-y="320"
-                  data-voffset=""
-                  data-responsive_offset="on"
-                  data-fontsize="['80','50','40','30']"
-                  data-lineheight="['60','50','40','30']"
-                  data-whitespace="nowrap"
-                  data-frames='[{"delay":1000,"speed":1500,"frame":"0","from":"y:[-100%];z:0;rX:0deg;rY:0;rZ:0;sX:1;sY:1;skX:0;skY:0;","mask":"x:0px;y:0px;s:inherit;e:inherit;","to":"o:1;","ease":"Power3.easeInOut"},{"delay":"wait","speed":500,"frame":"999","to":"auto:auto;","ease":"Power3.easeInOut"}]'
-                  style="z-index: 5; color: #fff; font-weight: 900;">
-                  {{ sl.title }}</h1>
-                <!-- LAYER NR. 2 -->
-                <div
-                  class="tp-caption tp-resizeme"
-                  data-x="center"
-                  data-hoffset=""
-                  data-y="410"
-                  data-voffset=""
-                  data-responsive_offset="on"
-                  data-fontsize="16"
-                  data-lineheight="16"
-                  data-whitespace="nowrap"
-                  data-frames='[{"delay":1500,"speed":1500,"frame":"0","from":"y:[100%];z:0;rX:0deg;rY:0;rZ:0;sX:1;sY:1;skX:0;skY:0;opacity:0;","mask":"x:0px;y:[100%];s:inherit;e:inherit;","to":"o:1;","ease":"Power2.easeInOut"},{"delay":"wait","speed":500,"frame":"999","to":"auto:auto;","ease":"Power3.easeInOut"}]'
-                  style="z-index: 6; color: #fff;">Live Your Myth In Hotel Himara</div>
-                <!-- LAYER NR. 3 -->
-                <div
-                  class="tp-caption"
-                  data-x="center"
-                  data-hoffset="-120"
-                  data-y="480"
-                  data-voffset=""
-                  data-responsive_offset="on"
-                  data-whitespace="nowrap"
-                  data-frames='[{"delay":2400,"speed":1500,"frame":"0","from":"y:[100%];z:0;rX:0deg;rY:0;rZ:0;sX:1;sY:1;skX:0;skY:0;opacity:0;","mask":"x:0px;y:[100%];s:inherit;e:inherit;","to":"o:1;","ease":"Power2.easeInOut"},{"delay":"wait","speed":500,"frame":"999","to":"auto:auto;","ease":"Power3.easeInOut"}]'
-                  style="z-index: 11;">
-                  <a class="btn" href="booking-form.html">
-                    <i class="fa fa-calendar"></i>BOOK A ROOM NOW</a>
-                </div>
-                <!-- LAYER NR. 4 -->
-                <div
-                  class="tp-caption"
-                  data-x="center"
-                  data-hoffset="128"
-                  data-y="480"
-                  data-voffset=""
-                  data-responsive_offset="on"
-                  data-whitespace="nowrap"
-                  data-frames='[{"delay":2400,"speed":1500,"frame":"0","from":"y:[100%];z:0;rX:0deg;rY:0;rZ:0;sX:1;sY:1;skX:0;skY:0;opacity:0;","mask":"x:0px;y:[100%];s:inherit;e:inherit;","to":"o:1;","ease":"Power2.easeInOut"},{"delay":"wait","speed":500,"frame":"999","to":"auto:auto;","ease":"Power3.easeInOut"}]'
-                  style="z-index: 11;">
-                  <a class="btn" href="contact.html">
-                    <i class="fa fa-envelope-o" aria-hidden="true"></i>CONTACT US NOW</a>
-                </div>
-                <!-- LAYER NR. 5 -->
-                <div
-                  class="tp-caption tp_m_title tp-resizeme"
-                  data-x="center"
-                  data-hoffset=""
-                  data-y="200"
-                  data-voffset=""
-                  data-responsive_offset="on"
-                  data-fontsize="['18','18','16','16']"
-                  data-lineheight="['18','18','16','16']"
-                  data-whitespace="nowrap"
-                  data-frames='[{"delay":1800,"speed":1500,"frame":"0","from":"y:[100%];z:0;rX:0deg;rY:0;rZ:0;sX:1;sY:1;skX:0;skY:0;opacity:0;","mask":"x:0px;y:[100%];s:inherit;e:inherit;","to":"o:1;","ease":"Power2.easeInOut"},{"delay":"wait","speed":500,"frame":"999","to":"auto:auto;","ease":"Power3.easeInOut"}]'
-                  style="color: #fff">
-                  <i class="fa fa-star-o"></i>
-                  <i class="fa fa-star-o"></i>
-                  <i class="fa fa-star-o"></i>
-                  <i class="fa fa-star-o"></i>
-                  <i class="fa fa-star-o"></i>
-                </div>
-                <!-- LAYER NR. 6 -->
-                <div
-                  class="tp-caption tp_m_title tp-resizeme"
-                  data-x="center"
-                  data-hoffset=""
-                  data-y="240"
-                  data-voffset=""
-                  data-responsive_offset="on"
-                  data-fontsize="['25','25','18','18']"
-                  data-lineheight="['25','25','18','18']"
-                  data-whitespace="nowrap"
-                  data-frames='[{"delay":1800,"speed":1500,"frame":"0","from":"y:[100%];z:0;rX:0deg;rY:0;rZ:0;sX:1;sY:1;skX:0;skY:0;opacity:0;","mask":"x:0px;y:[100%];s:inherit;e:inherit;","to":"o:1;","ease":"Power2.easeInOut"},{"delay":"wait","speed":500,"frame":"999","to":"auto:auto;","ease":"Power3.easeInOut"}]'
-                  style="color: #fff">
-                  Star Luxury Hotel
-                </div>
-              </li>
-              {% endfor %}
-                
-            </ul>
-          </div>
-          <!-- ========== BOOKING FORM ========== -->
-          <div class="horizontal-booking-form">
-            <div class="container">
-              <div class="inner box-shadow-007">
-                <!-- ========== BOOKING NOTIFICATION ========== -->
-                <div id="booking-notification" class="notification"></div>
-                <form id="booking-form" method="post">
-                  <!-- NAME -->
-                  <div class="row">
-                    <div class="col-md-2">
-                      <div class="form-group">
-                        <label>Name
-                          <a href="#" title="Your Name" data-toggle="popover" data-placement="top" data-trigger="hover" data-content="Please type your first name and last name">
-                            <i class="fa fa-info-circle"></i>
-                          </a>
-                        </label>
-                        <input class="form-control" name="booking-name" type="text" data-trigger="hover" placeholder="Write Your Name">
-                      </div>
-                    </div>
-                    <!-- Phone -->
-                    <div class="col-md-2">
-                      <div class="form-group">
-                        <label>Phone
-                          <a href="#" title="Your Phone" data-toggle="popover" data-placement="top" data-trigger="hover" data-content="Please type your Phone">
-                            <i class="fa fa-info-circle"></i>
-                          </a>
-                        </label>
-                        <input class="form-control" name="booking-phone" type="number" placeholder="Write your Phone">
-                      </div>
-                    </div>
-                    <!-- ROOM TYPE -->
-                    <div class="col-md-2">
-                      <div class="form-group">
-                        <label>Room Type
-                          <a href="#" title="Room Type" data-toggle="popover" data-placement="top" data-trigger="hover" data-content="Please select room type">
-                            <i class="fa fa-info-circle"></i>
-                          </a>
-                        </label>
-                        <select class="form-control" name="booking-roomtype" title="Select Room Type" data-header="Room Type">
-                         
+<!-- ========== REVOLUTION SLIDER ========== -->
+<div class="slider">
+  <div id="rev-slider-1" class="rev_slider gradient-slider" style="display:none" data-version="5.4.5">
+    <ul>
 
-                          {% for room in room_forms %}
-                            <option value="{{ room }}">{{ room }}</option>
-                          {% endfor %}
-                        </select>
-                      </div>
-                    </div>
-                    <!-- DATE -->
-                    <div class="col-md-2">
-                      <div class="form-group">
-                        <label>Check-In/Out
-                          <a href="#" title="Check-In / Check-Out" data-toggle="popover" data-placement="top" data-trigger="hover" data-content="Please select check-in and check-out date <br>*Check In from 11:00am">
-                            <i class="fa fa-info-circle"></i>
-                          </a>
-                        </label>
-                        <input type="text" class="datepicker form-control" name="booking-date" placeholder="Arrival & Departure" readonly="readonly">
-                      </div>
-                    </div>
-                    <!-- GUESTS -->
-                    <div class="col-md-2">
-                      <div class="form-group">
-                        <label>Guests
-                          <a href="#" title="Guests" data-toggle="popover" data-placement="top" data-trigger="hover" data-content="Please Select Adults / Children">
-                            <i class="fa fa-info-circle"></i>
-                          </a>
-                        </label>
-                        <div class="panel-dropdown">
-                          <div class="form-control guestspicker">Guests
-                            <span class="gueststotal"></span></div>
-                          <div class="panel-dropdown-content">
-                            <div class="guests-buttons">
-                              <label>Adults
-                                <a href="#" title="" data-toggle="popover" data-placement="top" data-trigger="hover" data-content="18+ years" data-original-title="Adults">
-                                  <i class="fa fa-info-circle"></i>
-                                </a>
-                              </label>
-                              <div class="guests-button">
-                                <div class="minus"></div>
-                                <input type="text" name="booking-adults" class="booking-guests" value="0">
-                                <div class="plus"></div>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                    <!-- BOOKING BUTTON -->
-                    <div class="col-md-2">
-                      <button type="submit" class="btn btn-book">BOOK A ROOM</button>
-                      <div class="advanced-form-link">
-                        <a href="booking-form.html">
-                          Advanced Booking Form
-                        </a>
-                      </div>
-                    </div>
-                  </div>
-                </form>
-              </div>
-            </div>
-          </div>
+
+      {% for sl in slider %}
+      <li data-transition="crossfade">
+        <!-- MAIN IMAGE -->
+        <img src="{{ sl.image.url }}" alt="Image" title="Image" data-bgposition="center center" data-bgfit="cover"
+          data-bgrepeat="no-repeat" data-bgparallax="10" class="rev-slidebg" data-no-retina="">
+        <!-- LAYER NR. 1 -->
+        <h1 class="tp-caption tp-resizeme" data-x="center" data-hoffset="" data-y="320" data-voffset=""
+          data-responsive_offset="on" data-fontsize="['80','50','40','30']" data-lineheight="['60','50','40','30']"
+          data-whitespace="nowrap"
+          data-frames='[{"delay":1000,"speed":1500,"frame":"0","from":"y:[-100%];z:0;rX:0deg;rY:0;rZ:0;sX:1;sY:1;skX:0;skY:0;","mask":"x:0px;y:0px;s:inherit;e:inherit;","to":"o:1;","ease":"Power3.easeInOut"},{"delay":"wait","speed":500,"frame":"999","to":"auto:auto;","ease":"Power3.easeInOut"}]'
+          style="z-index: 5; color: #fff; font-weight: 900;">
+          {{ sl.title }}</h1>
+        <!-- LAYER NR. 2 -->
+        <div class="tp-caption tp-resizeme" data-x="center" data-hoffset="" data-y="410" data-voffset=""
+          data-responsive_offset="on" data-fontsize="16" data-lineheight="16" data-whitespace="nowrap"
+          data-frames='[{"delay":1500,"speed":1500,"frame":"0","from":"y:[100%];z:0;rX:0deg;rY:0;rZ:0;sX:1;sY:1;skX:0;skY:0;opacity:0;","mask":"x:0px;y:[100%];s:inherit;e:inherit;","to":"o:1;","ease":"Power2.easeInOut"},{"delay":"wait","speed":500,"frame":"999","to":"auto:auto;","ease":"Power3.easeInOut"}]'
+          style="z-index: 6; color: #fff;">Live Your Myth In Hotel Himara</div>
+        <!-- LAYER NR. 3 -->
+        <div class="tp-caption" data-x="center" data-hoffset="-120" data-y="480" data-voffset=""
+          data-responsive_offset="on" data-whitespace="nowrap"
+          data-frames='[{"delay":2400,"speed":1500,"frame":"0","from":"y:[100%];z:0;rX:0deg;rY:0;rZ:0;sX:1;sY:1;skX:0;skY:0;opacity:0;","mask":"x:0px;y:[100%];s:inherit;e:inherit;","to":"o:1;","ease":"Power2.easeInOut"},{"delay":"wait","speed":500,"frame":"999","to":"auto:auto;","ease":"Power3.easeInOut"}]'
+          style="z-index: 11;">
+          <a class="btn" href="booking-form.html">
+            <i class="fa fa-calendar"></i>BOOK A ROOM NOW</a>
         </div>
-        <!-- ========== ABOUT ========== -->
-        <section class="about mt100">
-          <div class="container">
-            <div class="row">
-              <div class="col-lg-8">
-                <div class="section-title">
-                  <h4 class="text-uppercase">Hotel Himara. since 1992</h4>
-                  <p class="section-subtitle">High quality accommodation services</p>
-                </div>
-                <div class="info-branding">
-                  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Necessitatibus deleniti nulla, hic voluptatibus eum voluptatum libero suscipit nemo voluptates cupiditate, ipsum provident facere modi tempora ducimus enim dicta laborum esse aliquam rem
-                    assumenda dolores. Commodi, aperiam, blanditiis! Ipsum iure necessitatibus eaque, fuga. Excepturi facilis libero dicta soluta officiis, sint sit voluptatem, vero doloribus nesciunt suscipit dolores veritatis minus quam atque non autem quasi
-                    consequatur quae sequi ex, ipsa facere qui ut recusandae. Quod earum cupiditate quaerat assumenda.</p>
-                  <div class="providers">
-                    <span>Recommended on:</span>
-                    <!-- ITEM -->
-                    <div class="item">
-                      <a href="#">
-                        <img src="{% static '/' %}images/providers/provider-1.png" alt="Image">
-                      </a>
-                    </div>
-                    <!-- ITEM -->
-                    <div class="item">
-                      <a href="#">
-                        <img src="{% static '/' %}images/providers/provider-2.png" alt="Image">
-                      </a>
-                    </div>
-                    <!-- ITEM -->
-                    <div class="item">
-                      <a href="#">
-                        <img src="{% static '/' %}images/providers/provider-3.png" alt="Image">
-                      </a>
-                    </div>
-                    <!-- ITEM -->
-                    <div class="item">
-                      <a href="#">
-                        <img src="{% static '/' %}images/providers/provider-4.png" alt="Image">
-                      </a>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="col-lg-4">
-                <div class="brand-info">
-                  <div class="inner">
-                    <div class="content">
-                      <img src="{% static '/' %}images/logo-big-transparent.svg" width="100" alt="Image">
-                      <div class="stars">
-                        <i class="fa fa-star" aria-hidden="true"></i>
-                        <i class="fa fa-star" aria-hidden="true"></i>
-                        <i class="fa fa-star" aria-hidden="true"></i>
-                        <i class="fa fa-star" aria-hidden="true"></i>
-                        <i class="fa fa-star" aria-hidden="true"></i>
-                      </div>
-                      <h5 class="title">LUXURY HOTEL</h5>
-                      <p class="mt20">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad dolorem iste suscipit voluptates architecto nemo.</p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
-        <!-- ========== ROOMS ========== -->
-        <section class="rooms gray">
-          <div class="container">
-            <div class="section-title">
-              <h4>OUR ROOMS</h4>
-              <p class="section-subtitle">Our favorite rooms</p>
-              <a href="{% url 'rooms' %}" class="view-all">View all rooms</a>
-            </div>
-            <div class="row">
+        <!-- LAYER NR. 4 -->
+        <div class="tp-caption" data-x="center" data-hoffset="128" data-y="480" data-voffset=""
+          data-responsive_offset="on" data-whitespace="nowrap"
+          data-frames='[{"delay":2400,"speed":1500,"frame":"0","from":"y:[100%];z:0;rX:0deg;rY:0;rZ:0;sX:1;sY:1;skX:0;skY:0;opacity:0;","mask":"x:0px;y:[100%];s:inherit;e:inherit;","to":"o:1;","ease":"Power2.easeInOut"},{"delay":"wait","speed":500,"frame":"999","to":"auto:auto;","ease":"Power3.easeInOut"}]'
+          style="z-index: 11;">
+          <a class="btn" href="contact.html">
+            <i class="fa fa-envelope-o" aria-hidden="true"></i>CONTACT US NOW</a>
+        </div>
+        <!-- LAYER NR. 5 -->
+        <div class="tp-caption tp_m_title tp-resizeme" data-x="center" data-hoffset="" data-y="200" data-voffset=""
+          data-responsive_offset="on" data-fontsize="['18','18','16','16']" data-lineheight="['18','18','16','16']"
+          data-whitespace="nowrap"
+          data-frames='[{"delay":1800,"speed":1500,"frame":"0","from":"y:[100%];z:0;rX:0deg;rY:0;rZ:0;sX:1;sY:1;skX:0;skY:0;opacity:0;","mask":"x:0px;y:[100%];s:inherit;e:inherit;","to":"o:1;","ease":"Power2.easeInOut"},{"delay":"wait","speed":500,"frame":"999","to":"auto:auto;","ease":"Power3.easeInOut"}]'
+          style="color: #fff">
+          <i class="fa fa-star-o"></i>
+          <i class="fa fa-star-o"></i>
+          <i class="fa fa-star-o"></i>
+          <i class="fa fa-star-o"></i>
+          <i class="fa fa-star-o"></i>
+        </div>
+        <!-- LAYER NR. 6 -->
+        <div class="tp-caption tp_m_title tp-resizeme" data-x="center" data-hoffset="" data-y="240" data-voffset=""
+          data-responsive_offset="on" data-fontsize="['25','25','18','18']" data-lineheight="['25','25','18','18']"
+          data-whitespace="nowrap"
+          data-frames='[{"delay":1800,"speed":1500,"frame":"0","from":"y:[100%];z:0;rX:0deg;rY:0;rZ:0;sX:1;sY:1;skX:0;skY:0;opacity:0;","mask":"x:0px;y:[100%];s:inherit;e:inherit;","to":"o:1;","ease":"Power2.easeInOut"},{"delay":"wait","speed":500,"frame":"999","to":"auto:auto;","ease":"Power3.easeInOut"}]'
+          style="color: #fff">
+          Star Luxury Hotel
+        </div>
+      </li>
+      {% endfor %}
 
-              
-              {% for room_pic in room_picked %}
-                 
-              <!-- ITEM -->
-              <div class="col-md-4">
-                <div class="room-grid-item">
-                  <figure class="gradient-overlay-hover link-icon">
-                    <a href="{% url 'room_detail' room_pic.pk %}">
-                      <img src="{{ room_pic.image.url }}" class="img-fluid" alt="Image">
-                    </a>
-                    <div class="room-services">
-                      
-                      
-                    
-                        {% for service in room_services %}
-                          {% if service.room_id == room_pic.pk %}  
-                           <i class="{{ service.icon }}" aria-hidden="true" data-toggle="popover" data-placement="right" data-trigger="hover" data-content="{{ service.description }}" data-original-title="{{ service.title }}"></i>
-                          {% endif %}
-                            
-                       
-                        {% endfor %}
-                      
-                        
-                      
-                        
-                      
-                        
-                        
-                      
-                     
-                    </div>
-                    <div class="room-price">{{ room_pic.price }} / night</div>
-                  </figure>
-                  <div class="room-info">
-                    <h2 class="room-title">
-                      <a href="{% url 'room_detail' room_pic.pk %}">{{ room_pic.title }}</a>
-                    </h2>
-                    <p>Enjoy our {{ room_pic.title }}</p>
-                  </div>
-                </div>
-              </div>
-
-              {% endfor %}
-
-            </div>
-          </div>
-        </section>
-        <!-- ========== SERVICES ========== -->
-        <section class="services">
-          <div class="container">
-            <div class="section-title">
-              <h4>HIMARA. SERVICES</h4>
-              <p class="section-subtitle">Check out our awesome services</p>
-            </div>
-            <div class="row">
-              <div class="col-lg-7 col-12">
-
-                
-                
-                  
-                
-                  
-
-                <div data-slider-id="services" class="services-owl owl-carousel">
-                  {% for service in services %}
-                  <figure class="gradient-overlay">
-                   <a href="#"> <img src="{{ service.image.url }}" class="img-fluid" alt="Image"></a>
-                    <figcaption>
-                      <h4>{{ service.title }}</h4>
-                    </figcaption>
-                  </figure>
-                  {% endfor %}
-                </div>
-              </div>
-              <div class="col-lg-5 col-12">
-                <div class="owl-thumbs" data-slider-id="services">
-                  
-                  {% for service in services %}
-                    
-                  
-                    
-                  <div class="owl-thumb-item">
-                    <span class="media-left">
-                      <i class="{{ service.icon }}"></i>
-                    </span>
-                    <div class="media-body">
-                      <h5>{{ service.title }}</h5>
-                      <p>{{ service.description|slice:110 }}...</p>
-                    </div>
-                  </div>
-
-                  {% endfor %}
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
-        <!-- ========== GALLERY ========== -->
-        <section class="gallery">
-          <div class="container">
-            <div class="section-title">
-              <h4>HIMARA. GALLERY</h4>
-              <p class="section-subtitle">Check out our image gallery</p>
-              <a href="{% url 'gallery' %}" class="view-all">View gallery images</a>
-            </div>
-            <div class="gallery-owl owl-carousel image-gallery">
-              <!-- ITEM -->
-              
-              {% for item in gallery %}
-                
-             
-                
-              <div class="gallery-item">
-                <figure class="gradient-overlay image-icon">
-                  <a href="{{ item.image.url }}">
-                    <img src="{{ item.image.url }}" alt="Image">
+    </ul>
+  </div>
+  <!-- ========== BOOKING FORM ========== -->
+  <div class="horizontal-booking-form">
+    <div class="container">
+      <div class="inner box-shadow-007">
+        <!-- ========== BOOKING NOTIFICATION ========== -->
+        <div id="booking-notification" class="notification"></div>
+        <form  method="post">
+          {% csrf_token %}
+          <!-- NAME -->
+          <div class="row">
+            <div class="col-md-2">
+              <div class="form-group">
+                <label>Name
+                  <a href="#" title="Your Name" data-toggle="popover" data-placement="top" data-trigger="hover"
+                    data-content="Please type your first name and last name">
+                    <i class="fa fa-info-circle"></i>
                   </a>
-                  <figcaption>{{ item.title }}</figcaption>
-                </figure>
+                </label>
+                <!-- <input class="form-control" name="booking-name" type="text" data-trigger="hover"
+                  placeholder="Write Your Name"> -->
+
+                  {{ form.name }}
               </div>
-              {% endfor %}
-
             </div>
-          </div>
-        </section>
-
-        <!-- ========== RESTAURANT ========== -->
-        <section class="restaurant image-bg parallax gradient-overlay op5" data-src="{% static '/' %}images/restaurant.jpg" data-parallax="scroll" data-speed="0.3" data-mirror-selector=".wrapper" data-z-index="0">
-          <div class="container">
-            <div class="section-title">
-              <h4>HIMARA. RESTAURANT</h4>
-              <p class="section-subtitle">Live a gourmet dining experience</p>
-              <a href="#" class="view-all uppercase">More About Our Restaurant</a>
+            <!-- Phone -->
+            <div class="col-md-2">
+              <div class="form-group">
+                <label>Phone
+                  <a href="#" title="Your Phone" data-toggle="popover" data-placement="top" data-trigger="hover"
+                    data-content="Please type your Phone">
+                    <i class="fa fa-info-circle"></i>
+                  </a>
+                </label>
+                <!-- <input class="form-control" name="booking-phone" type="number" placeholder="Write your Phone"> -->
+                {{ form.phone }}
+              </div>
             </div>
-            <div class="row">
-              
-              {% for menu in restaurant_menu %}
-                
-              
-                
-              <!-- ITEM -->
-              <div class="col-md-6 col-sm-6 col-6">
-                <div class="restaurant-menu-item">
-                  <div class="row">
-                    <div class="col-lg-4 col-12">
-                      <figure>
-                        <img src="{{ menu.image.url }}" class="img-fluid " alt="Image">
-                      </figure>
-                    </div>
-                    <div class="col-lg-8 col-12">
-                      <div class="info">
-                        <div class="title">
-                          <span class="name">{{ menu.title }}</span>
-                          <span class="price">
-                            <span class="amount">€ {{ menu.price }}</span>
-                          </span>
-                        </div>
-                        <p>{{ menu.description | slice:50 }}...
-                        </p>
+            <!-- ROOM TYPE -->
+            <div class="col-md-2">
+              <div class="form-group">
+                <label>Room Type
+                  <a href="#" title="Room Type" data-toggle="popover" data-placement="top" data-trigger="hover"
+                    data-content="Please select room type">
+                    <i class="fa fa-info-circle"></i>
+                  </a>
+                </label>
+
+
+                <select class="form-control" name="room" title="Select Room Type" data-header="Room Type">
+                  {% for room in room_forms %}
+                  <option  value="{{ room }}">{{ room }}</option>
+                  {% endfor %}
+                </select>
+              </div>
+            </div>
+            <!-- DATE -->
+            <div class="col-md-2">
+              <div class="form-group">
+                <label>Check-In/Out
+                  <a href="#" title="Check-In / Check-Out" data-toggle="popover" data-placement="top"
+                    data-trigger="hover"
+                    data-content="Please select check-in and check-out date <br>*Check In from 11:00am">
+                    <i class="fa fa-info-circle"></i>
+                  </a>
+                </label>
+                <!-- <input type="text" class="datepicker form-control" name="booking-date" placeholder="Arrival & Departure"
+                  readonly="readonly"> -->
+
+                  {{ form.arrival }}
+              </div>
+            </div>
+            <!-- GUESTS -->
+            <div class="col-md-2">
+              <div class="form-group">
+                <label>Guests
+                  <a href="#" title="Guests" data-toggle="popover" data-placement="top" data-trigger="hover"
+                    data-content="Please Select Adults / Children">
+                    <i class="fa fa-info-circle"></i>
+                  </a>
+                </label>
+                <div class="panel-dropdown">
+                  <div class="form-control guestspicker">Guests
+                    <span class="gueststotal"></span>
+                  </div>
+                  <div class="panel-dropdown-content">
+                    <div class="guests-buttons">
+                      <label>Adults
+                        <a href="#" title="" data-toggle="popover" data-placement="top" data-trigger="hover"
+                          data-content="18+ years" data-original-title="Adults">
+                          <i class="fa fa-info-circle"></i>
+                        </a>
+                      </label>
+                      <div class="guests-button">
+                        <div class="minus"></div>
+                        <!-- <input type="text" name="booking-adults" class="booking-guests" value="0"> -->
+                        {{ form.guest }}
+                        <div class="plus"></div>
                       </div>
                     </div>
                   </div>
                 </div>
               </div>
-
-              {% endfor %}
-
             </div>
-          </div>
-        </section>
-        <!-- ========== NEWS ==========-->
-        <section class="news">
-          <div class="container">
-            <div class="section-title">
-              <h4 class="title">LATEST NEWS</h4>
-              <p class="section-subtitle">Check out our latest news</p>
-              <a href="{% url 'blog' %}" class="view-all">View all news</a>
-            </div>
-            <div class="row">
-
-              
-              {% for blog in blogs %}
-                
-                <!-- ITEM -->
-                <div class="col-md-4">
-                  <div class="news-grid-item">
-                    <figure class="gradient-overlay-hover link-icon">
-                      <a href="{% url 'blog_detail' blog.pk %}">
-                        <img src="{{ blog.image.url }}" class="img-fluid" alt="Image">
-                      </a>
-                    </figure>
-                    <div class="news-info">
-                      <h4 class="title">
-                        <a href="{% url 'blog_detail' blog.pk %}">{{ blog.title }}</a>
-                      </h4>
-                      <p>{{ blog.description|slice:110 }}...</p>
-                      <div class="post-meta">
-                        <span class="author">
-                          <a href="#"><img src="{% static '/' %}images/users/admin.jpg" width="16" alt="Image">
-                            {{ blog.author }}</a>
-                        </span>
-                        <span class="date">
-                          <i class="fa fa-clock-o"></i>
-                          {{ blog.create_at }}</span>
-                        <span class="comments">
-                          <a href="#">
-                            <i class="fa fa-commenting-o"></i>
-                            1 Comment</a>
-                        </span>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-
-              {% endfor %}
-
-            </div>
-          </div>
-        </section>
-
-        <!-- ========== STAFF ========== -->
-      <section class="staff">
-        <div class="container">
-          <div class="section-title">
-            <h4>MEET THE STAFF</h4>
-            <p class="section-subtitle">Our awesome staff make the difference</p>
-            <a href="staff.html" class="view-all">View all staff</a>
-          </div>
-          <div class="staff-owl owl-carousel">
-
-            
-            {% for staff in our_staff %}
-              
-            
-              
-            <!-- ITEM -->
-            <div class="staff-item">
-              <figure>
-                <img src="{{ staff.image.url }}" class="img-fluid" alt="Image">
-                <div class="position">{{ staff.profession }}</div>
-              </figure>
-              <div class="details">
-                <h5>{{ staff.name }} {{ staff.surename }}</h5>
-                <p>{{ staff.description }}</p>
-              </div>
-            </div>
-
-            {% endfor %}
-
-          </div>
-        </div>
-      </section>
-
-        <!-- ========== VIDEO ========== -->
-        <section class="video np parallax gradient-overlay op6" data-src="{% static '/' %}images/video.jpg" data-parallax="scroll" data-speed="0.3" data-mirror-selector=".wrapper" data-z-index="0">
-          <div class="inner gradient-overlay">
-            <div class="container">
-              <div class="video-popup">
-                <a class="popup-vimeo" href="https://www.youtube.com/watch?v=BDDfopejpwk">
-                  <i class="fa fa-play"></i>
+            <!-- BOOKING BUTTON -->
+            <div class="col-md-2">
+              <button type="submit" class="btn btn-book">BOOK A ROOM</button>
+              <div class="advanced-form-link">
+                <a href="booking-form.html">
+                  Advanced Booking Form
                 </a>
               </div>
             </div>
           </div>
-        </section>
-
-        <!-- ========== CONTACT V2 ========== -->
-        <section class="contact-v2 gray">
-          <div class="container">
-            <div class="row">
-              <div class="col-md-5">
-                <div class="section-title">
-                  <h4>GET IN TOUCH</h4>
-                  <p class="section-subtitle">Get in touch</p>
-                </div>
-                <ul class="contact-details">
-                  <li>
-                    <i class="fa fa-map-marker" aria-hidden="true"></i>
-                    Lorem ipsum dolor, 25, Himara</li>
-                  <li>
-                    <i class="fa fa-phone" aria-hidden="true"></i>
-                    Phone: +1 888 123 4567
-                  </li>
-                  <li>
-                    <i class="fa fa-fax"></i>
-                    Fax: +1 888 123 4567</li>
-                  <li>
-                    <i class="fa fa-globe"></i>
-                    Web: www.hotelhimara.com</li>
-                  <li>
-                    <i class="fa fa-envelope"></i>
-                    Email:
-                    <a href="mailto:info@site.com">contact@hotelhimara.com</a>
-                  </li>
-                </ul>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- ========== ABOUT ========== -->
+<section class="about mt100">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8">
+        <div class="section-title">
+          <h4 class="text-uppercase">Hotel Himara. since 1992</h4>
+          <p class="section-subtitle">High quality accommodation services</p>
+        </div>
+        <div class="info-branding">
+          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Necessitatibus deleniti nulla, hic voluptatibus
+            eum voluptatum libero suscipit nemo voluptates cupiditate, ipsum provident facere modi tempora ducimus enim
+            dicta laborum esse aliquam rem
+            assumenda dolores. Commodi, aperiam, blanditiis! Ipsum iure necessitatibus eaque, fuga. Excepturi facilis
+            libero dicta soluta officiis, sint sit voluptatem, vero doloribus nesciunt suscipit dolores veritatis minus
+            quam atque non autem quasi
+            consequatur quae sequi ex, ipsa facere qui ut recusandae. Quod earum cupiditate quaerat assumenda.</p>
+          <div class="providers">
+            <span>Recommended on:</span>
+            <!-- ITEM -->
+            <div class="item">
+              <a href="#">
+                <img src="{% static '/' %}images/providers/provider-1.png" alt="Image">
+              </a>
+            </div>
+            <!-- ITEM -->
+            <div class="item">
+              <a href="#">
+                <img src="{% static '/' %}images/providers/provider-2.png" alt="Image">
+              </a>
+            </div>
+            <!-- ITEM -->
+            <div class="item">
+              <a href="#">
+                <img src="{% static '/' %}images/providers/provider-3.png" alt="Image">
+              </a>
+            </div>
+            <!-- ITEM -->
+            <div class="item">
+              <a href="#">
+                <img src="{% static '/' %}images/providers/provider-4.png" alt="Image">
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-4">
+        <div class="brand-info">
+          <div class="inner">
+            <div class="content">
+              <img src="{% static '/' %}images/logo-big-transparent.svg" width="100" alt="Image">
+              <div class="stars">
+                <i class="fa fa-star" aria-hidden="true"></i>
+                <i class="fa fa-star" aria-hidden="true"></i>
+                <i class="fa fa-star" aria-hidden="true"></i>
+                <i class="fa fa-star" aria-hidden="true"></i>
+                <i class="fa fa-star" aria-hidden="true"></i>
               </div>
-              <div class="col-md-7">
-                <div class="section-title">
-                  <h4>CONTACT US</h4>
-                  <p class="section-subtitle">Say hello</p>
+              <h5 class="title">LUXURY HOTEL</h5>
+              <p class="mt20">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad dolorem iste suscipit
+                voluptates architecto nemo.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- ========== ROOMS ========== -->
+<section class="rooms gray">
+  <div class="container">
+    <div class="section-title">
+      <h4>OUR ROOMS</h4>
+      <p class="section-subtitle">Our favorite rooms</p>
+      <a href="{% url 'rooms' %}" class="view-all">View all rooms</a>
+    </div>
+    <div class="row">
+
+
+      {% for room_pic in room_picked %}
+
+      <!-- ITEM -->
+      <div class="col-md-4">
+        <div class="room-grid-item">
+          <figure class="gradient-overlay-hover link-icon">
+            <a href="{% url 'room_detail' room_pic.pk %}">
+              <img src="{{ room_pic.image.url }}" class="img-fluid" alt="Image">
+            </a>
+            <div class="room-services">
+
+
+
+              {% for service in room_services %}
+              {% if service.room_id == room_pic.pk %}
+              <i class="{{ service.icon }}" aria-hidden="true" data-toggle="popover" data-placement="right"
+                data-trigger="hover" data-content="{{ service.description }}"
+                data-original-title="{{ service.title }}"></i>
+              {% endif %}
+
+
+              {% endfor %}
+
+
+
+
+
+
+
+
+
+            </div>
+            <div class="room-price">{{ room_pic.price }} / night</div>
+          </figure>
+          <div class="room-info">
+            <h2 class="room-title">
+              <a href="{% url 'room_detail' room_pic.pk %}">{{ room_pic.title }}</a>
+            </h2>
+            <p>Enjoy our {{ room_pic.title }}</p>
+          </div>
+        </div>
+      </div>
+
+      {% endfor %}
+
+    </div>
+  </div>
+</section>
+<!-- ========== SERVICES ========== -->
+<section class="services">
+  <div class="container">
+    <div class="section-title">
+      <h4>HIMARA. SERVICES</h4>
+      <p class="section-subtitle">Check out our awesome services</p>
+    </div>
+    <div class="row">
+      <div class="col-lg-7 col-12">
+
+
+
+
+
+
+
+        <div data-slider-id="services" class="services-owl owl-carousel">
+          {% for service in services %}
+          <figure class="gradient-overlay">
+            <a href="#"> <img src="{{ service.image.url }}" class="img-fluid" alt="Image"></a>
+            <figcaption>
+              <h4>{{ service.title }}</h4>
+            </figcaption>
+          </figure>
+          {% endfor %}
+        </div>
+      </div>
+      <div class="col-lg-5 col-12">
+        <div class="owl-thumbs" data-slider-id="services">
+
+          {% for service in services %}
+
+
+
+          <div class="owl-thumb-item">
+            <span class="media-left">
+              <i class="{{ service.icon }}"></i>
+            </span>
+            <div class="media-body">
+              <h5>{{ service.title }}</h5>
+              <p>{{ service.description|slice:110 }}...</p>
+            </div>
+          </div>
+
+          {% endfor %}
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- ========== GALLERY ========== -->
+<section class="gallery">
+  <div class="container">
+    <div class="section-title">
+      <h4>HIMARA. GALLERY</h4>
+      <p class="section-subtitle">Check out our image gallery</p>
+      <a href="{% url 'gallery' %}" class="view-all">View gallery images</a>
+    </div>
+    <div class="gallery-owl owl-carousel image-gallery">
+      <!-- ITEM -->
+
+      {% for item in gallery %}
+
+
+
+      <div class="gallery-item">
+        <figure class="gradient-overlay image-icon">
+          <a href="{{ item.image.url }}">
+            <img src="{{ item.image.url }}" alt="Image">
+          </a>
+          <figcaption>{{ item.title }}</figcaption>
+        </figure>
+      </div>
+      {% endfor %}
+
+    </div>
+  </div>
+</section>
+
+<!-- ========== TESTIMONIALS ========== -->
+<section class="testimonials gray">
+  <div class="container">
+    <div class="section-title">
+      <h4>OUR GUESTS LOVE US</h4>
+      <p class="section-subtitle">What our guests are saying about us</p>
+    </div>
+    <div class="owl-carousel testimonials-owl">
+      <!-- ITEM -->
+
+      
+      {% for testimonial in testimonials %}
+        
+     
+        
+      <div class="item">
+        <div class="testimonial-item">
+          <div class="author-img">
+            <img alt="Image" class="img-fluid" src="{{ testimonial.photo.url }}">
+          </div>
+          <div class="author">
+            <h4 class="name">{{ testimonial.name }}</h4>
+            <div class="location">{{ testimonial.location }}</div>
+          </div>
+          <div class="rating">
+
+            {{ testimonial.rating }}
+            <!-- <i class="fa fa-star voted" aria-hidden="true"></i>
+            <i class="fa fa-star voted" aria-hidden="true"></i>
+            <i class="fa fa-star voted" aria-hidden="true"></i>
+            <i class="fa fa-star voted" aria-hidden="true"></i>
+            <i class="fa fa-star voted" aria-hidden="true"></i> -->
+          </div>
+          <p>{{ testimonial.description }}</p>
+        </div>
+      </div>
+      <!-- ITEM -->
+
+      {% endfor %}
+
+    </div>
+  </div>
+</section>
+
+<!-- ========== RESTAURANT ========== -->
+<section class="restaurant image-bg parallax gradient-overlay op5" data-src="{% static '/' %}images/restaurant.jpg"
+  data-parallax="scroll" data-speed="0.3" data-mirror-selector=".wrapper" data-z-index="0">
+  <div class="container">
+    <div class="section-title">
+      <h4>HIMARA. RESTAURANT</h4>
+      <p class="section-subtitle">Live a gourmet dining experience</p>
+      <a href="#" class="view-all uppercase">More About Our Restaurant</a>
+    </div>
+    <div class="row">
+
+      {% for menu in restaurant_menu %}
+
+
+
+      <!-- ITEM -->
+      <div class="col-md-6 col-sm-6 col-6">
+        <div class="restaurant-menu-item">
+          <div class="row">
+            <div class="col-lg-4 col-12">
+              <figure>
+                <img src="{{ menu.image.url }}" class="img-fluid " alt="Image">
+              </figure>
+            </div>
+            <div class="col-lg-8 col-12">
+              <div class="info">
+                <div class="title">
+                  <span class="name">{{ menu.title }}</span>
+                  <span class="price">
+                    <span class="amount">€ {{ menu.price }}</span>
+                  </span>
                 </div>
-                <form id="contact-form" name="contact-form">
-                  <div class="form-group">
-                    <input class="form-control" name="name" placeholder="Your Name" type="text">
-                  </div>
-                  <div class="form-group">
-                    <input class="form-control" name="email" type="email" placeholder="Your Email Address">
-                  </div>
-                  <div class="form-group">
-                    <textarea class="form-control" name="message" placeholder="Your Message"></textarea>
-                  </div>
-                  <button class="btn" type="submit">
-                    <i class="fa fa-location-arrow"></i>Send Message</button>
-                </form>
+                <p>{{ menu.description | slice:50 }}...
+                </p>
               </div>
             </div>
           </div>
-        </section>
-        <!-- ========== INSTAGRAM ========== -->
-        <section class="instgram">
-          <div class="section-title aligncenter">
-            <p class="section-subtitle">Check out some pictures from our instagram page
-              <a href="https://www.instagram.com/hotelhimara/" target="_blank">@hotelhimara</a>
-            </p>
-          </div>
-          <div id="instafeed-gallery" class="owl-carousel instagram-owl"></div>
-        </section>
+        </div>
+      </div>
 
-  
-  
-    
+      {% endfor %}
+
+    </div>
+  </div>
+</section>
+<!-- ========== NEWS ==========-->
+<section class="news">
+  <div class="container">
+    <div class="section-title">
+      <h4 class="title">LATEST NEWS</h4>
+      <p class="section-subtitle">Check out our latest news</p>
+      <a href="{% url 'blog' %}" class="view-all">View all news</a>
+    </div>
+    <div class="row">
+
+
+      {% for blog in blogs %}
+
+      <!-- ITEM -->
+      <div class="col-md-4">
+        <div class="news-grid-item">
+          <figure class="gradient-overlay-hover link-icon">
+            <a href="{% url 'blog_detail' blog.pk %}">
+              <img src="{{ blog.image.url }}" class="img-fluid" alt="Image">
+            </a>
+          </figure>
+          <div class="news-info">
+            <h4 class="title">
+              <a href="{% url 'blog_detail' blog.pk %}">{{ blog.title }}</a>
+            </h4>
+            <p>{{ blog.description|slice:110 }}...</p>
+            <div class="post-meta">
+              <span class="author">
+                <a href="#"><img src="{% static '/' %}images/users/admin.jpg" width="16" alt="Image">
+                  {{ blog.author }}</a>
+              </span>
+              <span class="date">
+                <i class="fa fa-clock-o"></i>
+                {{ blog.create_at }}</span>
+              <span class="comments">
+                <a href="#">
+                  <i class="fa fa-commenting-o"></i>
+                  1 Comment</a>
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {% endfor %}
+
+    </div>
+  </div>
+</section>
+
+<!-- ========== STAFF ========== -->
+<section class="staff">
+  <div class="container">
+    <div class="section-title">
+      <h4>MEET THE STAFF</h4>
+      <p class="section-subtitle">Our awesome staff make the difference</p>
+      <a href="staff.html" class="view-all">View all staff</a>
+    </div>
+    <div class="staff-owl owl-carousel">
+
+
+      {% for staff in our_staff %}
+
+
+
+      <!-- ITEM -->
+      <div class="staff-item">
+        <figure>
+          <img src="{{ staff.image.url }}" class="img-fluid" alt="Image">
+          <div class="position">{{ staff.profession }}</div>
+        </figure>
+        <div class="details">
+          <h5>{{ staff.name }} {{ staff.surename }}</h5>
+          <p>{{ staff.description }}</p>
+        </div>
+      </div>
+
+      {% endfor %}
+
+    </div>
+  </div>
+</section>
+
+<!-- ========== VIDEO ========== -->
+<section class="video np parallax gradient-overlay op6" data-src="{% static '/' %}images/video.jpg"
+  data-parallax="scroll" data-speed="0.3" data-mirror-selector=".wrapper" data-z-index="0">
+  <div class="inner gradient-overlay">
+    <div class="container">
+      <div class="video-popup">
+        <a class="popup-vimeo" href="https://www.youtube.com/watch?v=BDDfopejpwk">
+          <i class="fa fa-play"></i>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========== CONTACT V2 ========== -->
+<section class="contact-v2 gray">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-5">
+        <div class="section-title">
+          <h4>GET IN TOUCH</h4>
+          <p class="section-subtitle">Get in touch</p>
+        </div>
+        <ul class="contact-details">
+          <li>
+            <i class="fa fa-map-marker" aria-hidden="true"></i>
+            Lorem ipsum dolor, 25, Himara
+          </li>
+          <li>
+            <i class="fa fa-phone" aria-hidden="true"></i>
+            Phone: +1 888 123 4567
+          </li>
+          <li>
+            <i class="fa fa-fax"></i>
+            Fax: +1 888 123 4567
+          </li>
+          <li>
+            <i class="fa fa-globe"></i>
+            Web: www.hotelhimara.com
+          </li>
+          <li>
+            <i class="fa fa-envelope"></i>
+            Email:
+            <a href="mailto:info@site.com">contact@hotelhimara.com</a>
+          </li>
+        </ul>
+      </div>
+      <div class="col-md-7">
+        <div class="section-title">
+          <h4>CONTACT US</h4>
+          <p class="section-subtitle">Say hello</p>
+        </div>
+        <form id="contact-form" name="contact-form">
+          <div class="form-group">
+            <input class="form-control" name="name" placeholder="Your Name" type="text">
+          </div>
+          <div class="form-group">
+            <input class="form-control" name="email" type="email" placeholder="Your Email Address">
+          </div>
+          <div class="form-group">
+            <textarea class="form-control" name="message" placeholder="Your Message"></textarea>
+          </div>
+          <button class="btn" type="submit">
+            <i class="fa fa-location-arrow"></i>Send Message</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- ========== INSTAGRAM ========== -->
+<section class="instgram">
+  <div class="section-title aligncenter">
+    <p class="section-subtitle">Check out some pictures from our instagram page
+      <a href="https://www.instagram.com/hotelhimara/" target="_blank">@hotelhimara</a>
+    </p>
+  </div>
+  <div id="instafeed-gallery" class="owl-carousel instagram-owl"></div>
+</section>
+
+
+
+
 {% endblock content %}
-    

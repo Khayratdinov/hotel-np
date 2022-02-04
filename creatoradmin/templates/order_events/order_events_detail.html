@@ -1,0 +1,28 @@
+
+
+
+{% extends 'admin.html' %}
+{% load static %}
+
+
+
+
+{% block content %}
+
+
+<div class="card card-body">
+    <h4 class="card-title">Offer: {{ order_events.offer.title }}</h4>
+    <p class="card-text">Name: {{ order_events.name }}</p>
+    <p class="card-text">Surname: {{ order_events.surname }}</p>
+    <p class="card-text">Phone: {{ order_events.phone }}</p>
+    <p class="card-text">Email: {{ order_events.email }}</p>
+    <p class="card-text">Status: {{ order_events.status }}</p>
+    <p class="card-text">Comment: {{ order_events.text }}</p>
+    <p class="card-text">IP: {{ order_events.ip }}</p>
+    <p class="card-text">
+        <small class="text-muted">{{ order_events.creat_at }}</small>
+    </p>
+</div>
+    
+{% endblock content %}
+    

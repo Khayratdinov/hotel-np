@@ -5,127 +5,149 @@
 
 {% block content %}
 
-      <!-- ========== PAGE TITLE ========== -->
-      <div class="page-title gradient-overlay op6" style="background: url(images/breadcrumb.jpg); background-repeat: no-repeat;
+<!-- ========== PAGE TITLE ========== -->
+<div class="page-title gradient-overlay op6" style="background: url(images/breadcrumb.jpg); background-repeat: no-repeat;
   background-size: cover;">
-        <div class="container">
-          <div class="inner">
-            <h1>Blog</h1>
-            <ol class="breadcrumb">
-              <li>
-                <a href="index.html">Home</a>
-              </li>
-              <li>Blog</li>
-            </ol>
-          </div>
-        </div>
-      </div>
-      <!-- ========== MAIN ========== -->
-      <main>
-        <div class="container">
-          <div class="row">
-            <div class="col-lg-9 col-12">
-              <!-- POSTS -->
-              <div class="blog-posts">
+  <div class="container">
+    <div class="inner">
+      <h1>Blog</h1>
+      <ol class="breadcrumb">
+        <li>
+          <a href="index.html">Home</a>
+        </li>
+        <li>Blog</li>
+      </ol>
+    </div>
+  </div>
+</div>
+<!-- ========== MAIN ========== -->
+<main>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-9 col-12">
+        <!-- POSTS -->
+        <div class="blog-posts">
 
-                
-                {% for blog in blogs %}
-                  
-               
-                  
-                <!-- POST -->
-                <article class="post">
-                  <div class="row">
-                    <div class="col-sm-4">
-                      <div class="post-thumbnail">
-                        <figure class="gradient-overlay-hover link-icon">
-                          <a href="{% url 'blog_detail' blog.pk %}">
-                            <img src="{{ blog.image.url }}" class="img-fluid" alt="Image">
-                          </a>
-                        </figure>
-                      </div>
-                    </div>
-                    <div class="col-sm-8">
-                      <div class="post-details">
-                        <h2 class="post-title">
-                          <a href="{% url 'blog_detail' blog.pk %}">{{ blog.title }}</a>
-                        </h2>
-                        <div class="post-meta">
-                          <span class="author">
-                            <a href="#">{{ blog.author }}</a>
-                          </span>
-                          <span class="date">
-                            <a href="#">
-                              <i class="fa fa-clock-o"></i>{{ blog.create_at }}</a>
-                          </span>
-                          <span class="comments">
-                            <a href="#">
-                              <i class="fa fa-commenting-o"></i>1 Comment</a>
-                          </span>
-                          <span class="category">
-                            <i class="fa fa-folder-open-o"></i>IN
-                            <a href="#">{{ blog.category.title }}</a>,
-                          </span>
-                        </div>
-                        <p>{{ blog.description | slice:180 }} ...</p>
-                      </div>
-                    </div>
-                  </div>
-                </article>
 
-                {% endfor %}
+          {% for blog in blogs %}
 
-              </div>
-              <!-- ========== PAGINATION ========== -->
-              <nav class="pagination">
-                <ul>
-                  <li class="prev-pagination">
-                    <a href="#">
-                      &nbsp;<i class="fa fa-angle-left"></i>
-                      Previous &nbsp;</a>
-                  </li>
-                  <li class="active">
-                    <a href="#">1</a>
-                  </li>
-                  <li>
-                    <a href="#">2</a>
-                  </li>
-                  <li>
-                    <a href="#">3</a>
-                  </li>
-                  <li>
-                    <a href="#">4</a>
-                  </li>
-                  <li>
-                    <a href="#">5</a>
-                  </li>
-                  <li>...</li>
-                  <li>
-                    <a href="#">18</a>
-                  </li>
-                  <li>
-                    <a href="#">19</a>
-                  </li>
-                  <li>
-                    <a href="#">20</a>
-                  </li>
-                  <li class="next_pagination">
-                    <a href="#">
-                      &nbsp; Next
-                      <i class="fa fa-angle-right"></i>
-                      &nbsp;
+
+
+          <!-- POST -->
+          <article class="post">
+            <div class="row">
+              <div class="col-sm-4">
+                <div class="post-thumbnail">
+                  <figure class="gradient-overlay-hover link-icon">
+                    <a href="{% url 'blog_detail' blog.pk %}">
+                      <img src="{{ blog.image.url }}" class="img-fluid" alt="Image">
                     </a>
-                  </li>
-                </ul>
-              </nav>
+                  </figure>
+                </div>
+              </div>
+              <div class="col-sm-8">
+                <div class="post-details">
+                  <h2 class="post-title">
+                    <a href="{% url 'blog_detail' blog.pk %}">{{ blog.title }}</a>
+                  </h2>
+                  <div class="post-meta">
+                    <span class="author">
+                      <a href="#">{{ blog.author }}</a>
+                    </span>
+                    <span class="date">
+                      <a href="#">
+                        <i class="fa fa-clock-o"></i>{{ blog.create_at }}</a>
+                    </span>
+                    <span class="comments">
+                      <a href="#">
+                        <i class="fa fa-commenting-o"></i> {{ blog.countreview }} Comment</a>
+                    </span>
+                    <span class="category">
+                      <i class="fa fa-folder-open-o"></i> IN
+                      <a href="#">{{ blog.category.title }}</a>,
+                    </span>
+                  </div>
+                  <p>{{ blog.description | slice:180 }} ...</p>
+                </div>
+              </div>
             </div>
+          </article>
 
-            <!-- SIDEBAR -->
-            {% include 'blog/inc/sidebar.html' %}
-            
-          </div>
+          {% endfor %}
+
         </div>
-      </main>
-  
+        <!-- ========== PAGINATION ========== -->
+        <!-- PAGINATION -->
+        <nav class="pagination">
+          {% if blogs.has_other_pages %}
+          <ul>
+
+            {% if blogs.has_previous %}
+
+            <li class="prev-pagination">
+              <a href="?page={{ blogs.previous_page_number }}">
+                &nbsp;<i class="fa fa-angle-left"></i>
+                Previous &nbsp;</a>
+            </li>
+
+            {% else %}
+
+
+            <li class="prev-pagination d-none">
+              <a href="#">
+                &nbsp;<i class="fa fa-angle-left"></i>
+                Previous &nbsp;</a>
+            </li>
+
+            {% endif %}
+
+            {% for i in blogs.paginator.page_range %}
+            {% if blogs.number == i %}
+
+            <li class="active">
+              <a href="#">{{ i }}</a>
+            </li>
+
+            {% else %}
+
+            <li class="">
+              <a href="?page={{i}}">{{ i }}</a>
+            </li>
+            {% endif %}
+
+            {% endfor %}
+
+            {% if blogs.has_next %}
+            <li class="next_pagination">
+              <a href="?page={{ blogs.next_page_number }}">
+                &nbsp; Next
+                <i class="fa fa-angle-right"></i>
+                &nbsp;
+              </a>
+            </li>
+
+            {% else %}
+
+            <li class="next_pagination d-none">
+              <a href="#">
+                &nbsp; Next
+                <i class="fa fa-angle-right"></i>
+                &nbsp;
+              </a>
+            </li>
+
+            {% endif %}
+          </ul>
+
+          {% endif %}
+        </nav>
+      </div>
+
+      <!-- SIDEBAR -->
+      {% include 'blog/inc/sidebar.html' %}
+
+    </div>
+  </div>
+</main>
+
 {% endblock content %}
-  

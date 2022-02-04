@@ -1,0 +1,33 @@
+
+
+
+{% extends 'admin.html' %}
+{% load static %}
+
+
+
+
+{% block content %}
+
+
+<div class="card card-body">
+    <h4 class="card-title">Room: {{ order_room.room }}</h4>
+    <p class="card-text">Name: {{ order_room.name }}</p>
+    <p class="card-text">Surname: {{ order_room.surname }}</p>
+    <p class="card-text">Phone: {{ order_room.phone }}</p>
+    <p class="card-text">Email: {{ order_room.email }}</p>
+    <p class="card-text">Citizenship: {{ order_room.citizenship }}</p>
+    <p class="card-text">Guest: {{ order_room.guest }}</p>
+    <p class="card-text">Children: {{ order_room.children }}</p>
+    <p class="card-text">Arrival: {{ order_room.arrival }}</p>
+    <p class="card-text">Departure: {{ order_room.departure }}</p>
+    <p class="card-text">Status: {{ order_room.status }}</p>
+    <p class="card-text">Comment: {{ order_room.comment }}</p>
+    <p class="card-text">IP: {{ order_room.ip }}</p>
+    <p class="card-text">
+        <small class="text-muted">{{ order_room.creat_at }}</small>
+    </p>
+</div>
+    
+{% endblock content %}
+    

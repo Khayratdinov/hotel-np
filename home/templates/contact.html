@@ -30,24 +30,25 @@
               </div>
               <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Possimus sit, fugiat at in assumenda corrupti autem iste eveniet eaque vitae beatae tenetur, voluptatem eius. Numquam.</p>
               <!-- CONTACT FORM -->
-              <form id="contact-form" class="contact-form">
+              <form  method="post" class="contact-form">
+                {% csrf_token %}
                 <div class="form-group">
-                  <input class="form-control" name="name" placeholder="Name" type="text">
+                  {{ form.name }}
                 </div>
                 <div class="form-group">
-                  <input class="form-control" name="email" placeholder="Email" type="email">
+                  {{ form.email }}
                 </div>
                 <div class="form-group">
-                  <input class="form-control" name="phone" placeholder="Phone" type="text">
+                  {{ form.phone }}
                 </div>
                 <div class="form-group">
-                  <input class="form-control" name="subject" placeholder="Subject" type="text">
+                  {{ form.subject }}
                 </div>
                 <div class="form-group">
-                  <textarea class="form-control" name="message" placeholder="Message"></textarea>
+                  {{ form.message }}
                 </div>
                 <div class="form-group">
-                  <button class="btn mt30">SEND YOUR MESSAGE</button>
+                  <button type="submit" class="btn mt30">SEND YOUR MESSAGE</button>
                 </div>
               </form>
             </div>
@@ -57,6 +58,7 @@
                   <div class="toggle-streetview" id="openStreetView">
                     <i class="fa fa-street-view" aria-hidden="true"></i>
                   </div>
+                  
                   <div id="map-canvas"></div>
                 </div>
                 <div class="contact-details mt75">

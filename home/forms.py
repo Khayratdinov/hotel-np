@@ -1,8 +1,8 @@
 from django import forms
 from home.models import ContactMessage
 from room.models import Order
-from django.forms import ModelForm, TextInput, EmailInput, PasswordInput, FileInput, DateInput
-from service.models import Special_offer, Offer_order
+from django.forms import ModelForm, TextInput, EmailInput, PasswordInput, FileInput, DateInput, Textarea
+from service.models import Special_offer, Offer_order, Offer_events_ticket
 
 
 class SearchForm(forms.Form):
@@ -15,10 +15,11 @@ class OrderForm(forms.ModelForm):
         model = Order
         fields = ( 'name', 'phone', 'citizenship', 'category',  'pay', 'email','guest', 'arrival', 'departure','room',)
 
+
 class HomeOrderForm(forms.ModelForm):
     class Meta:
         model = Order
-        fields = ( 'name', 'phone', 'room', 'arrival', 'departure', 'guest',)
+        fields = ( 'name', 'phone', 'room', 'arrival', 'guest',)
 
         widgets = {
             "name" : TextInput(attrs={
@@ -35,8 +36,24 @@ class HomeOrderForm(forms.ModelForm):
 
             'room': forms.Select(attrs={
                 'class': "form-control"}
-            )
+            ),
+
+
+            "arrival" : TextInput(attrs={
+                'class' : 'datepicker form-control',
+                'id' : 'phone',
+                'placeholder' : 'Arrival & Departure',
+                'readonly' : 'readonly'
+            }),
+
+            "guest" : TextInput(attrs={
+                'class' : 'booking-guests',
+                'value': '0',
+
+ 
+            }),
         }
+
 
 class ContactForm(forms.ModelForm):
     class Meta:
@@ -50,9 +67,10 @@ class ContactForm(forms.ModelForm):
 
 
 class SpecialOfferForm(forms.ModelForm):
+
     class Meta:
         model = Offer_order
-        fields = ['name','phone', 'date', 'text']
+        fields = ['name','phone', 'date']
 
         widgets = {
             "name" : TextInput(attrs={
@@ -75,10 +93,79 @@ class SpecialOfferForm(forms.ModelForm):
                 'readonly' : 'readonly',
             }),
 
-            "text" : TextInput(attrs={
+
+        }
+
+
+
+# --------------------------- Contact Message Form --------------------------- #
+
+
+class ContactMessageForm(forms.ModelForm):
+    class Meta:
+        model = ContactMessage
+        fields = ('name', 'email', 'phone', 'subject', 'message',)
+
+        widgets = {
+            "name" : TextInput(attrs={
                 'class' : 'form-control mb-2',
-                'id' : 'text',
-                'placeholder' : 'text'
+                'id' : 'name',
+                'placeholder' : 'name'
             }),
+
+            "email" : EmailInput(attrs={
+                'class' : 'form-control mb-2',
+                'id' : 'email',
+                'placeholder' : 'email'
+            }),
+
+            "phone" : TextInput(attrs={
+                'class' : 'form-control mb-2',
+                'id' : 'phone',
+                'placeholder' : 'phone'
+            }),
+
+            "subject" : TextInput(attrs={
+                'class' : 'form-control mb-2',
+                'id' : 'subject',
+                'placeholder' : 'subject'
+            }),
+
+            "message" : Textarea(attrs={
+                'class' : 'form-control mb-2',
+                'id' : 'message',
+                'placeholder' : 'message'
+            }),
+
+
+        }
+
+
+
+
+# ------------------------------- Events Order ------------------------------- #
+
+
+class EventsOrderForm(forms.ModelForm):
+
+    class Meta:
+        model = Offer_events_ticket
+        fields = ['name','phone']
+
+        widgets = {
+            "name" : TextInput(attrs={
+                'class' : 'form-control',
+                'id' : 'name',
+                'placeholder' : 'name'
+            }),
+
+            "phone" : TextInput(attrs={
+                'class' : 'form-control',
+                'id' : 'phone',
+                'placeholder' : 'phone'
+            }),
+
+
+
 
         }

@@ -40,14 +40,26 @@
                   <h3 class="room-title">
                     <a href="{% url 'room_detail' room.pk %}">{{ room.title }}</a>
                   </h3>
-                  <span class="room-rates">
-                    <i class="fa fa-star" aria-hidden="true"></i>
-                    <i class="fa fa-star" aria-hidden="true"></i>
-                    <i class="fa fa-star" aria-hidden="true"></i>
-                    <i class="fa fa-star" aria-hidden="true"></i>
-                    <i class="fa fa-star" aria-hidden="true"></i>
-                    <a href="room.html#room-reviews">5.00 Based on 3 Ratings</a>
-                  </span>
+
+          
+                  
+
+                      
+                      
+                      <div class="review-contentt">
+                        <div class=" room-rates">
+                          <i class="fa fa-star{% if room.avaregereview < 1 and room.avaregereview > 0 %}-half-empty  {% elif room.avaregereview < 1 %}-o {% endif %}" aria-hidden="true"></i>
+                          <i class="fa fa-star{% if room.avaregereview < 2 and room.avaregereview > 1 %}-half-empty  {% elif room.avaregereview < 2 %}-o {% endif %}" aria-hidden="true"></i>
+                          <i class="fa fa-star{% if room.avaregereview < 3 and room.avaregereview > 2 %}-half-empty  {% elif room.avaregereview < 3 %}-o {% endif %}" aria-hidden="true"></i>
+                          <i class="fa fa-star{% if room.avaregereview < 4 and room.avaregereview > 3 %}-half-empty  {% elif room.avaregereview < 4 %}-o {% endif %}" aria-hidden="true"></i>
+                          <i class="fa fa-star{% if room.avaregereview < 5 and room.avaregereview > 4 %}-half-empty  {% elif room.avaregereview < 5 %}-o {% endif %}" aria-hidden="true"></i> 
+                          <a>{{ room.countreview}} Based on {{ room.avaregereview}} Ratings</a>
+                        </div>
+                      </div>
+                      
+          
+
+        
                   <p>{{ room.description }}
 
                     
@@ -67,7 +79,7 @@
               </div>
               <div class="col-lg-2">
                 <div class="room-price">
-                  <span class="price">€ {{ room.price }} / night</span>
+                  <span class="price">$ {{ room.price }} / night</span>
                   <a href="{% url 'room_detail' room.pk %}" class="btn btn-sm">VIEW DETAILS</a>
                 </div>
               </div>
@@ -79,39 +91,67 @@
 
           <!-- PAGINATION -->
           <nav class="pagination">
-            <ul>
-              <li class="prev-pagination">
-                <a href="#">
-                  &nbsp;<i class="fa fa-angle-left"></i>
-                  Previous &nbsp;</a>
-              </li>
-              <li class="active">
-                <a href="#">1</a>
-              </li>
-              <li>
-                <a href="#">2</a>
-              </li>
-              <li>
-                <a href="#">3</a>
-              </li>
-              <li>...</li>
-              <li>
-                <a href="#">7</a>
-              </li>
-              <li>
-                <a href="#">8</a>
-              </li>
-              <li>
-                <a href="#">9</a>
-              </li>
-              <li class="next_pagination">
-                <a href="#">
-                  &nbsp; Next
-                  <i class="fa fa-angle-right"></i>
-                  &nbsp;
-                </a>
-              </li>
-            </ul>
+            {% if rooms.has_other_pages %}
+              <ul>
+
+                {% if rooms.has_previous %}
+
+                <li class="prev-pagination">
+                  <a href="?page={{ rooms.previous_page_number }}">
+                    &nbsp;<i class="fa fa-angle-left"></i>
+                    Previous &nbsp;</a>
+                </li>
+
+                {% else %}
+
+
+                <li class="prev-pagination d-none">
+                  <a href="#">
+                    &nbsp;<i class="fa fa-angle-left"></i>
+                    Previous &nbsp;</a>
+                </li>
+
+                {% endif %}
+
+                {% for i in rooms.paginator.page_range %}
+                  {% if rooms.number == i %}
+
+                    <li class="active">
+                      <a href="#">{{ i }}</a>
+                    </li>
+
+                  {% else %}
+
+                    <li class="">
+                      <a href="?page={{i}}">{{ i }}</a>
+                    </li>
+                  {% endif %}
+
+                {% endfor %}
+
+                {% if rooms.has_next %}
+                  <li class="next_pagination">
+                    <a href="?page={{ rooms.next_page_number }}">
+                      &nbsp; Next
+                      <i class="fa fa-angle-right"></i>
+                      &nbsp;
+                    </a>
+                  </li>
+
+                {% else %}
+
+                  <li class="next_pagination d-none">
+                    <a href="#">
+                      &nbsp; Next
+                      <i class="fa fa-angle-right"></i>
+                      &nbsp;
+                    </a>
+                  </li>
+
+                {% endif %}
+              </ul>
+
+            {% endif %}
           </nav>
         </div>
       </main>

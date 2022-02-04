@@ -1,0 +1,674 @@
+{% extends 'admin.html' %}
+{% load static %}
+
+
+{% block content %}
+
+<!-- ============================================================== -->
+            <!-- Start Page Content here -->
+            <!-- ============================================================== -->
+         
+            <div class="row">
+
+                <div class="col-xl-3 col-md-6">
+                    <div class="card">
+                        <div class="card-body">
+                            <h3 class=""><i class="fe-home"></i> Xonalar  <span class="badge bg-info"> 34</span></h2>                           
+                        </div>
+                    </div>
+                </div><!-- end col -->
+
+                <div class="col-xl-3 col-md-6">
+                    <div class="card">
+                        <div class="card-body">
+                            <h3 class=""><i class="fe-home"></i> Blog  <span class="badge bg-info"> 34</span></h2>                           
+                        </div>
+                    </div>
+                </div><!-- end col -->
+
+                <div class="col-xl-3 col-md-6">
+                    <div class="card">
+                        <div class="card-body">
+                            <h3 class=""><i class="fe-home"></i> User  <span class="badge bg-info"> 34</span></h2>                           
+                        </div>
+                    </div>
+                </div><!-- end col -->
+
+                <div class="col-xl-3 col-md-6">
+                    <div class="card">
+                        <div class="card-body">
+                            <h3 class=""><i class="fe-home"></i> Service  <span class="badge bg-info"> 34</span></h2>                           
+                        </div>
+                    </div>
+                </div><!-- end col -->
+
+                <div class="col-xl-3 col-md-6">
+                    <div class="card">
+                        <div class="card-body">
+                            <h3 class=""><i class="fe-home"></i> Staff  <span class="badge bg-info"> 34</span></h2>                           
+                        </div>
+                    </div>
+                </div><!-- end col -->
+
+                <div class="col-xl-3 col-md-6">
+                    <div class="card">
+                        <div class="card-body">
+                            <h3 class=""><i class="fe-home"></i> Speacial Offer  <span class="badge bg-info"> 34</span></h2>                           
+                        </div>
+                    </div>
+                </div><!-- end col -->
+
+                <div class="col-xl-3 col-md-6">
+                    <div class="card">
+                        <div class="card-body">
+                            <h3 class=""><i class="fe-home"></i> Events  <span class="badge bg-info"> 34</span></h2>                           
+                        </div>
+                    </div>
+                </div><!-- end col -->
+
+                <div class="col-xl-3 col-md-6">
+                    <div class="card">
+                        <div class="card-body">
+                            <h3 class=""><i class="fe-home"></i> Comments  <span class="badge bg-info"> 34</span></h2>                           
+                        </div>
+                    </div>
+                </div><!-- end col -->
+
+
+
+               
+
+            </div>
+            <!-- end row -->
+
+            <div class="row">
+                <div class="col-12">
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="row text-center">
+                                <h3>Zakazlar</h3>                              
+                            </div> <!-- end row -->
+                        </div>
+                    </div> <!-- end card -->
+                </div><!-- end col-->
+            </div>
+
+            <div class="row">
+                <div class="col-12">
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="dropdown float-end">
+                                <a href="{% url 'order_room_admin' %}"><span class="badge bg-info">barchasini korish</span></a>
+                            </div>
+                            <h3 class=" mt-0 mb-3">Xonalardan <span class="badge bg-info">{{ order_room.count }}</span></h3>
+                           
+    
+                            <div class="table-responsive">
+                                <table class="table table-centered mb-0" id="btn-editable">
+                                    <thead>
+                                        <tr>
+                                            <th>Name</th>
+                                            <th>Phone</th>
+                                            <th>Room</th>
+                                            <th>Date</th>
+                                            <th>Guest</th>
+                                            <th>Status</th>
+                                            
+                                        <th class="tabledit-toolbar-column"></th></tr>
+                                    </thead>
+    
+                                    
+                                
+                                    <tbody>
+                                        {% for item in order_room %}
+                                        <tr id="">
+                                            <td><span class="tabledit-span tabledit-identifier">{{ item.name }}</span><input class="tabledit-input tabledit-identifier" type="hidden" name="id" value="1" disabled=""></td>
+                                           
+                                            <td class="tabledit-view-mode"><span class="tabledit-span">{{ item.phone }}</span><input class="tabledit-input form-control form-control-sm" type="text" name="col2" value="System Architect" style="display: none;" disabled=""></td>
+                                            <td class="tabledit-view-mode"><span class="tabledit-span">{{ item.room }}</span><input class="tabledit-input form-control form-control-sm" type="text" name="col3" value="Edinburgh" style="display: none;" disabled=""></td>
+                                            <td class="tabledit-view-mode"><span class="tabledit-span">{{ item.arrival }}</span><input class="tabledit-input form-control form-control-sm" type="text" name="col4" value="61" style="display: none;" disabled=""></td>
+                                            <td class="tabledit-view-mode"><span class="tabledit-span">{{ item.guest }}</span><input class="tabledit-input form-control form-control-sm" type="text" name="col4" value="61" style="display: none;" disabled=""></td>
+                                            <td class="tabledit-view-mode"><span class="tabledit-span"><span class="badge bg-info">{{ item.status }}</span></span><input class="tabledit-input form-control form-control-sm" type="text" name="col4" value="61" style="display: none;" disabled=""></td>
+                                           
+                                        <td style="white-space: nowrap; width: 1%;"><div class="tabledit-toolbar btn-toolbar" style="text-align: left;">
+                                            <div class="btn-group btn-group-sm" style="float: none;"><a href="{% url 'order_room_detail' item.pk %}" class="btn btn-info" style="float: none;"><span class="fe-eye"></span></a></div></div>
+                                        </td>
+    
+                                        <td style="white-space: nowrap; width: 1%;"><div class="tabledit-toolbar btn-toolbar" style="text-align: left;">
+                                            <div class="btn-group btn-group-sm" style="float: none;"><a href="{% url 'order_room_edit' item.pk %}" class="btn btn-warning" style="float: none;"><span class="fe-edit-2"></span></a></div></div>
+                                        </td>
+                        
+                                        <td style="white-space: nowrap; width: 1%;"><div class="tabledit-toolbar btn-toolbar" style="text-align: left;">
+                                            <div class="btn-group btn-group-sm" style="float: none;"><a href="{% url 'order_room_delate' item.pk %}" class="btn btn-danger" style="float: none;"><span class="fe-trash-2"></span></a></div></div>
+                                        </td>
+                                        
+                                       
+                                        </tr>
+                                        {% endfor %}
+                                    </tbody>
+                                </table>
+                            </div> <!-- end .table-responsive-->
+                        </div> 
+                    </div>
+                   
+                </div><!-- end col -->
+            </div>
+
+
+            <div class="row">
+                <div class="col-12">
+                    <div class="card">
+                        <div class="card-body">
+
+                            <div class="dropdown float-end">
+                                <a href="#"><h4><span class="badge bg-info">Hammasi</span></h4></a>
+                            </div>
+    
+                            <h3 class=" mt-0 mb-3">Maqsus Takliflar <span class="badge bg-info">{{ offer_order.count }}</span></h3> 
+                            <div class="table-responsive">
+                                <table class="table table-centered mb-0" id="btn-editable">
+                                    <thead>
+                                        <tr>
+                                            <th>id</th>
+                                            <th>offer</th>
+                                            <th>name</th>
+                                            <th>phone</th>
+                                            <th>date</th>
+                                            <th>status</th>
+                                        <th class="tabledit-toolbar-column"></th></tr>
+                                    </thead>
+
+                                    
+                                
+                                    <tbody>
+                                        {% for item in offer_order %}
+                                        <tr id="">
+                                        <td><span class="tabledit-span tabledit-identifier">{{ item.pk }}</span><input class="tabledit-input tabledit-identifier" type="hidden" name="id" value="1" disabled=""></td>
+                                           
+                                        <td class="tabledit-view-mode"><span class="tabledit-span">{{ item.offer.title }}</span><input class="tabledit-input form-control form-control-sm" type="text" name="col2" value="System Architect" style="display: none;" disabled=""></td>
+                                        <td class="tabledit-view-mode"><span class="tabledit-span">{{ item.name }}</span><input class="tabledit-input form-control form-control-sm" type="text" name="col2" value="System Architect" style="display: none;" disabled=""></td>
+                                        <td class="tabledit-view-mode"><span class="tabledit-span">{{ item.phone }}</span><input class="tabledit-input form-control form-control-sm" type="text" name="col2" value="System Architect" style="display: none;" disabled=""></td>
+                                        <td class="tabledit-view-mode"><span class="tabledit-span">{{ item.date }}</span><input class="tabledit-input form-control form-control-sm" type="text" name="col2" value="System Architect" style="display: none;" disabled=""></td>
+                                        <td class="tabledit-view-mode"><span class="tabledit-span">{{ item.status }}</span><input class="tabledit-input form-control form-control-sm" type="text" name="col2" value="System Architect" style="display: none;" disabled=""></td>
+                                            
+                        
+                                        <td style="white-space: nowrap; width: 1%;"><div class="tabledit-toolbar btn-toolbar" style="text-align: left;">
+                                            <div class="btn-group btn-group-sm" style="float: none;"><a href="{% url 'offer_order_edit' item.pk %}" class="btn btn-warning" style="float: none;"><span class="fe-edit-2"></span></a></div></div>
+                                        </td>
+
+                                    
+                                       
+                                        </tr>
+                                        {% endfor %}
+                                    </tbody>
+                                </table>
+                            </div> <!-- end .table-responsive-->
+                        </div> <!-- end card-body -->
+                    </div> <!-- end card -->
+                </div> <!-- end col -->
+            </div>
+
+            <div class="row">
+                <div class="col-12">
+                    <div class="card">
+                        <div class="card-body">
+
+                            <div class="dropdown float-end">
+                                <a href="{% url 'order_events_admin' %}"><h4><span class="badge bg-info">Hammasi</span></h4></a>
+                            </div>
+                            <h3 class=" mt-0 mb-3">Tadbirlarga Zakzlar <span class="badge bg-info">{{ order_events.count }}</span></h3>
+                        
+                            <div class="table-responsive">
+                                <table class="table table-centered mb-0" id="btn-editable">
+                                    <thead>
+                                        <tr>
+                                            <th>Offer</th>
+                                            <th>Name</th>
+                                            <th>Phone</th>
+                                            <th>Email</th>
+                                            <th>Text</th>
+                                            <th>Status</th>
+                                            
+                                        <th class="tabledit-toolbar-column"></th></tr>
+                                    </thead>
+
+                                    
+                                
+                                    <tbody>
+                                        {% for item in order_events %}
+                                        <tr id="">
+                                            <td><span class="tabledit-span tabledit-identifier">{{ item.offer.title }}</span><input class="tabledit-input tabledit-identifier" type="hidden" name="id" value="1" disabled=""></td>
+                    
+                                            <td class="tabledit-view-mode"><span class="tabledit-span">{{ item.name }}</span><input class="tabledit-input form-control form-control-sm" type="text" name="col2" value="System Architect" style="display: none;" disabled=""></td>
+                                            <td class="tabledit-view-mode"><span class="tabledit-span">{{ item.phone }}</span><input class="tabledit-input form-control form-control-sm" type="text" name="col3" value="Edinburgh" style="display: none;" disabled=""></td>
+                                            <td class="tabledit-view-mode"><span class="tabledit-span">{{ item.email }}</span><input class="tabledit-input form-control form-control-sm" type="text" name="col4" value="61" style="display: none;" disabled=""></td>
+                                            <td class="tabledit-view-mode"><span class="tabledit-span">{{ item.text }}</span><input class="tabledit-input form-control form-control-sm" type="text" name="col4" value="61" style="display: none;" disabled=""></td>
+                                            <td class="tabledit-view-mode"><span class="tabledit-span"><span class="badge bg-info">{{ item.status }}</span></span><input class="tabledit-input form-control form-control-sm" type="text" name="col4" value="61" style="display: none;" disabled=""></td>
+                                           
+                                        <td style="white-space: nowrap; width: 1%;"><div class="tabledit-toolbar btn-toolbar" style="text-align: left;">
+                                            <div class="btn-group btn-group-sm" style="float: none;"><a href="{% url 'order_events_detail' item.pk %}" class="btn btn-info" style="float: none;"><span class="fe-eye"></span></a></div></div>
+                                        </td>
+
+                                        <td style="white-space: nowrap; width: 1%;"><div class="tabledit-toolbar btn-toolbar" style="text-align: left;">
+                                            <div class="btn-group btn-group-sm" style="float: none;"><a href="{% url 'order_events_edit' item.pk %}" class="btn btn-warning" style="float: none;"><span class="fe-edit-2"></span></a></div></div>
+                                        </td>
+                        
+                                        <td style="white-space: nowrap; width: 1%;"><div class="tabledit-toolbar btn-toolbar" style="text-align: left;">
+                                            <div class="btn-group btn-group-sm" style="float: none;"><a href="{% url 'order_events_delate' item.pk %}" class="btn btn-danger" style="float: none;"><span class="fe-trash-2"></span></a></div></div>
+                                        </td>
+                                        
+                                       
+                                        </tr>
+                                        {% endfor %}
+                                    </tbody>
+                                </table>
+                            </div> <!-- end .table-responsive-->
+                        </div> <!-- end card-body -->
+                    </div> <!-- end card -->
+                </div> <!-- end col -->
+            </div>
+
+            <div class="row">
+                <div class="col-12">
+                    <div class="card">
+                        <div class="card-body">
+
+                            <div class="dropdown float-end">
+                                <a href="{% url 'contact_message_admin' %}"><h5><span class="badge bg-info">Hammasi</span></h5></a>
+                            </div>
+                            <h3 class=" mt-0 mb-3">Conntact Message <span class="badge bg-info">{{ contact_message.count }}</span></h3>
+                             
+                            <div class="table-responsive">
+                                <table class="table table-centered mb-0" id="btn-editable">
+                                    <thead>
+                                        <tr>
+                                            <th>#</th>
+                                            <th>name</th>
+                                            <th>subject</th>
+                                            
+                                            <th>Status</th>
+                                        <th class="tabledit-toolbar-column"></th></tr>
+                                    </thead>
+
+                                    
+                                
+                                    <tbody>
+                                        {% for item in contact_message %}
+                                        <tr id="">
+                                            <td><span class="tabledit-span tabledit-identifier">{{ item.pk }}</span><input class="tabledit-input tabledit-identifier" type="hidden" name="id" value="1" disabled=""></td>
+                                           
+                                            <td class="tabledit-view-mode"><span class="tabledit-span">{{ item.name }}</span><input class="tabledit-input form-control form-control-sm" type="text" name="col2" value="System Architect" style="display: none;" disabled=""></td>
+                                            <td class="tabledit-view-mode"><span class="tabledit-span">{{ item.subject }}</span><input class="tabledit-input form-control form-control-sm" type="text" name="col3" value="Edinburgh" style="display: none;" disabled=""></td>
+                                            <td class="tabledit-view-mode"><span class="tabledit-span">{{ item.status }}$</span><input class="tabledit-input form-control form-control-sm" type="text" name="col4" value="61" style="display: none;" disabled=""></td>
+                                           
+                                        <td style="white-space: nowrap; width: 1%;"><div class="tabledit-toolbar btn-toolbar" style="text-align: left;">
+                                            <div class="btn-group btn-group-sm" style="float: none;"><a href="{% url 'contact_message_detail' item.pk %}" class="btn btn-info" style="float: none;"><span class="fe-eye"></span></a></div></div>
+                                        </td>
+                        
+                                        <td style="white-space: nowrap; width: 1%;"><div class="tabledit-toolbar btn-toolbar" style="text-align: left;">
+                                            <div class="btn-group btn-group-sm" style="float: none;"><a href="{% url 'contact_message_delate' item.pk %}" class="btn btn-danger" style="float: none;"><span class="fe-trash-2"></span></a></div></div>
+                                        </td>
+                                        
+                                       
+                                        </tr>
+                                        {% endfor %}
+                                    </tbody>
+                                </table>
+                            </div> <!-- end .table-responsive-->
+                        </div> <!-- end card-body -->
+                    </div> <!-- end card -->
+                </div> <!-- end col -->
+            </div>
+
+            <div class="row">
+                <div class="col-12">
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="row text-center">
+                                <h3>Zakazlar</h3>                              
+                            </div> <!-- end row -->
+                        </div>
+                    </div> <!-- end card -->
+                </div><!-- end col-->
+            </div>
+
+            <div class="row">
+                <div class="col-xl-4">
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="dropdown float-end">
+                                <a href="#" class="dropdown-toggle arrow-none card-drop" data-bs-toggle="dropdown" aria-expanded="false">
+                                    <i class="mdi mdi-dots-vertical"></i>
+                                </a>
+                                <div class="dropdown-menu dropdown-menu-end">
+                                    <!-- item-->
+                                    <a href="javascript:void(0);" class="dropdown-item">Action</a>
+                                    <!-- item-->
+                                    <a href="javascript:void(0);" class="dropdown-item">Another action</a>
+                                    <!-- item-->
+                                    <a href="javascript:void(0);" class="dropdown-item">Something else</a>
+                                    <!-- item-->
+                                    <a href="javascript:void(0);" class="dropdown-item">Separated link</a>
+                                </div>
+                            </div>
+
+                            <h4 class="header-title mt-0">Daily Sales</h4>
+
+                            <div class="widget-chart text-center">
+                                <div id="morris-donut-example" dir="ltr" style="height: 245px;" class="morris-chart"></div>
+                                <ul class="list-inline chart-detail-list mb-0">
+                                    <li class="list-inline-item">
+                                        <h5 style="color: #ff8acc;"><i class="fa fa-circle me-1"></i>Series A</h5>
+                                    </li>
+                                    <li class="list-inline-item">
+                                        <h5 style="color: #5b69bc;"><i class="fa fa-circle me-1"></i>Series B</h5>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div><!-- end col -->
+
+                <div class="col-xl-4">
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="dropdown float-end">
+                                <a href="#" class="dropdown-toggle arrow-none card-drop" data-bs-toggle="dropdown" aria-expanded="false">
+                                    <i class="mdi mdi-dots-vertical"></i>
+                                </a>
+                                <div class="dropdown-menu dropdown-menu-end">
+                                    <!-- item-->
+                                    <a href="javascript:void(0);" class="dropdown-item">Action</a>
+                                    <!-- item-->
+                                    <a href="javascript:void(0);" class="dropdown-item">Another action</a>
+                                    <!-- item-->
+                                    <a href="javascript:void(0);" class="dropdown-item">Something else</a>
+                                    <!-- item-->
+                                    <a href="javascript:void(0);" class="dropdown-item">Separated link</a>
+                                </div>
+                            </div>
+                            <h4 class="header-title mt-0">Statistics</h4>
+                            <div id="morris-bar-example" dir="ltr" style="height: 280px;" class="morris-chart"></div>
+                        </div>
+                    </div>
+                </div><!-- end col -->
+
+                <div class="col-xl-4">
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="dropdown float-end">
+                                <a href="#" class="dropdown-toggle arrow-none card-drop" data-bs-toggle="dropdown" aria-expanded="false">
+                                    <i class="mdi mdi-dots-vertical"></i>
+                                </a>
+                                <div class="dropdown-menu dropdown-menu-end">
+                                    <!-- item-->
+                                    <a href="javascript:void(0);" class="dropdown-item">Action</a>
+                                    <!-- item-->
+                                    <a href="javascript:void(0);" class="dropdown-item">Another action</a>
+                                    <!-- item-->
+                                    <a href="javascript:void(0);" class="dropdown-item">Something else</a>
+                                    <!-- item-->
+                                    <a href="javascript:void(0);" class="dropdown-item">Separated link</a>
+                                </div>
+                            </div>
+                            <h4 class="header-title mt-0">Total Revenue</h4>
+                            <div id="morris-line-example" dir="ltr" style="height: 280px;" class="morris-chart"></div>
+                        </div>
+                    </div>
+                </div><!-- end col -->
+            </div>
+            <!-- end row -->
+
+
+            <div class="row">
+                <div class="col-xl-3 col-md-6">
+                    <div class="card">
+                        <div class="card-body widget-user">
+                            <div class="d-flex align-items-center">
+                                <div class="flex-shrink-0 avatar-lg me-3">
+                                    <img src="../assets/images/users/user-3.jpg" class="img-fluid rounded-circle" alt="user">
+                                </div>
+                                <div class="flex-grow-1 overflow-hidden">
+                                    <h5 class="mt-0 mb-1">Chadengle</h5>
+                                    <p class="text-muted mb-2 font-13 text-truncate">coderthemes@gmail.com</p>
+                                    <small class="text-warning"><b>Admin</b></small>
+                                </div>
+                            </div>
+                        </div>   
+                    </div>
+                  
+                </div><!-- end col -->
+
+                <div class="col-xl-3 col-md-6">
+                    <div class="card">
+                        <div class="card-body widget-user">
+                            <div class="d-flex align-items-center">
+                                <div class="flex-shrink-0 avatar-lg me-3">
+                                    <img src="../assets/images/users/user-2.jpg" class="img-fluid rounded-circle" alt="user">
+                                </div>
+                                <div class="flex-grow-1 overflow-hidden">
+                                    <h5 class="mt-0 mb-1"> Michael Zenaty</h5>
+                                    <p class="text-muted mb-2 font-13 text-truncate">coderthemes@gmail.com</p>
+                                    <small class="text-pink"><b>Support Lead</b></small>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                </div><!-- end col -->
+
+                <div class="col-xl-3 col-md-6">
+                    <div class="card">
+                        <div class="card-body widget-user">
+                            <div class="d-flex align-items-center">
+                                <div class="flex-shrink-0 avatar-lg me-3">
+                                    <img src="../assets/images/users/user-1.jpg" class="img-fluid rounded-circle" alt="user">
+                                </div>
+                                <div class="flex-grow-1 overflow-hidden">
+                                    <h5 class="mt-0 mb-1">Stillnotdavid</h5>
+                                    <p class="text-muted mb-2 font-13 text-truncate">coderthemes@gmail.com</p>
+                                    <small class="text-success"><b>Designer</b></small>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                   
+                </div><!-- end col -->
+
+                <div class="col-xl-3 col-md-6">
+                    <div class="card">
+                        <div class="card-body widget-user">
+                            <div class="d-flex align-items-center">
+                                <div class="flex-shrink-0 avatar-lg me-3">
+                                    <img src="../assets/images/users/user-10.jpg" class="img-fluid rounded-circle" alt="user">
+                                </div>
+                                <div class="flex-grow-1 overflow-hidden">
+                                    <h5 class="mt-0 mb-1">Tomaslau</h5>
+                                    <p class="text-muted mb-2 font-13 text-truncate">coderthemes@gmail.com</p>
+                                    <small class="text-info"><b>Developer</b></small>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                </div><!-- end col -->
+
+            </div>
+            <!-- end row -->
+
+
+            <div class="row">
+                <div class="col-xl-4">
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="dropdown float-end">
+                                <a href="#" class="dropdown-toggle arrow-none card-drop" data-bs-toggle="dropdown" aria-expanded="false">
+                                    <i class="mdi mdi-dots-vertical"></i>
+                                </a>
+                                <div class="dropdown-menu dropdown-menu-end">
+                                    <!-- item-->
+                                    <a href="javascript:void(0);" class="dropdown-item">Action</a>
+                                    <!-- item-->
+                                    <a href="javascript:void(0);" class="dropdown-item">Another action</a>
+                                    <!-- item-->
+                                    <a href="javascript:void(0);" class="dropdown-item">Something else</a>
+                                    <!-- item-->
+                                    <a href="javascript:void(0);" class="dropdown-item">Separated link</a>
+                                </div>
+                            </div>
+
+                            <h4 class="header-title mb-3">Inbox</h4>
+
+                            <div class="inbox-widget">
+                                
+                                <div class="inbox-item">
+                                    <a href="#">
+                                        <div class="inbox-item-img"><img src="../assets/images/users/user-1.jpg" class="rounded-circle" alt=""></div>
+                                        <h5 class="inbox-item-author mt-0 mb-1">Chadengle</h5>
+                                        <p class="inbox-item-text">Hey! there I'm available...</p>
+                                        <p class="inbox-item-date">13:40 PM</p>
+                                    </a>
+                                </div>
+                                
+                                <div class="inbox-item">
+                                    <a href="#">
+                                        <div class="inbox-item-img"><img src="../assets/images/users/user-2.jpg" class="rounded-circle" alt=""></div>
+                                        <h5 class="inbox-item-author mt-0 mb-1">Tomaslau</h5>
+                                        <p class="inbox-item-text">I've finished it! See you so...</p>
+                                        <p class="inbox-item-date">13:34 PM</p>
+                                    </a>
+                                </div>
+
+                                <div class="inbox-item">
+                                        <a href="#">
+                                        <div class="inbox-item-img"><img src="../assets/images/users/user-3.jpg" class="rounded-circle" alt=""></div>
+                                        <h5 class="inbox-item-author mt-0 mb-1">Stillnotdavid</h5>
+                                        <p class="inbox-item-text">This theme is awesome!</p>
+                                        <p class="inbox-item-date">13:17 PM</p>
+                                    </a>
+                                </div>
+
+                                <div class="inbox-item">
+                                    <a href="#">
+                                        <div class="inbox-item-img"><img src="../assets/images/users/user-4.jpg" class="rounded-circle" alt=""></div>
+                                        <h5 class="inbox-item-author mt-0 mb-1">Kurafire</h5>
+                                        <p class="inbox-item-text">Nice to meet you</p>
+                                        <p class="inbox-item-date">12:20 PM</p>
+                                    </a>
+                                </div>
+
+                                <div class="inbox-item">
+                                    <a href="#">
+                                        <div class="inbox-item-img"><img src="../assets/images/users/user-5.jpg" class="rounded-circle" alt=""></div>
+                                        <h5 class="inbox-item-author mt-0 mb-1">Shahedk</h5>
+                                        <p class="inbox-item-text">Hey! there I'm available...</p>
+                                        <p class="inbox-item-date">10:15 AM</p>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                </div><!-- end col -->
+
+                <div class="col-xl-8">
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="dropdown float-end">
+                                <a href="#" class="dropdown-toggle arrow-none card-drop" data-bs-toggle="dropdown" aria-expanded="false">
+                                    <i class="mdi mdi-dots-vertical"></i>
+                                </a>
+                                <div class="dropdown-menu dropdown-menu-end">
+                                    <!-- item-->
+                                    <a href="javascript:void(0);" class="dropdown-item">Action</a>
+                                    <!-- item-->
+                                    <a href="javascript:void(0);" class="dropdown-item">Another action</a>
+                                    <!-- item-->
+                                    <a href="javascript:void(0);" class="dropdown-item">Something else</a>
+                                    <!-- item-->
+                                    <a href="javascript:void(0);" class="dropdown-item">Separated link</a>
+                                </div>
+                            </div>
+
+                            <h4 class="header-title mt-0 mb-3">Latest Projects</h4>
+
+                            <div class="table-responsive">
+                                <table class="table table-hover mb-0">
+                                    <thead>
+                                    <tr>
+                                        <th>#</th>
+                                        <th>Project Name</th>
+                                        <th>Start Date</th>
+                                        <th>Due Date</th>
+                                        <th>Status</th>
+                                        <th>Assign</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>1</td>
+                                            <td>Adminto Admin v1</td>
+                                            <td>01/01/2017</td>
+                                            <td>26/04/2017</td>
+                                            <td><span class="badge bg-danger">Released</span></td>
+                                            <td>Coderthemes</td>
+                                        </tr>
+                                        <tr>
+                                            <td>2</td>
+                                            <td>Adminto Frontend v1</td>
+                                            <td>01/01/2017</td>
+                                            <td>26/04/2017</td>
+                                            <td><span class="badge bg-success">Released</span></td>
+                                            <td>Adminto admin</td>
+                                        </tr>
+                                        <tr>
+                                            <td>3</td>
+                                            <td>Adminto Admin v1.1</td>
+                                            <td>01/05/2017</td>
+                                            <td>10/05/2017</td>
+                                            <td><span class="badge bg-pink">Pending</span></td>
+                                            <td>Coderthemes</td>
+                                        </tr>
+                                        <tr>
+                                            <td>4</td>
+                                            <td>Adminto Frontend v1.1</td>
+                                            <td>01/01/2017</td>
+                                            <td>31/05/2017</td>
+                                            <td><span class="badge bg-purple">Work in Progress</span>
+                                            </td>
+                                            <td>Adminto admin</td>
+                                        </tr>
+                                        <tr>
+                                            <td>5</td>
+                                            <td>Adminto Admin v1.3</td>
+                                            <td>01/01/2017</td>
+                                            <td>31/05/2017</td>
+                                            <td><span class="badge bg-warning">Coming soon</span></td>
+                                            <td>Coderthemes</td>
+                                        </tr>
+
+                                        <tr>
+                                            <td>6</td>
+                                            <td>Adminto Admin v1.3</td>
+                                            <td>01/01/2017</td>
+                                            <td>31/05/2017</td>
+                                            <td><span class="badge bg-primary">Coming soon</span></td>
+                                            <td>Adminto admin</td>
+                                        </tr>
+
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div> 
+                    </div>
+                   
+                </div><!-- end col -->
+
+            </div>
+            <!-- end row -->    
+            
+            <!-- ============================================================== -->
+            <!-- End Page content -->
+            <!-- ============================================================== -->
+    
+{% endblock content %}

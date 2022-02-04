@@ -1,0 +1,28 @@
+
+
+
+{% extends 'admin.html' %}
+{% load static %}
+
+
+
+
+{% block content %}
+
+
+<div class="card card-body">
+    <h4 class="card-title">{{ contact_message.subject }}</h4>
+
+    <p class="card-text">Name: {{ contact_message.name }}</p>
+    <p class="card-text">Email: {{ contact_message.email }}</p>
+    <p class="card-text">Phone: {{ contact_message.phone }}</p>
+    <p class="card-text">Message: {{ contact_message.message }}</p>
+    <p class="card-text">Status: {{ contact_message.status }}</p>
+
+    <p class="card-text">
+        <small class="text-muted">{{ contact_message.creat_at }}</small>
+    </p>
+</div>
+    
+{% endblock content %}
+    

@@ -1,4 +1,13 @@
 {% load static %}
+
+{% load topheader_tag %}
+
+{% get_informations as informations %}
+
+
+
+{% for info in informations %}
+
 <footer>
     <div class="footer-widgets">
       <div class="container">
@@ -7,15 +16,7 @@
           <div class="col-md-3">
             <div class="footer-widget">
               <img src="{% static '/' %}images/logo.svg" class="footer-logo" alt="Hotel Himara">
-              <div class="inner">
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Enim, velit placeat assumenda incidunt dolorem aliquam!</p>
-                <a href="https://www.tripadvisor.com/" target="_blank">
-                  <div class="tripadvisor-banner">
-                    <span class="review">Recommended</span>
-                    <img src="{% static '/' %}images/icons/tripadvisor.png" alt="Image">
-                  </div>
-                </a>
-              </div>
+
             </div>
           </div>
           <!-- WIDGET -->
@@ -79,18 +80,18 @@
                     Lorem ipsum dolor, 25, Himara</li>
                   <li>
                     <i class="fa fa-phone" aria-hidden="true"></i>
-                    Phone: +1 888 123 4567
+                    Phone: {{ info.phone }}
                   </li>
                   <li>
                     <i class="fa fa-fax"></i>
-                    Fax: +1 888 123 4567</li>
+                    Fax: {{ info.fax }}</li>
                   <li>
                     <i class="fa fa-globe"></i>
-                    Web: www.hotelhimara.com</li>
+                    Web: www.hotel-np.com</li>
                   <li>
                     <i class="fa fa-envelope"></i>
                     Email:
-                    <a href="mailto:info@site.com">contact@hotelhimara.com</a>
+                    <a href="mailto:{{ info.email }}">{{ info.email }}</a>
                   </li>
                 </ul>
               </div>
@@ -104,30 +105,47 @@
       <div class="container">
         <div class="row">
           <div class="col-md-6">
-            <div class="copyrights">&copy; 2018 Hotel Himara. Designed by
-              <a href="https://eagle-themes.com/" target="_blank">Eagle-Themes</a>.</div>
+            <div class="copyrights">&copy; 2022 Hotel NP.  by 
+              <a href="#" target="_blank">Nurpolat</a>.</div>
           </div>
           <div class="col-md-6">
             <div class="social-media">
-              <a class="facebook" data-original-title="Facebook" data-toggle="tooltip" href="#">
+              <a class="facebook" data-original-title="Facebook" data-toggle="tooltip" href="
+              {% if info.facebook %}
+                  {{ info.facebook }}
+              {% endif %}
+                #">
                 <i class="fa fa-facebook"></i>
               </a>
-              <a class="twitter" data-original-title="Twitter" data-toggle="tooltip" href="#">
+              <a class="twitter" data-original-title="Twitter" data-toggle="tooltip" href="
+              {% if info.twitter %}
+                  {{ info.twitter }}
+              {% endif %}
+                #">
                 <i class="fa fa-twitter"></i>
               </a>
-              <a class="googleplus" data-original-title="Google Plus" data-toggle="tooltip" href="#">
-                <i class="fa fa-google-plus"></i>
-              </a>
-              <a class="pinterest" data-original-title="Pinterest" data-toggle="tooltip" href="#">
-                <i class="fa fa-pinterest"></i>
-              </a>
-              <a class="linkedin" data-original-title="Linkedin" data-toggle="tooltip" href="#">
+
+              <a class="linkedin" data-original-title="Linkedin" data-toggle="tooltip" href="
+              {% if info.linkedin %}
+                  {{ info.linkedin }}
+              {% endif %}
+                #">
                 <i class="fa fa-linkedin"></i>
               </a>
-              <a class="youtube" data-original-title="Youtube" data-toggle="tooltip" href="#">
+              <a class="youtube" data-original-title="Youtube" data-toggle="tooltip" href="
+              {% if info.youtube %}
+                  {{ info.youtube }}
+              {% endif %}
+                #">
                 <i class="fa fa-youtube"></i>
               </a>
-              <a class="instagram" data-original-title="Instagram" data-toggle="tooltip" href="#">
+              <a class="instagram" data-original-title="Instagram" data-toggle="tooltip" href="
+              
+              {% if info.instagram %}
+                  {{ info.instagram }}
+              {% endif %}
+                #
+              ">
                 <i class="fa fa-instagram"></i>
               </a>
             </div>
@@ -136,3 +154,10 @@
       </div>
     </div>
   </footer>
+
+
+  
+
+    
+{% endfor %}
+    

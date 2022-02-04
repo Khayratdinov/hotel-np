@@ -72,11 +72,15 @@ class Image_restaurant(models.Model):
 
 
 class Restaurant_menu(models.Model):
+    STATUS = (
+        ('True', 'Mavjud'),
+        ('False', 'Mavjud emas'),
+    )
     title = models.CharField(max_length=150)
     image = models.ImageField(blank=True, upload_to='images/restaurant-menu/')
     price = models.IntegerField(default=0)
     description = models.TextField(blank=True)
-    status = models.BooleanField(default=False)
+    status = models.CharField(max_length=50, choices=STATUS, default=True)
     create_at = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
@@ -130,13 +134,22 @@ class Image_fitness(models.Model):
 
 
 class Special_offer(models.Model):
+    STATUS = (
+        ('True', 'Mavjud'),
+        ('False', 'Mavjud emas'),
+    )
+
+    HOT_STATUS = (
+        ('True', 'Mavjud'),
+        ('False', 'Mavjud emas'),
+    )
     title = models.CharField(max_length=255)
     image = models.ImageField(blank=True, upload_to='images/offers/')
     description = models.TextField(blank=True)
     text = RichTextUploadingField(blank=True, null=True)
     price = models.CharField(max_length=100)
-    hot_offer = models.BooleanField(default=False)
-    status = models.BooleanField(default=True)
+    hot_offer = models.CharField(max_length=50, choices=HOT_STATUS, default=True)
+    status = models.CharField(max_length=50, choices=STATUS, default=True)
     slug = AutoSlugField(populate_from='title', unique=True, null=True, default=None)
     create_at = models.DateTimeField(auto_now_add=True)
     update_at = models.DateTimeField(auto_now=True)
@@ -158,14 +171,14 @@ class Offer_order(models.Model):
         ('New', 'Yangi'),
         ('Accepted', 'Qabul qilindi'),
     )
-    offer = models.CharField(max_length=200)
+    offer = models.ForeignKey(Special_offer, on_delete=models.CASCADE, related_name="offer_oreder")
     name = models.CharField(max_length=100)
     surname = models.CharField(max_length=100, blank=True)
     phone = models.CharField(max_length=100)
     email = models.CharField(max_length=100, blank=True)
-    date = models.DateTimeField('date joined', default=timezone.now)
+    date = models.CharField(max_length=100)
     text = models.TextField(blank=True, null=True)
-    status = models.CharField(max_length=50, choices=STATUS)
+    status = models.CharField(max_length=50, choices=STATUS, default="New")
     ip = models.CharField(max_length=100, blank=True)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
@@ -183,12 +196,13 @@ class Gallery(models.Model):
         ('filter-fitess', 'filter-fitess'),
         ('filter-spa', 'filter-spa'),
         ('filter-swimming', 'filter-swimming'),
+        ('.filter-business', '.filter-business'),
         ('filter-other', 'filter-other'),
         
     )
     title = models.CharField(max_length=255)
     image = models.ImageField(blank=True, upload_to='images/gallery/')
-    cat_filter = models.CharField(max_length=255, choices=STATUS)
+    cat_filter = models.CharField(max_length=255, choices=STATUS, default="*")
     category = models.ForeignKey('Category_gallery', on_delete=models.CASCADE)
 
     
@@ -204,11 +218,12 @@ class Category_gallery(models.Model):
         ('.filter-fitess', '.filter-fitess'),
         ('.filter-spa', '.filter-spa'),
         ('.filter-swimming', '.filter-swimming'),
+        ('.filter-business', '.filter-business'),
         ('.filter-other', '.filter-other'),
         
     )
     title = models.CharField(max_length=50, blank=True)
-    cat_filter = models.CharField(max_length=255, choices=STATUS)
+    cat_filter = models.CharField(max_length=255, choices=STATUS, default="*")
 
 
     def __str__(self):
@@ -265,7 +280,7 @@ class Events(models.Model):
     text = RichTextUploadingField(blank=True, null=True)
     date = models.DateTimeField('date joined', default=timezone.now)
     slug = AutoSlugField(populate_from='title', unique=True, null=True, default=None)
-    status = models.BooleanField(default=False, choices=STATUS)
+    status = models.CharField(max_length=15, default=True, choices=STATUS)
 
     def __str__(self):
         return self.title
@@ -282,13 +297,13 @@ class Offer_events_ticket(models.Model):
         ('New', 'Yangi'),
         ('Accepted', 'Qabul qilindi'),
     )
-    offer = models.CharField(max_length=200)
+    offer = models.ForeignKey(Events, on_delete=models.CASCADE)
     name = models.CharField(max_length=100)
     surname = models.CharField(max_length=100, blank=True)
     phone = models.CharField(max_length=100)
     email = models.CharField(max_length=100, blank=True)
     text = models.TextField(blank=True, null=True)
-    status = models.CharField(max_length=50, choices=STATUS)
+    status = models.CharField(max_length=50, choices=STATUS, default="New")
     ip = models.CharField(max_length=100, blank=True)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
@@ -299,11 +314,15 @@ class Offer_events_ticket(models.Model):
 
 
 class Place(models.Model):
+    STATUS = (
+        ('True', 'Mavjud'),
+        ('False','Mavjud emas'),
+    )
     title = models.CharField(max_length=250)
     image = models.ImageField(upload_to='images/place/')
     description = models.CharField(max_length=250)
     text = RichTextUploadingField(blank=True, null=True)
-    status = models.BooleanField(default=False)
+    status = models.CharField(max_length=15,default=True, choices=STATUS )
     slug = AutoSlugField(populate_from='title', unique=True, null=True, default=None)
     create_at = models.DateTimeField(auto_now_add=True)
 

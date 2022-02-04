@@ -1,0 +1,98 @@
+{% extends 'base.html' %}
+
+
+{% block content %}
+
+
+      <!-- ========== REVOLUTION SLIDER ========== -->
+      <div id="rev-slider-event" class="rev_slider gradient-slider" data-version="5.4.5">
+        <ul>
+          <!-- SLIDE -->
+          <li data-transition="fade">
+            <!-- MAIN IMAGE -->
+            <img src="{{ events.image.url }}" alt="Image" data-bgposition="center center" data-bgfit="cover" data-bgrepeat="no-repeat" data-bgparallax="5" class="rev-slidebg" data-no-retina="data-no-retina">
+            <!-- LAYER NR. 1 -->
+            <div
+              class="tp-caption"
+              data-x="['center','center','center','center']"
+              data-hoffset=""
+              data-y="['middle','middle','middle','middle']"
+              data-voffset=""
+              data-responsive_offset="on"
+              data-fontsize="['54','42','32','32']"
+              data-lineheight="['40','32','28','22']"
+              data-whitespace="nowrap"
+              data-frames='[{"delay":0,"speed":1500,"frame":"0","from":"y:[100%];z:0;rX:0deg;rY:0;rZ:0;sX:1;sY:1;skX:0;skY:0;opacity:0;","mask":"x:0px;y:[100%];s:inherit;e:inherit;","to":"o:1;","ease":"Power2.easeInOut"},{"delay":"wait","speed":300,"frame":"999","to":"auto:auto;","ease":"Power3.easeInOut"}]'
+              style="color: #fff; font-weight: 700; font-family: 'Raleway', sans-serif;">{{ events.title }}
+            </div>
+            <!-- LAYER NR. 2 -->
+            <div
+              class="tp-caption"
+              data-x="['center','center','center','center']"
+              data-hoffset=""
+              data-y="['500','500','500','500']"
+              data-voffset=""
+              data-responsive_offset="on"
+              data-whitespace="nowrap"
+              data-frames='[{"delay":0,"speed":1500,"frame":"0","from":"y:[100%];z:0;rX:0deg;rY:0;rZ:0;sX:1;sY:1;skX:0;skY:0;opacity:0;","mask":"x:0px;y:[100%];s:inherit;e:inherit;","to":"o:1;","ease":"Power2.easeInOut"},{"delay":"wait","speed":300,"frame":"999","to":"auto:auto;","ease":"Power3.easeInOut"}]'>
+              <div id="countdown" data-countdown="{{ events.date|date:"Y" }}/{{ events.date|date:"m" }}/{{ events.date|date:"d" }}"></div>
+            </div>
+          </li>
+        </ul>
+      </div>
+      <!-- ========== MAIN ========== -->
+      <main class="restaurant">
+        <div class="container">
+          <div class="entry">
+            <!-- BOOKING FORM -->
+            <div class="vertical-booking-form entry-booking-form-left">
+              <h3 class="form-title">BOOK YOUR TICKET</h3>
+              <div class="inner">
+                <form method="POST">
+                  {% csrf_token %}
+                  <!-- EMAIL -->
+                  <div class="form-group">
+                    {{ form.name }}
+                  </div>
+
+                  <div class="form-group">
+                    {{ form.phone }}
+                  </div>
+
+
+
+            
+                  <!-- BOOKING BUTTON -->
+                  <button type="submit" class="btn btn-book btn-dark">BOOK A TICKET</button>
+                  <div class="mt20"></div>
+                </form>
+              </div>
+            </div>
+            <p>
+             {{ events.text |safe }}
+            </p>
+
+            <div class="row image-gallery">
+              
+              {% for image_event in image_events %}
+                
+             
+                
+              <!-- ITEM -->
+              <div class="col-md-3">
+                <figure class="gradient-overlay-hover image-icon">
+                  <a href="{{ image_event.image.url }}">
+                    <img src="{{ image_event.image.url }}" class="img-fluid" alt="Image">
+                  </a>
+                </figure>
+              </div>
+
+              {% endfor %}
+            </div>
+           
+          </div>
+        </div>
+      </main>
+  
+{% endblock content %}
+  

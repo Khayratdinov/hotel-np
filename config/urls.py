@@ -6,12 +6,13 @@ from django.conf.urls.static import static
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('home.urls')),
+    path('user/',include('accounts.urls')),
     path('home/', include('home.urls')),
     path('room/', include('room.urls')),
     path('product/', include('product.urls')),
     path('service/', include('service.urls')),
     path('blog/', include('blog.urls')),
-    path('user/', include('creatoradmin.urls')),
+    path('admin_dashboard/', include('creatoradmin.urls')),
     path('ckeditor/', include('ckeditor_uploader.urls')),
 ]
 

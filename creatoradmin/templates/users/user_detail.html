@@ -1,0 +1,32 @@
+
+
+
+{% extends 'admin.html' %}
+{% load static %}
+
+
+
+
+{% block content %}
+
+
+<div class="card card-body">
+    <h4 class="card-title">Name: {{ user.name }}</h4>
+    <h3 class="card-title">User Type: {{ user.user_type }}</h3>
+    <p class="card-text">Full Name: {{ user }}</p>
+    <p class="card-text">Email: {{ user.email }}</p>
+    <p class="card-text">Birthday: {{ user.birthday }}</p>
+    <p class="card-text">Phone: {{ user.phone }}</p>
+    <p class="card-text">Address: {{ user.address }}</p>
+    <p class="card-text">City: {{ user.city }}</p>
+    <p class="card-text">Country: {{ user.country }}</p>
+    <p class="card-text">Zip: {{ user.zip }}</p>
+    <p class="card-text">Date joined: {{ user.date_joined }}</p>
+    <p class="card-text">Country: {{ user.country }}</p>
+    <p class="card-text">
+        <small class="text-muted">{{ order_events.creat_at }}</small>
+    </p>
+</div>
+    
+{% endblock content %}
+    
